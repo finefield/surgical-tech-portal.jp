@@ -42,13 +42,13 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <Header />
-      <HeroSection />
+      <HeroSection onSearch={(query) => setSearchQuery(query)} />
 
       {/* Global Showcase Section - Japan Top 5 / Global Frontrunners */}
       <GlobalShowcase />
 
       {/* Database Section */}
-      <section className="py-20">
+      <section id="database-section" className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-12 text-center">

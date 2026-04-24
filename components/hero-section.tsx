@@ -1,9 +1,33 @@
 "use client"
 
 import { Search } from "lucide-react"
+import { useState } from "react"
 import { TechTags } from "./tech-tags"
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onSearch?: (query: string) => void
+}
+
+export function HeroSection({ onSearch }: HeroSectionProps) {
+  const [inputValue, setInputValue] = useState("")
+
+  const handleSearch = () => {
+    if (onSearch && inputValue.trim()) {
+      onSearch(inputValue.trim())
+      // データベースセクションにスクロール
+      const databaseSection = document.getElementById("database-section")
+      if (databaseSection) {
+        databaseSection.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch()
+    }
+  }
+
   return (
     <section className="relative min-h-[90vh] overflow-hidden pt-16">
       {/* Background Effects */}
@@ -100,9 +124,15 @@ export function HeroSection() {
                 <input
                   type="text"
                   placeholder="技術名、病院名、キーワードで検索..."
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   className="flex-1 bg-transparent px-4 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
                 />
-                <button className="mr-2 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-blue px-6 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+                <button 
+                  onClick={handleSearch}
+                  className="mr-2 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-blue px-6 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                >
                   検索
                 </button>
               </div>
