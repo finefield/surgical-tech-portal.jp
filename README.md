@@ -1,1 +1,0 @@
-# surgical-tech-portal.jp
