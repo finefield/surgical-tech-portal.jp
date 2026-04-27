@@ -98,7 +98,7 @@ export default function Home() {
 
             {/* Area Filter */}
             <div className="flex flex-wrap justify-center gap-2">
-              {areas.map((area) => (
+              {["すべて", ...areas].map((area) => (
                 <button
                   key={area}
                   onClick={() => setSelectedArea(area)}
