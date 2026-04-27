@@ -194,27 +194,48 @@ export function FacilityCard({ facility }: { facility: Facility }) {
                 </div>
               </div>
 
+              {/* Official Website */}
+              {facility.officialWebsite && (
+                <div className="mb-4">
+                  <h3 className="mb-2 text-sm font-medium text-muted-foreground">
+                    医局公式Webサイト
+                  </h3>
+                  <a
+                    href={facility.officialWebsite.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-md bg-neon-cyan/10 border border-neon-cyan/30 px-3 py-1.5 text-sm text-neon-cyan transition-colors hover:bg-neon-cyan/20"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {facility.officialWebsite.label}
+                    <ArrowUpRight className="h-3 w-3" />
+                  </a>
+                </div>
+              )}
+
               {/* References */}
               {facility.references && facility.references.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">
+                  <h3 className="mb-2 text-sm font-medium text-muted-foreground">
                     参照元
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <ul className="space-y-1.5">
                     {facility.references.map((ref, index) => (
-                      <a
-                        key={index}
-                        href={ref.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded-md bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:bg-neon-cyan/10 hover:text-neon-cyan"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {ref.label}
-                        <ArrowUpRight className="h-3 w-3" />
-                      </a>
+                      <li key={index}>
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-neon-cyan"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <span className="text-muted-foreground/50">・</span>
+                          {ref.label}
+                          <ArrowUpRight className="h-3 w-3 flex-shrink-0" />
+                        </a>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               )}
 
