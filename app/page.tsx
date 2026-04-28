@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { GlobalShowcase } from "@/components/global-showcase"
+import { UpdateLog } from "@/components/update-log"
 import { Footer } from "@/components/footer"
 import { FacilityCard } from "@/components/facility-card"
 import { facilities, areas, prefectureOrder } from "@/data/facilities"
@@ -46,6 +47,9 @@ export default function Home() {
 
       {/* Global Showcase Section - Japan Top 5 / Global Frontrunners */}
       <GlobalShowcase />
+
+      {/* Update Log Section */}
+      <UpdateLog />
 
       {/* Database Section */}
       <section id="database-section" className="py-20">
