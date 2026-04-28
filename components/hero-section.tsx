@@ -112,7 +112,7 @@ export function HeroSection({ onSearch }: HeroSectionProps) {
 
           {/* Subheading */}
           <p className="mb-10 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
-            全国の最新ロボット手術・映像DXの事例データベース
+            ロボット、映像、AI、データ、教育。全国の外科医局が進める先進的な取り組みを可視化し、日本の外科医療の未来を見つける。
           </p>
 
           {/* Search bar */}
