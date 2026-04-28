@@ -45,11 +45,11 @@ export default function Home() {
       <Header />
       <HeroSection onSearch={(query) => setSearchQuery(query)} />
 
-      {/* Global Showcase Section - Japan Top 5 / Global Frontrunners */}
-      <GlobalShowcase />
-
       {/* Update Log Section */}
       <UpdateLog />
+
+      {/* Global Showcase Section - Japan Top 5 / Global Frontrunners */}
+      <GlobalShowcase />
 
       {/* Database Section */}
       <section id="database-section" className="py-20">
