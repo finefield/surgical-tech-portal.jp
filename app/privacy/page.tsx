@@ -34,37 +34,30 @@ export default function PrivacyPage() {
               <Section title="個人情報の収集・利用目的">
                 <p className="mb-4">本サービスでは、以下の目的で個人情報を利用します。</p>
                 <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-                  <li>本サービスに関するお問い合わせへの回答</li>
-                  <li>医局情報等のアップデートに関する連絡</li>
-                  <li>サイト利用状況の分析によるサービス改善</li>
+                  <li>お問い合わせへの対応</li>
+                  <li>必要に応じたご連絡</li>
+                  <li>サービス改善および分析</li>
                 </ul>
               </Section>
 
               <Section title="個人情報の第三者提供">
                 <p>
-                  法令に基づく場合を除き、本人の同意なく個人情報を第三者に提供することはありません。
+                  法令に基づく場合を除き、本人の同意なく第三者に提供することはありません。
                 </p>
               </Section>
 
               <Section title="安全管理措置">
                 <p>
-                  当社は、個人情報の漏洩や紛失を防止するため、適切なセキュリティ対策を講じ、厳重に管理いたします。
+                  当社は、個人情報の漏洩・紛失を防止するため、適切な管理を行います。
                 </p>
               </Section>
 
-              <Section title="お問い合わせ窓口">
+              <Section title="アクセス解析ツールについて">
                 <p>
-                  個人情報の取扱いに関するお問い合わせは、当社公式サイトのお問い合わせフォームよりご連絡ください。
+                  本サイトでは、サービス向上のためにアクセス解析ツールを利用する場合があります。これにより収集される情報には、個人を特定するものは含まれません。
                 </p>
-                <a
-                  href="https://finefield.net/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block text-primary transition-colors hover:text-primary/80"
-                >
-                  お問い合わせフォームへ →
-                </a>
               </Section>
+
             </div>
           </div>
         </div>
