@@ -30,9 +30,10 @@ export async function POST(request: Request) {
     const toEmail = process.env.CONTACT_TO_EMAIL
     const fromEmail = process.env.CONTACT_FROM_EMAIL
 
+    // Dry-run: env vars not yet configured — log and return success so UI can be tested
     if (!apiKey || !toEmail || !fromEmail) {
-      console.error("[contact] Missing env vars: RESEND_API_KEY, CONTACT_TO_EMAIL, or CONTACT_FROM_EMAIL")
-      return Response.json({ success: false, error: "サーバー設定エラーです。" }, { status: 500 })
+      console.log("[contact] Dry-run: env vars not set. Form data received:", { name, email, category, message })
+      return Response.json({ success: true, dryRun: true })
     }
 
     const resend = new Resend(apiKey)

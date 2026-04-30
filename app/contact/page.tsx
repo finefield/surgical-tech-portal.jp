@@ -11,6 +11,7 @@ export default function ContactPage() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    console.log("[v0] submit clicked")
     setStatus("submitting")
 
     const form = e.currentTarget
@@ -22,12 +23,14 @@ export default function ContactPage() {
         body: formData,
       })
       const json = await res.json()
+      console.log("[v0] API response:", res.status, json)
       if (json.success) {
         setStatus("success")
       } else {
         setStatus("error")
       }
-    } catch {
+    } catch (err) {
+      console.log("[v0] fetch error:", err)
       setStatus("error")
     }
   }
@@ -166,6 +169,7 @@ export default function ContactPage() {
                     type="submit"
                     disabled={status === "submitting"}
                     className="w-full rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                    onClick={() => console.log("[v0] button clicked, status:", status)}
                   >
                     {status === "submitting" ? "送信中..." : "送信する"}
                   </button>
