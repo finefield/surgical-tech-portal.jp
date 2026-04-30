@@ -23,6 +23,8 @@ export default function ContactPage() {
               action="https://formspree.io/f/mojrazgw"
               method="POST"
             >
+              {/* Redirect after submission */}
+              <input type="hidden" name="_redirect" value="https://www.surgical-tech-portal.jp/contact-thanks" />
               {/* Honeypot */}
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
 
