@@ -33,29 +33,31 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey)
 
-    let sendResult
-    try {
-      sendResult = await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: "info@finefield.net",
-        subject: "test",
-        text: "test",
-      })
-      console.log("[contact] Resend result:", JSON.stringify(sendResult))
-    } catch (sendErr) {
-      console.error("[contact] Resend threw:", sendErr)
-      return Response.json(
-        { success: false, error: sendErr instanceof Error ? sendErr.message : "Unknown send error" },
-        { status: 500 }
-      )
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev"
+    const toEmail   = process.env.CONTACT_TO_EMAIL
+
+    if (!toEmail) {
+      console.error("[contact] Missing env var: CONTACT_TO_EMAIL")
+      return Response.json({ success: false, error: "CONTACT_TO_EMAIL is not set" }, { status: 500 })
     }
 
-    if (sendResult.error) {
-      console.error("[contact] Resend error object:", JSON.stringify(sendResult.error))
-      return Response.json(
-        { success: false, error: sendResult.error instanceof Error ? sendResult.error.message : JSON.stringify(sendResult.error) },
-        { status: 500 }
-      )
+    const { error } = await resend.emails.send({
+      from: fromEmail,
+      to: toEmail,
+      subject: `【Surgical Tech Portal】お問い合わせ（${category}）`,
+      text: `Surgical Tech Portal のお問い合わせフォームから送信されました。
+
+お名前: ${name}
+メールアドレス: ${email}
+お問い合わせ種別: ${category}
+お問い合わせ内容:
+${message}
+`,
+    })
+
+    if (error) {
+      console.error("[contact] Resend error:", error)
+      return Response.json({ success: false, error: JSON.stringify(error) }, { status: 500 })
     }
 
     return Response.json({ success: true })
