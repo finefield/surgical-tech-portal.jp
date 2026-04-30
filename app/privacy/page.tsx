@@ -1,5 +1,3 @@
-"use client"
-
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -60,12 +58,6 @@ export default function PrivacyPage() {
                 </p>
               </Section>
 
-              <Section title="お問い合わせ窓口">
-                <p className="mb-4">
-                  個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。
-                </p>
-                <ContactEmail />
-              </Section>
             </div>
           </div>
         </div>
@@ -81,32 +73,6 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <div className="mb-8 last:mb-0">
       <h2 className="mb-4 text-lg font-semibold text-foreground">{title}</h2>
       <div className="text-muted-foreground">{children}</div>
-    </div>
-  )
-}
-
-function ContactEmail() {
-  const handleClick = () => {
-    const user = "info"
-    const domain = "finefield.net"
-    window.location.href = `mailto:${user}@${domain}`
-  }
-
-  return (
-    <div className="space-y-3">
-      <p className="font-mono text-sm text-foreground">
-        info [at] finefield [dot] net
-      </p>
-      <p className="text-xs text-muted-foreground">
-        ※迷惑メール対策のため、メールアドレスは一部表記を変更しています。
-        送信時は [at] を @ に、[dot] を . に置き換えてください。
-      </p>
-      <button
-        onClick={handleClick}
-        className="mt-1 inline-block rounded-md border border-border/60 bg-secondary/40 px-4 py-2 text-sm text-foreground transition-colors hover:bg-secondary/70"
-      >
-        メールを送る
-      </button>
     </div>
   )
 }
