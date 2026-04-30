@@ -25,36 +25,37 @@ export async function POST(request: Request) {
       return Response.json({ success: false, error: "必須項目が未入力です。" }, { status: 400 })
     }
 
-    // Guard: environment variables
-    const apiKey  = process.env.RESEND_API_KEY
-    const toEmail = process.env.CONTACT_TO_EMAIL
-    const fromEmail = process.env.CONTACT_FROM_EMAIL
-
-    // Dry-run: env vars not yet configured — log and return success so UI can be tested
-    if (!apiKey || !toEmail || !fromEmail) {
-      console.log("[contact] Dry-run: env vars not set. Form data received:", { name, email, category, message })
-      return Response.json({ success: true, dryRun: true })
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error("[contact] Missing env var: RESEND_API_KEY")
+      return Response.json({ success: false, error: "RESEND_API_KEY is not set" }, { status: 500 })
     }
 
     const resend = new Resend(apiKey)
 
-    const { error } = await resend.emails.send({
-      from: fromEmail,
-      to: toEmail,
-      subject: "【Surgical Tech Portal】お問い合わせ",
-      text: `Surgical Tech Portal のお問い合わせフォームから送信されました。
+    let sendResult
+    try {
+      sendResult = await resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: "info@finefield.net",
+        subject: "test",
+        text: "test",
+      })
+      console.log("[contact] Resend result:", JSON.stringify(sendResult))
+    } catch (sendErr) {
+      console.error("[contact] Resend threw:", sendErr)
+      return Response.json(
+        { success: false, error: sendErr instanceof Error ? sendErr.message : "Unknown send error" },
+        { status: 500 }
+      )
+    }
 
-お名前: ${name}
-メールアドレス: ${email}
-お問い合わせ種別: ${category}
-お問い合わせ内容:
-${message}
-`,
-    })
-
-    if (error) {
-      console.error("[contact] Resend error:", error)
-      return Response.json({ success: false }, { status: 500 })
+    if (sendResult.error) {
+      console.error("[contact] Resend error object:", JSON.stringify(sendResult.error))
+      return Response.json(
+        { success: false, error: sendResult.error instanceof Error ? sendResult.error.message : JSON.stringify(sendResult.error) },
+        { status: 500 }
+      )
     }
 
     return Response.json({ success: true })
