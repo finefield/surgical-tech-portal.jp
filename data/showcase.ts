@@ -88,24 +88,24 @@ export const showcaseItems: ShowcaseItem[] = [
     id: 4,
     type: "FEATURE",
     area: "関東",
-    prefecture: "埼玉県",
-    university: "埼玉医科大学",
-    department: "国際医療センター（消化器外科）",
-    tags: ["da Vinci 5", "日本初導入", "低侵襲"],
-    title: "THE AGILITY：世界最速を患者のために。最新鋭『da Vinci 5』日本初導入",
-    description: `【圧倒的な機動力：最新こそが最善】
-埼玉医科大学国際医療センターの最大の強みは、世界最新鋭の手術支援ロボット『da Vinci 5』を日本で最も早く臨床導入したスピード感です。既存の技術に安住せず、常に世界のフロントランナーであり続ける姿勢が、ここを高度医療の砦たらしめています。
+    prefecture: "神奈川県",
+    university: "北里大学病院",
+    department: "外科学",
+    tags: ["Surgical Data Science", "4ユニット統合", "先制外科", "チーム北里"],
+    title: "THE SURGICAL DATA HUB：4つの専門性が融合し、データで外科の未来を照らす。",
+    description: `【圧倒的な組織力：4つの外科が「一つのチーム」へ】
+北里大学外科学教室の最大の武器は、上部・下部消化管、一般・小児・肝胆膵、そして乳腺・甲状腺の4つの診療ユニットが『一つの外科』として完全に統合されている点にあります。縦割りの弊害を排し、各専門領域の知見をシームレスに共有。複雑な症例に対しても、全方位から最適な術式を導き出す「チーム北里」の底力が、ここにはあります。
 
-【低侵襲手術の新境地：異次元の没入感】
-『da Vinci 5』の実装により、手術の精度は次の次元へ。最大の変化は、力覚（フォースフィードバック）の実装。組織を牽引する際にかかる負荷を感覚で把握できるようになったことで、組織へのダメージを極限まで低減し、術後回復を劇的に早めました。高精細な没入型3D映像により、外科医は患者の体内に入り込んだ感覚で、究極の根治手術を追求できます。
+【データ駆動型外科の極致：Surgical Data Science (SDS)】
+北里は、手術を「経験」ではなく「サイエンス」として再定義しています。膨大な手術動画、バイタルデータ、鉗子の動きを統合した『北里サージカル・ビッグデータ』を構築。AIが熟練医の判断を数値化し、術中リスクをリアルタイムで警告する「サージカル・インテリジェンス」を実装しています。感覚に頼らない、再現性の高い超精密手術が北里のスタンダードです。
 
-【「ファースト・ペンギン」としての教育的使命】
-単に最新機器を導入するだけでなく、その「使いこなし」を全国へ広める役割も担っています。日本初の次世代機ユーザーとして、全国から集まる見学医に対し、最新テックを用いた「安全な最短導入法」を伝授。世界最先端の機器開発に日本の臨床知を反映させるフィードバック・ループの起点です。`,
+【「先制外科」の提唱：合併症をゼロにする未来】
+単に病を治すだけでなく、術後合併症を未然に防ぐ「先制外科（Proactive Surgery）」を提唱。AIによる合併症予測モデルを臨床運用し、リスクを事前に察知して予防的介入を行うことで、患者の安全性を劇的に向上させています。北里柴三郎の『実学』の精神を、21世紀のデジタル技術で具現化し、外科医療の新たな地平を切り拓いています。`,
     refs: [
-      { label: "埼玉医科大学 ニュース", url: "https://www.saitama-med.ac.jp/news/nid00000616.html" },
-      { label: "埼玉医科大学 導入報告", url: "https://www.saitama-med.ac.jp/news/nid00000649.html" },
-      { label: "国際医療センター", url: "https://www.international.saitama-med.ac.jp/news/news-17668/" },
-      { label: "消化器外科", url: "https://www.saitama-med.ac.jp/international/section/cancer/ge-surgery.html" },
+      { label: "Source 1", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/index.html" },
+      { label: "Source 2", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/jyobu/index.html" },
+      { label: "Source 3", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/kabu/index.html" },
+      { label: "Source 4", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/ippan/index.html" },
     ],
   },
   {

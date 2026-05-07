@@ -6,11 +6,16 @@ import { ArrowUpRight, Globe, MapPin, ChevronDown, ChevronUp, Bot, Cpu, Brain, Z
 import { cn } from "@/lib/utils"
 
 function getItemIcon(title: string, isGlobal: boolean) {
-  const iconClass = isGlobal ? "h-6 w-6 text-purple-400" : "h-6 w-6 text-blue-400"
+  const iconClass = isGlobal
+    ? "h-6 w-6 text-purple-400"
+    : title.includes("DATA HUB")
+      ? "h-6 w-6 text-sky-300"
+      : "h-6 w-6 text-blue-400"
   
   if (title.includes("HOLY LAND") || title.includes("ロボット")) return <Bot className={iconClass} />
   if (title.includes("INNOVATOR") || title.includes("触覚")) return <Activity className={iconClass} />
   if (title.includes("INTELLIGENCE") || title.includes("AI")) return <Brain className={iconClass} />
+  if (title.includes("DATA HUB") || title.includes("データ")) return <Network className={iconClass} />
   if (title.includes("AGILITY") || title.includes("da Vinci")) return <Zap className={iconClass} />
   if (title.includes("CONNECTIVITY") || title.includes("メタバース")) return <Network className={iconClass} />
   if (title.includes("STANDARD") || title.includes("標準")) return <Cpu className={iconClass} />
@@ -54,6 +59,7 @@ function ShowcaseCard({
   isGlobal: boolean
 }) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const isDataHub = item.title.includes("DATA HUB")
 
   return (
     <article
@@ -61,7 +67,9 @@ function ShowcaseCard({
         "group relative overflow-hidden rounded-2xl border transition-all duration-500",
         isGlobal
           ? "border-purple-500/30 bg-gradient-to-br from-gray-900 via-purple-950/20 to-gray-900 hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)]"
-          : "border-blue-500/30 bg-gradient-to-br from-slate-900 via-blue-950/30 to-slate-900 hover:border-blue-400/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
+          : isDataHub
+            ? "border-sky-400/40 bg-gradient-to-br from-slate-950 via-sky-950/40 to-slate-950 hover:border-sky-300/60 hover:shadow-[0_0_50px_rgba(14,165,233,0.25)]"
+            : "border-blue-500/30 bg-gradient-to-br from-slate-900 via-blue-950/30 to-slate-900 hover:border-blue-400/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
       )}
     >
       {/* Background glow effect */}
@@ -70,9 +78,15 @@ function ShowcaseCard({
           "pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-40",
           isGlobal
             ? "bg-gradient-to-br from-purple-500 to-pink-500"
-            : "bg-gradient-to-br from-blue-400 to-cyan-400"
+            : isDataHub
+              ? "bg-gradient-to-br from-sky-400 to-blue-600"
+              : "bg-gradient-to-br from-blue-400 to-cyan-400"
         )}
       />
+      {/* Data Hub extra glow node */}
+      {isDataHub && (
+        <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-sky-500/20 blur-2xl transition-opacity duration-500 group-hover:opacity-70 opacity-30" />
+      )}
 
       <div className="relative p-6 sm:p-8">
         {/* Header */}
@@ -83,11 +97,15 @@ function ShowcaseCard({
                 "flex h-10 w-10 items-center justify-center rounded-xl",
                 isGlobal
                   ? "bg-purple-500/20 text-purple-400"
-                  : "bg-blue-500/20 text-blue-400"
+                  : isDataHub
+                    ? "bg-sky-500/20 text-sky-300"
+                    : "bg-blue-500/20 text-blue-400"
               )}
             >
               {isGlobal ? (
                 <Globe className="h-5 w-5" />
+              ) : isDataHub ? (
+                <Network className="h-5 w-5" />
               ) : (
                 <MapPin className="h-5 w-5" />
               )}
@@ -96,7 +114,7 @@ function ShowcaseCard({
               <p
                 className={cn(
                   "text-sm font-medium",
-                  isGlobal ? "text-purple-400" : "text-blue-400"
+                  isGlobal ? "text-purple-400" : isDataHub ? "text-sky-300" : "text-blue-400"
                 )}
               >
                 {item.university}
@@ -116,7 +134,9 @@ function ShowcaseCard({
               "rounded-full px-3 py-1 text-xs font-medium",
               isGlobal
                 ? "bg-purple-500/20 text-purple-300"
-                : "bg-blue-500/20 text-blue-300"
+                : isDataHub
+                  ? "bg-sky-500/20 text-sky-300"
+                  : "bg-blue-500/20 text-blue-300"
             )}
           >
             {item.prefecture}
@@ -124,13 +144,15 @@ function ShowcaseCard({
         </div>
 
         {/* Title with Icon */}
-        <div className="mb-6 flex items-start gap-4">
+          <div className="mb-6 flex items-start gap-4">
           <div
             className={cn(
               "flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl",
               isGlobal
                 ? "bg-purple-500/20"
-                : "bg-blue-500/20"
+                : isDataHub
+                  ? "bg-sky-500/20"
+                  : "bg-blue-500/20"
             )}
           >
             {getItemIcon(item.title, isGlobal)}
@@ -154,7 +176,9 @@ function ShowcaseCard({
                 "rounded-full px-3 py-1 text-xs font-medium",
                 isGlobal
                   ? "bg-gray-800 text-gray-300 ring-1 ring-purple-500/30"
-                  : "bg-slate-800 text-blue-300 ring-1 ring-blue-500/30"
+                  : isDataHub
+                    ? "bg-slate-900 text-sky-300 ring-1 ring-sky-500/40"
+                    : "bg-slate-800 text-blue-300 ring-1 ring-blue-500/30"
               )}
             >
               #{tag}
@@ -181,7 +205,9 @@ function ShowcaseCard({
             "mt-4 flex items-center gap-2 text-sm font-medium transition-colors",
             isGlobal
               ? "text-purple-400 hover:text-purple-300"
-              : "text-blue-400 hover:text-blue-300"
+              : isDataHub
+                ? "text-sky-400 hover:text-sky-300"
+                : "text-blue-400 hover:text-blue-300"
           )}
         >
           {isExpanded ? (
@@ -216,7 +242,9 @@ function ShowcaseCard({
                   "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-medium transition-all",
                   isGlobal
                     ? "bg-gray-800/80 text-gray-300 ring-1 ring-purple-500/30 hover:bg-purple-500/20 hover:text-purple-300 hover:ring-purple-400/50"
-                    : "bg-slate-800/80 text-blue-300 ring-1 ring-blue-500/30 hover:bg-blue-500/20 hover:text-blue-200 hover:ring-blue-400/50"
+                    : isDataHub
+                      ? "bg-slate-900/80 text-sky-300 ring-1 ring-sky-500/40 hover:bg-sky-500/20 hover:text-sky-200 hover:ring-sky-400/60"
+                      : "bg-slate-800/80 text-blue-300 ring-1 ring-blue-500/30 hover:bg-blue-500/20 hover:text-blue-200 hover:ring-blue-400/50"
                 )}
               >
                 Source {index + 1}
