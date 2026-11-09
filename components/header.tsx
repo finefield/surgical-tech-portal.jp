@@ -20,7 +20,20 @@ export function Header() {
             </div>
           </a>
 
-          
+          <nav className="flex items-center gap-1 text-sm sm:gap-2">
+            <a href="/database" className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+              データベース
+            </a>
+            <a href="/#showcase" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
+              特集
+            </a>
+            <a href="/insights" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
+              データで見る
+            </a>
+            <a href="/contact" className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+              お問い合わせ
+            </a>
+          </nav>
         </div>
       </div>
 

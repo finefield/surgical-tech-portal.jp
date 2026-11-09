@@ -3,7 +3,7 @@
 import { Search, Filter } from "lucide-react"
 import { useState } from "react"
 import { FacilityCard } from "@/components/facility-card"
-import type { Facility } from "@/data/facilities"
+import { prefectureOrder, type Facility } from "@/data/facilities"
 
 interface DatabaseClientProps {
   facilities: Facility[]
@@ -30,6 +30,16 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
 
     return matchesSearch && matchesArea
   })
+
+  const prefecturesPresent = prefectureOrder.filter((p) =>
+    filteredFacilities.some((f) => f.prefecture === p),
+  )
+
+  const scrollToPrefecture = (p: string) => {
+    document
+      .getElementById(`pref-${p}`)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
   return (
     <>
@@ -133,12 +143,43 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
         )}
       </div>
 
-      {/* Facility Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filteredFacilities.map((facility) => (
-          <FacilityCard key={facility.id} facility={facility} />
-        ))}
-      </div>
+      {/* Prefecture Jump */}
+      {prefecturesPresent.length > 1 && (
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-1.5">
+          <span className="mr-1 text-sm text-muted-foreground">都道府県:</span>
+          {prefecturesPresent.map((p) => (
+            <button
+              key={p}
+              onClick={() => scrollToPrefecture(p)}
+              className="rounded-full border border-border/50 bg-secondary/50 px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-neon-cyan/40 hover:text-foreground"
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Facility Grid (grouped by prefecture) */}
+      {prefecturesPresent.map((p) => (
+        <div key={p} className="mb-10">
+          <h2
+            id={`pref-${p}`}
+            className="mb-4 scroll-mt-24 border-b border-border/50 pb-2 text-lg font-semibold text-foreground"
+          >
+            {p}
+            <span className="ml-2 text-sm font-normal text-muted-foreground">
+              {filteredFacilities.filter((f) => f.prefecture === p).length} 医局
+            </span>
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredFacilities
+              .filter((f) => f.prefecture === p)
+              .map((facility) => (
+                <FacilityCard key={facility.id} facility={facility} />
+              ))}
+          </div>
+        </div>
+      ))}
 
       {/* No Results */}
       {filteredFacilities.length === 0 && (

@@ -270,7 +270,7 @@ export function GlobalShowcase() {
     : items
 
   return (
-    <section className="relative min-h-screen">
+    <section id="showcase" className="relative min-h-screen scroll-mt-16">
       {/* Background */}
       <div
         className={cn(

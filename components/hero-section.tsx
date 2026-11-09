@@ -22,6 +22,16 @@ export function HeroSection({ onSearch }: HeroSectionProps) {
     }
   }
 
+  const handleTagSelect = (label: string) => {
+    if (onSearch) {
+      onSearch(label)
+      const databaseSection = document.getElementById("database-section")
+      if (databaseSection) {
+        databaseSection.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch()
@@ -140,7 +150,7 @@ export function HeroSection({ onSearch }: HeroSectionProps) {
           </div>
 
           {/* Tech tags */}
-          <TechTags />
+          <TechTags onSelect={handleTagSelect} />
         </div>
       </div>
     </section>
