@@ -311,7 +311,7 @@ export function GlobalShowcase() {
             )}
           >
             {activeTab === "japan"
-              ? "日本の外科医療を牽引する5つの最先端拠点"
+              ? "日本の外科医療を牽引する最先端拠点"
               : "世界の外科DXを牽引するグローバルイノベーター"}
           </p>
 
