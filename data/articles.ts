@@ -15,6 +15,8 @@ export interface Article {
   refs: { label: string; url: string }[]
 }
 
+const featureUniversities = new Set(features.map((f) => f.university))
+
 export const articles: Article[] = [
   ...features.map((f) => ({
     slug: `feature-${f.id}`,
@@ -28,7 +30,9 @@ export const articles: Article[] = [
     description: f.description,
     refs: f.references,
   })),
-  ...japanItems.map((s) => ({
+  ...japanItems
+    .filter((s) => !featureUniversities.has(s.university))
+    .map((s) => ({
     slug: `showcase-${s.id}`,
     kind: "国内特集" as const,
     title: s.title,
