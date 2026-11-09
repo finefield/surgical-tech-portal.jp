@@ -31,6 +31,7 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold text-foreground">リンク</h3>
             <ul className="space-y-3">
               <FooterLink href="/insights">データで見る</FooterLink>
+              <FooterLink href="/features">特集記事</FooterLink>
               <FooterLink href="/company">運営会社について</FooterLink>
               <FooterLink href="/contact">お問い合わせ</FooterLink>
               <FooterLink href="/privacy">プライバシーポリシー</FooterLink>
