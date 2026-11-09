@@ -24,7 +24,7 @@ export function Header() {
             <a href="/database" className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
               データベース
             </a>
-            <a href="/features" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
+            <a href="/#showcase" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
               特集
             </a>
             <a href="/insights" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
