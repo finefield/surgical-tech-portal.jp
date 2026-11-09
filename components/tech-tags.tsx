@@ -9,13 +9,18 @@ const tags = [
   { label: "遠隔手術", color: "blue" },
 ]
 
-export function TechTags() {
+interface TechTagsProps {
+  onSelect?: (label: string) => void
+}
+
+export function TechTags({ onSelect }: TechTagsProps) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-2">
       <span className="text-sm text-muted-foreground">注目の技術:</span>
       {tags.map((tag) => (
         <button
           key={tag.label}
+          onClick={() => onSelect?.(tag.label)}
           className={`group relative overflow-hidden rounded-full px-4 py-1.5 text-sm font-medium transition-all hover:scale-105 ${
             tag.color === "cyan"
               ? "border border-neon-cyan/30 bg-neon-cyan/10 text-neon-cyan hover:border-neon-cyan/50 hover:bg-neon-cyan/20"
