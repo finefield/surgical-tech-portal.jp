@@ -144,7 +144,7 @@ export default function InsightsPage() {
                     {m.list.map((f) => (
                       <li key={f.id} className="text-sm">
                         <a
-                          href="/database"
+                          href={`/facilities/${f.id}`}
                           className="text-foreground underline-offset-2 hover:underline"
                         >
                           {f.university} {f.name}
