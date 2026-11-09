@@ -3,16 +3,16 @@
 const tags = [
   { label: "ダヴィンチ", color: "cyan" },
   { label: "Saroa", color: "blue" },
-  { label: "ライブサージェリー", color: "cyan" },
-  { label: "4K内視鏡", color: "blue" },
+  { label: "hinotori", color: "cyan" },
+  { label: "ICG蛍光", color: "blue" },
   { label: "腹腔鏡", color: "cyan" },
-  { label: "Web配信", color: "blue" },
+  { label: "遠隔手術", color: "blue" },
 ]
 
 export function TechTags() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-2">
-      <span className="text-sm text-muted-foreground">人気のタグ:</span>
+      <span className="text-sm text-muted-foreground">注目の技術:</span>
       {tags.map((tag) => (
         <button
           key={tag.label}

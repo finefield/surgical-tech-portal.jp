@@ -50,7 +50,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
           </span>
         </h1>
         <p className="mx-auto max-w-2xl text-muted-foreground">
-          日本全国の消化器外科系医局のDX・最先端テクノロジー導入事例を網羅。
+          日本全国の消化器外科系医局のDX・最先端テクノロジー導入事例を収録。
           大学名、医局名、技術タグ、都道府県で検索できます。
         </p>
       </div>
