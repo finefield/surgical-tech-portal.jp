@@ -25,6 +25,9 @@ export default function DatabasePage() {
             areas={areas} 
             totalCount={facilities.length} 
           />
+          <p className="mt-10 text-xs leading-relaxed text-muted-foreground">
+            掲載情報は各医局・病院の公式情報を出典とし、2026年11月9日に全件の照合を行いました。定期的に再確認を行い、変更はトップページの更新情報に記録します。誤りにお気づきの場合は<a href="/contact" className="underline underline-offset-2">お問い合わせ</a>からご連絡ください。集計データは<a href="/insights" className="underline underline-offset-2">「データで見る」</a>で公開しています。
+          </p>
         </div>
       </main>
 
