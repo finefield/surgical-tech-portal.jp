@@ -95,7 +95,7 @@ export default function CompanyPage() {
                   <h2 className="mb-1 text-sm font-medium text-muted-foreground">運営の想い</h2>
                   <p className="leading-relaxed text-foreground">
                     当社は「実臨床に役立つ情報提供」をミッションとしています。
-                    本ポータルサイトでは、全国の外科医局が取り組む最新のDX（デジタルトランスフォーメーション）を可視化し、
+                    本ポータルサイトでは、全国の消化器外科医局が取り組む最新のDX（デジタルトランスフォーメーション）を可視化し、
                     日本の外科医療の未来と技術伝承を支援することを目指しています。
                   </p>
                 </div>

@@ -22,6 +22,7 @@ export default function ContactPage() {
             <form action="https://formspree.io/f/mojrazgw" method="POST">
               {/* Honeypot */}
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+              <input type="hidden" name="_next" value="https://www.surgical-tech-portal.jp/contact-thanks" />
 
               <div className="space-y-6">
                 {/* Name */}
