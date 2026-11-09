@@ -221,15 +221,6 @@ function ShowcaseCard({
           )}
         </button>
 
-        <div className="mt-4">
-          <a
-            href={`/features/showcase-${item.id}`}
-            className="text-sm font-medium text-sky-400 underline-offset-2 hover:underline"
-          >
-            記事ページで読む →
-          </a>
-        </div>
-
         {/* References - Source Buttons */}
         <div className="mt-6 border-t border-current/10 pt-6">
           <p
