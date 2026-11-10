@@ -197,6 +197,15 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .copy{width:76%;margin-right:5%}
 }
 
+/* Mobile LIFE composition (rev 3.6.12): commit the block to the right
+   dark area (left edge about 35% of the screen, right edge still short
+   of the rail) and fit the closing link's underline to its text.
+   Small screens only. */
+@media(max-width:700px){
+#life .copy{width:62%}
+#life .text-link{width:fit-content}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
