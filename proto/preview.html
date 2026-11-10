@@ -187,6 +187,16 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .life-type em{margin-left:0}
 }
 
+/* Mobile LIFE placement (rev 3.6.11): owner correction - the block goes
+   into the dark area on the RIGHT of this chapter's artwork (the bright
+   ribbon runs down the left here), inset from the right edge so it
+   clears the chapter rail. Internal alignment stays left, one axis for
+   the whole block. Small screens only. */
+@media(max-width:700px){
+#life{justify-content:flex-end}
+#life .copy{width:76%;margin-right:5%}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
