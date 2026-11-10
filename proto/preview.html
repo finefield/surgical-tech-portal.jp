@@ -55,6 +55,18 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
    Height/top are untouched so the artwork stays aligned with chapters. */
 @media(max-width:700px){.atlas-art{width:122%;left:-11%}}
 
+/* Mobile type scale (rev 3.6.2): big titles about half size, tighter gaps
+   between heading / lead / links. Small screens only (owner request). */
+@media(max-width:700px){
+.atlas h2{font-size:clamp(26px,7vw,44px);margin-bottom:8px}
+#life .life-type{font-size:14vw}
+#life h2{font-size:5vw;margin-top:16px}
+.atlas .eyebrow{margin-bottom:10px}
+.atlas .statement{line-height:1.8}
+.atlas .terms{margin:10px 0;gap:12px}
+.atlas .editorial-link{padding:8px 0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
