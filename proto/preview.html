@@ -82,6 +82,13 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
 .atlas .editorial-link{padding:18px 0}
 }
 
+/* Mobile readability (rev 3.6.4): deepen the artwork darkening. The bright
+   core of the ribbon still washed out body text at 3.6.3 levels. */
+@media(max-width:700px){
+.atlas-art>img{filter:brightness(.5)}
+.atlas-art:after{background:linear-gradient(180deg,rgba(4,9,20,.52),rgba(4,9,20,.68))}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
