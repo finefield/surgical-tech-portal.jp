@@ -206,6 +206,18 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .text-link{width:fit-content}
 }
 
+/* PC LIFE set (rev 3.6.15): apply the same LIFE fixes the owner approved
+   on mobile to the wide layout - separate the CURE/LIFE lines (base
+   line-height is .75), align the display type to the same left edge as
+   the heading, statement and link, and tuck the text under the heading.
+   Wide screens only; the accepted mobile rules are untouched. */
+@media(min-width:701px){
+#life .life-type{line-height:1.06;text-align:left}
+#life .life-type em{margin-left:0}
+#life h2{margin-top:28px;margin-bottom:10px}
+#life .statement{margin:12px 0 0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
@@ -282,33 +294,29 @@ addEventListener('load',()=>{setTimeout(async()=>{
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const lines=[];
   try{
-    lines.push('SELFTEST (in-page, top-level document)');
+    lines.push('SELFTEST v2 - PC LIFE layout');
     lines.push('viewport: '+innerWidth+'x'+innerHeight);
-    lines.push('prefers-reduced-motion: '+matchMedia('(prefers-reduced-motion: reduce)').matches);
-    const sec=document.querySelector('#life'), stmt=document.querySelector('#life .statement'), link=document.querySelector('#life .text-link');
+    const sec=document.querySelector('#life');
     const secTop=sec.getBoundingClientRect().top+scrollY, secH=sec.offsetHeight, H=innerHeight;
-    lines.push('q | scrollY | LIFE stmt x | LIFE link x | --sub-x | --sub2-x');
-    let first=null,last=null;
-    for(const q of [0.55,0.45,0.35,0.25,0.15,0.05,0]){
-      const y=Math.max(0,Math.round(secTop+secH/2-H/2-q*H));
-      scrollTo({top:y,behavior:'instant'});
-      await sleep(300);
-      const sx=Math.round(stmt.getBoundingClientRect().x), lx=Math.round(link.getBoundingClientRect().x);
-      if(first===null)first={sx,lx}; last={sx,lx};
-      lines.push(q+' | '+y+' | '+sx+' | '+lx+' | '+sec.style.getPropertyValue('--sub-x')+' | '+sec.style.getPropertyValue('--sub2-x'));
-    }
-    lines.push('LIFE statement travel: '+(first.sx-last.sx)+'px (positive = enters from RIGHT)');
-    lines.push('LIFE link travel: '+(first.lx-last.lx)+'px');
-    const psec=document.querySelector('#preserve'), pstmt=document.querySelector('#preserve .statement');
-    const pTop=psec.getBoundingClientRect().top+scrollY, pH=psec.offsetHeight;
-    scrollTo({top:Math.max(0,Math.round(pTop+pH/2-H/2-0.55*H)),behavior:'instant'});
-    await sleep(300);
-    const pEntry=Math.round(pstmt.getBoundingClientRect().x);
-    scrollTo({top:Math.max(0,Math.round(pTop+pH/2-H/2)),behavior:'instant'});
-    await sleep(300);
-    const pRest=Math.round(pstmt.getBoundingClientRect().x);
-    lines.push('PRESERVE control travel: '+(pEntry-pRest)+'px (negative = enters from LEFT), --sub-x at entry was: see above pattern');
     scrollTo({top:Math.max(0,Math.round(secTop+secH/2-H/2)),behavior:'instant'});
+    await sleep(600);
+    const R=s=>document.querySelector(s).getBoundingClientRect();
+    const cure=R('#life .life-type span'), life=R('#life .life-type em'), h2=R('#life h2'), stmt=R('#life .statement'), link=R('#life .text-link');
+    lines.push('CURE  x='+Math.round(cure.x)+' bottom='+Math.round(cure.bottom));
+    lines.push('LIFE  x='+Math.round(life.x)+' top='+Math.round(life.top));
+    lines.push('line gap (LIFE top - CURE bottom): '+Math.round(life.top-cure.bottom)+'px (0 = lines abut, no overlap)');
+    lines.push('left edges: CURE='+Math.round(cure.x)+' LIFE='+Math.round(life.x)+' h2='+Math.round(h2.x)+' statement='+Math.round(stmt.x)+' link='+Math.round(link.x));
+    lines.push('gap h2 bottom -> statement top: '+Math.round(stmt.top-h2.bottom)+'px');
+    lines.push('gap life-type bottom -> h2 top: '+Math.round(h2.top-life.bottom)+'px');
+    const stmtEl=document.querySelector('#life .statement');
+    const y0=Math.max(0,Math.round(secTop+secH/2-H/2-0.45*H));
+    scrollTo({top:y0,behavior:'instant'});
+    await sleep(300);
+    const x1=Math.round(stmtEl.getBoundingClientRect().x);
+    scrollTo({top:Math.max(0,Math.round(secTop+secH/2-H/2)),behavior:'instant'});
+    await sleep(300);
+    const x2=Math.round(stmtEl.getBoundingClientRect().x);
+    lines.push('LIFE statement travel (motion regression check): '+(x1-x2)+'px (positive = from RIGHT)');
   }catch(err){lines.push('ERROR: '+err.message);}
   const pre=document.createElement('pre');
   pre.id='selftest';

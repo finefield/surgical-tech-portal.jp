@@ -206,6 +206,18 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .text-link{width:fit-content}
 }
 
+/* PC LIFE set (rev 3.6.15): apply the same LIFE fixes the owner approved
+   on mobile to the wide layout - separate the CURE/LIFE lines (base
+   line-height is .75), align the display type to the same left edge as
+   the heading, statement and link, and tuck the text under the heading.
+   Wide screens only; the accepted mobile rules are untouched. */
+@media(min-width:701px){
+#life .life-type{line-height:1.06;text-align:left}
+#life .life-type em{margin-left:0}
+#life h2{margin-top:28px;margin-bottom:10px}
+#life .statement{margin:12px 0 0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
