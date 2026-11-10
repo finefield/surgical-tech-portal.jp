@@ -40,7 +40,6 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
 /* Motion tuning (rev 3.4): links tier uses --sub2-* (third cascade step). */
 .atlas .copy .terms,.atlas .copy .editorial-link,.atlas .copy .text-link{transform:translate(var(--sub2-x,0px),var(--sub2-shift,0px));opacity:var(--sub2-opacity,1)}
 
-
 /* Motion tuning (rev 3.6): the big title fades in only (no slide); the lead
    text and links slide in from the chapter's own side. Heading opacity is
    driven by --head-opacity from app.js draw(). */
@@ -50,6 +49,12 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
    text clears the bright artwork behind it (owner request). */
 #life .copy{left:80px}
 @media(max-width:700px){#life .copy{left:24px}}
+
+/* Mobile artwork scale (rev 3.6.1): shrink the background artwork a little
+   on small screens only (owner request). Text sizes are unchanged.
+   Height/top are untouched so the artwork stays aligned with chapters. */
+@media(max-width:700px){.atlas-art{width:122%;left:-11%}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
