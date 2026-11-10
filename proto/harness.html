@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><title>mobile verify harness</title>
+<style>body{background:#111;color:#eee;font:13px/1.7 monospace;margin:16px}table{border-collapse:collapse;margin:12px 0}td,th{border:1px solid #555;padding:3px 9px;text-align:right}#verdict{font-size:16px;color:#9fe8ff;margin:10px 0}iframe{background:#02040a;border:2px solid #555}</style></head>
+<body>
+<div>PROTO VERIFY HARNESS — iframe 390x844 (mobile width)</div>
+<div id="verdict">measuring...</div>
+<div id="table"></div>
+<iframe id="f" width="390" height="844" src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/finefield/surgical-tech-portal.jp/proto/rev3-preview/proto/preview.html?rev=verify1"></iframe>
+<script>
+const f=document.getElementById('f');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+f.addEventListener('load',async()=>{
+  await sleep(1500);
+  const w=f.contentWindow,d=f.contentDocument;
+  try{await d.fonts.ready;}catch(e){}
+  await sleep(500);
+  const sec=d.querySelector('#life');
+  const secTop=sec.getBoundingClientRect().top+w.scrollY;
+  const secH=sec.offsetHeight, H=w.innerHeight;
+  const stmt=d.querySelector('#life .statement');
+  const link=d.querySelector('#life .text-link');
+  const pres=d.querySelector('#preserve .statement');
+  const rows=[];
+  for(const q of [0.62,0.5,0.4,0.3,0.2,0.12,0.04,0]){
+    const y=Math.max(0,Math.round(secTop+secH/2-H/2-q*H));
+    w.scrollTo({top:y,behavior:'instant'});
+    await sleep(220);
+    const gx=el=>Math.round(el.getBoundingClientRect().x);
+    rows.push({q,y,lifeStmt:gx(stmt),lifeLink:gx(link),preserveStmt:gx(pres)});
+  }
+  const rest=rows[rows.length-1];
+  const travel=rows[0].lifeStmt-rest.lifeStmt;
+  const travelLink=rows[0].lifeLink-rest.lifeLink;
+  const pTravel=rows[0].preserveStmt-rest.preserveStmt;
+  let html='<table><tr><th>q</th><th>scrollY</th><th>LIFE statement x</th><th>LIFE link x</th><th>PRESERVE statement x (control)</th></tr>';
+  for(const r of rows)html+='<tr><td>'+r.q+'</td><td>'+r.y+'</td><td>'+r.lifeStmt+'</td><td>'+r.lifeLink+'</td><td>'+r.preserveStmt+'</td></tr>';
+  html+='</table>';
+  document.getElementById('table').innerHTML=html;
+  const dir=travel>4?'FROM RIGHT (+x -> rest)':(travel<-4?'FROM LEFT (-x -> rest)':'NO VISIBLE TRAVEL');
+  document.getElementById('verdict').textContent='MEASURED | LIFE statement travel: '+travel+'px | LIFE link travel: '+travelLink+'px | direction: '+dir+' | PRESERVE travel: '+pTravel+'px (expect negative, from left)';
+  // leave the iframe at LIFE rest position for the screenshot
+  w.scrollTo({top:Math.max(0,Math.round(secTop+secH/2-H/2)),behavior:'instant'});
+});
+</script>
+</body></html>
