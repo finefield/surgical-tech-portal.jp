@@ -45,6 +45,11 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
    text and links slide in from the chapter's own side. Heading opacity is
    driven by --head-opacity from app.js draw(). */
 .atlas .copy h2,.atlas .copy .eyebrow,.atlas .life .life-type{opacity:var(--head-opacity,1)}
+
+/* LIFE chapter (rev 3.6): shift the whole copy block right by 80px so the
+   text clears the bright artwork behind it (owner request). */
+#life .copy{left:80px}
+@media(max-width:700px){#life .copy{left:24px}}
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
