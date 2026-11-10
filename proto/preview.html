@@ -89,6 +89,11 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
 .atlas-art:after{background:linear-gradient(180deg,rgba(4,9,20,.52),rgba(4,9,20,.68))}
 }
 
+/* Mobile artwork ratio (rev 3.6.5): same scale as PC - the artwork spans
+   100% of the viewport width, unzoomed (owner suggestion). The extra
+   darkening from 3.6.4 stays so text keeps a dark ground. */
+@media(max-width:700px){.atlas-art{width:100%;left:0}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
