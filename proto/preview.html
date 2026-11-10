@@ -67,6 +67,21 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
 .atlas .editorial-link{padding:8px 0}
 }
 
+/* Mobile readability (rev 3.6.3): smaller + darker artwork so text always
+   sits on a dark ground; spacing matched back to the PC values.
+   Small screens only (owner request). No boxy panel: the veil is a
+   full-bleed gradient inside the artwork layer itself. */
+@media(max-width:700px){
+.atlas-art{width:105%;left:-2.5%}
+.atlas-art>img{filter:brightness(.65)}
+.atlas-art:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,9,20,.38),rgba(4,9,20,.55));pointer-events:none}
+.atlas h2{margin-bottom:24px}
+.atlas .eyebrow{margin-bottom:32px}
+.atlas .statement{line-height:2.3}
+.atlas .terms{margin:25px 0 30px;gap:24px}
+.atlas .editorial-link{padding:18px 0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
