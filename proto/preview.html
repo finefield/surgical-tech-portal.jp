@@ -175,6 +175,18 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.sparkles,.sparkles:after{animation:none;opacity:.5}}
 
+/* Mobile LIFE alignment (rev 3.6.10): the original design treats the LIFE
+   chapter as a poster - display type centred as a graphic, text block
+   left-aligned and pushed right. On a narrow screen that split reads as
+   misalignment, so here everything shares the same left edge as the
+   other chapters. Small screens only. */
+@media(max-width:700px){
+#life{justify-content:flex-start}
+#life .copy{width:100%}
+#life .life-type{text-align:left}
+#life .life-type em{margin-left:0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
