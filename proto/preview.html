@@ -32,6 +32,11 @@ body{overflow-x:clip}.chapter{overflow-x:clip}.rail a{min-width:20px;min-height:
 /* Mobile: remove the dark scrim panel behind chapter copy (user request). */
 @media(max-width:700px){.chapter .copy:before,.atlas .copy:before{content:none!important;background:none!important}}
 
+/* Motion tuning (rev 3.3): entrance motion inside the visible field,
+   with a slight horizontal drift. Reading zone stays stable. */
+.atlas .copy{transform:translate(var(--copy-x,0px),var(--copy-shift,0px))}
+.atlas .copy .statement,.atlas .copy .terms,.atlas .copy .editorial-link,.atlas .copy .text-link,.atlas .margin-note{transform:translate(var(--sub-x,0px),var(--sub-shift,0px))}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
@@ -94,7 +99,7 @@ const motes=Array.from({length:65},()=>({x:.35+random()*.65,y:random(),r:.35+ran
 function draw(t){frame=0;if(!visible)return;const dt=Math.min(50,t-prev||16);prev=t;if(!reduced)phase+=dt*.001;
 const y=scrollY;const h=innerHeight;const p=Math.max(0,Math.min(1,y/(h*1.15)));const ease=p*p*(3-2*p);heroArt.style.setProperty('--hero-scale',String(reduced?1:1+ease*.32));heroArt.style.setProperty('--hero-drift-x',`${reduced?0:-ease*innerWidth*.045}px`);heroArt.style.setProperty('--hero-drift-y',`${reduced?0:ease*h*.035}px`);heroArt.style.setProperty('--hero-brightness',String(1+Math.sin(p*Math.PI)*.12));heroArt.style.setProperty('--light-alpha',String(reduced?.15:.15+Math.sin(p*Math.PI)*.45));heroCopy.style.setProperty('--hero-copy-y',`${reduced?0:y*.10}px`);heroCopy.style.setProperty('--hero-copy-opacity',String(reduced?1:1-ss(.38,1,p)));
 const rect=atlas.getBoundingClientRect();const a=Math.max(-1,Math.min(1,(rect.top+h*.25)/h));atlasArt.style.setProperty('--art-shift',`${reduced?0:a*18}px`);atlasArt.style.setProperty('--caustic-opacity',String(reduced?.18:.20+Math.sin(phase*.55)*.11));atlasArt.style.setProperty('--caustic-scale',String(reduced?1:1+Math.sin(phase*.4)*.04));
-for(const el of chapters.slice(1)){const r=el.getBoundingClientRect();const q=Math.max(-1.15,Math.min(1.15,(r.top+r.height*.5-h*.5)/h));const aq=Math.abs(q);const dz=.28;const shift=reduced?0:Math.sign(q)*Math.pow(Math.max(0,aq-dz)/(1.15-dz),1.6)*16;const op=reduced?1:ss(.98,.58,aq);el.style.setProperty('--copy-shift',`${shift}px`);el.style.setProperty('--copy-opacity',String(op));const dz2=.36;const subShift=reduced?0:Math.sign(q)*Math.pow(Math.max(0,aq-dz2)/(1.15-dz2),1.6)*22;const subOp=reduced?1:ss(1.06,.66,aq);el.style.setProperty('--sub-shift',`${subShift}px`);el.style.setProperty('--sub-opacity',String(subOp))}
+for(const el of chapters.slice(1)){const r=el.getBoundingClientRect();const q=Math.max(-1.15,Math.min(1.15,(r.top+r.height*.5-h*.5)/h));const aq=Math.abs(q);const side=el.id==='life'?0:(el.classList.contains('right')?1:-1);const dz=.22;const t1=Math.pow(Math.max(0,aq-dz)/(1.15-dz),1.5);const shift=reduced?0:Math.sign(q)*t1*34;const shiftX=reduced?0:side*t1*12;const op=reduced?1:ss(.88,.30,aq);el.style.setProperty('--copy-shift',`${shift}px`);el.style.setProperty('--copy-x',`${shiftX}px`);el.style.setProperty('--copy-opacity',String(op));const dz2=.30;const t2=Math.pow(Math.max(0,aq-dz2)/(1.15-dz2),1.5);const subShift=reduced?0:Math.sign(q)*t2*48;const subX=reduced?0:side*t2*16;const subOp=reduced?1:ss(.98,.40,aq);el.style.setProperty('--sub-shift',`${subShift}px`);el.style.setProperty('--sub-x',`${subX}px`);el.style.setProperty('--sub-opacity',String(subOp))}
 ctx.clearRect(0,0,innerWidth,innerHeight);if(y<h*1.4){for(const m of motes){const px=(m.x+Math.sin(phase*m.speed*.07+m.a*8)*.018)*innerWidth;const py=((m.y+phase*m.speed*.008)%1)*innerHeight;const alpha=reduced?.18:(.12+.20*(.5+.5*Math.sin(phase*m.speed+m.a*6)));ctx.beginPath();ctx.fillStyle=`rgba(209,243,255,${alpha})`;ctx.shadowColor='#b9e5ff';ctx.shadowBlur=6;ctx.arc(px,py,m.r,0,Math.PI*2);ctx.fill();}}
 if(!reduced&&(y<h*1.4||(rect.bottom>0&&rect.top<h)))frame=requestAnimationFrame(draw);
 }
