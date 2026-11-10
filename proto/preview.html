@@ -225,6 +225,14 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
    (2 x S x .75 = 2 x S' x 1.06, S' = .707 S). Wide screens only. */
 @media(min-width:701px){#life .life-type{font-size:clamp(85px,13.5vw,212px)}}
 
+/* PC LIFE anchor landing (rev 3.6.17): LIFE is the only chapter taller
+   than the screen (65vw). A rail jump lands on the section TOP, but the
+   copy is centred in the tall section, so its lower text falls below
+   the fold. Give the chapter a scroll margin that centres the section
+   on jump: 50svh - half the section height - the 90px scroll padding.
+   Continuous scrolling is unaffected. Wide screens only. */
+@media(min-width:701px){#life{scroll-margin-top:calc(50svh - 32.5vw - 90px)}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>

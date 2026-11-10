@@ -225,6 +225,14 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
    (2 x S x .75 = 2 x S' x 1.06, S' = .707 S). Wide screens only. */
 @media(min-width:701px){#life .life-type{font-size:clamp(85px,13.5vw,212px)}}
 
+/* PC LIFE anchor landing (rev 3.6.17): LIFE is the only chapter taller
+   than the screen (65vw). A rail jump lands on the section TOP, but the
+   copy is centred in the tall section, so its lower text falls below
+   the fold. Give the chapter a scroll margin that centres the section
+   on jump: 50svh - half the section height - the 90px scroll padding.
+   Continuous scrolling is unaffected. Wide screens only. */
+@media(min-width:701px){#life{scroll-margin-top:calc(50svh - 32.5vw - 90px)}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
@@ -301,21 +309,19 @@ addEventListener('load',()=>{setTimeout(async()=>{
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const lines=[];
   try{
-    lines.push('SELFTEST v3 - PC LIFE fit check');
+    lines.push('SELFTEST v4 - LIFE rail-jump landing');
     lines.push('viewport: '+innerWidth+'x'+innerHeight);
     const sec=document.querySelector('#life');
-    const secTop=sec.getBoundingClientRect().top+scrollY, secH=sec.offsetHeight, H=innerHeight;
-    scrollTo({top:Math.max(0,Math.round(secTop+secH/2-H/2)),behavior:'instant'});
-    await sleep(600);
+    sec.scrollIntoView({behavior:'instant',block:'start'});
+    await sleep(700);
     const R=s=>document.querySelector(s).getBoundingClientRect();
-    const cure=R('#life .life-type span'), life=R('#life .life-type em'), h2=R('#life h2'), stmt=R('#life .statement'), link=R('#life .text-link');
-    lines.push('at chapter-centred reading position:');
+    const cure=R('#life .life-type span'), link=R('#life .text-link'), stmt=R('#life .statement');
+    lines.push('after jump to #life (scrollIntoView, same as rail anchor):');
+    lines.push('scrollY: '+Math.round(scrollY));
     lines.push('CURE top: '+Math.round(cure.top)+' (must be >= 0)');
-    lines.push('link bottom: '+Math.round(link.bottom)+' (must be <= viewport height '+H+')');
-    lines.push('whole block height (CURE top -> link bottom): '+Math.round(link.bottom-cure.top)+'px');
-    lines.push('line gap (LIFE top - CURE bottom): '+Math.round(life.top-cure.bottom)+'px');
-    lines.push('left edges: CURE='+Math.round(cure.x)+' LIFE='+Math.round(life.x)+' h2='+Math.round(h2.x)+' statement='+Math.round(stmt.x)+' link='+Math.round(link.x));
-    lines.push('VERDICT: '+(cure.top>=-1&&link.bottom<=H+1?'WHOLE BLOCK VISIBLE IN ONE SCREEN':'STILL OVERFLOWS'));
+    lines.push('statement bottom: '+Math.round(stmt.bottom));
+    lines.push('link bottom: '+Math.round(link.bottom)+' (must be <= viewport height '+innerHeight+')');
+    lines.push('VERDICT: '+((cure.top>=-1&&link.bottom<=innerHeight+1)?'WHOLE LIFE COPY VISIBLE AT JUMP LANDING':'STILL CUT'));
   }catch(err){lines.push('ERROR: '+err.message);}
   const pre=document.createElement('pre');
   pre.id='selftest';
