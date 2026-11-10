@@ -233,6 +233,22 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
    Continuous scrolling is unaffected. Wide screens only. */
 @media(min-width:701px){#life{scroll-margin-top:calc(50svh - 32.5vw - 90px)}}
 
+/* PC explore density (rev 3.6.18): people who tap the search button
+   came to search. The heading block and the grid's top margin pushed
+   most of the three choice lists below the fold, so the explore head
+   is compacted until the TECHNIQUE / WORDS / FIELD choices fit the
+   first screen at the jump landing. Wide screens only. */
+@media(min-width:701px){
+#explore{padding-top:64px}
+.explore-top .eyebrow{margin-bottom:20px}
+.explore-top h2{font-size:clamp(32px,4.2vw,60px);line-height:1.45;margin-bottom:16px}
+.explore-top>p:last-child{margin:0}
+.explore-grid{margin:44px 0 80px}
+.explore-grid>div{padding-top:22px}
+.explore-grid h3{margin-bottom:20px}
+.explore-grid button{padding:10px 0}
+}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
@@ -309,19 +325,27 @@ addEventListener('load',()=>{setTimeout(async()=>{
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const lines=[];
   try{
-    lines.push('SELFTEST v4 - LIFE rail-jump landing');
+    lines.push('SELFTEST v5 - explore jump landing');
     lines.push('viewport: '+innerWidth+'x'+innerHeight);
-    const sec=document.querySelector('#life');
+    const sec=document.querySelector('#explore');
     sec.scrollIntoView({behavior:'instant',block:'start'});
     await sleep(700);
     const R=s=>document.querySelector(s).getBoundingClientRect();
-    const cure=R('#life .life-type span'), link=R('#life .text-link'), stmt=R('#life .statement');
-    lines.push('after jump to #life (scrollIntoView, same as rail anchor):');
-    lines.push('scrollY: '+Math.round(scrollY));
-    lines.push('CURE top: '+Math.round(cure.top)+' (must be >= 0)');
-    lines.push('statement bottom: '+Math.round(stmt.bottom));
-    lines.push('link bottom: '+Math.round(link.bottom)+' (must be <= viewport height '+innerHeight+')');
-    lines.push('VERDICT: '+((cure.top>=-1&&link.bottom<=innerHeight+1)?'WHOLE LIFE COPY VISIBLE AT JUMP LANDING':'STILL CUT'));
+    const h2=R('.explore-top h2'), grid=R('.explore-grid');
+    const cols=document.querySelectorAll('.explore-grid>div');
+    const lastBtns=[...document.querySelectorAll('.explore-grid .explore-words button, .explore-grid>div:first-child button')];
+    const techLast=R('.explore-grid>div:nth-child(1) button:last-of-type');
+    const wordsLast=R('.explore-grid>div:nth-child(2) button:last-of-type');
+    const field=R('.explore-grid>div:nth-child(3)');
+    lines.push('after jump to #explore:');
+    lines.push('h2 top: '+Math.round(h2.top)+' (must be >= 0)');
+    lines.push('grid top: '+Math.round(grid.top));
+    lines.push('TECHNIQUE last button bottom: '+Math.round(techLast.bottom));
+    lines.push('WORDS last button bottom: '+Math.round(wordsLast.bottom));
+    lines.push('FIELD column bottom: '+Math.round(field.bottom));
+    lines.push('viewport height: '+innerHeight);
+    const worst=Math.max(techLast.bottom,wordsLast.bottom,field.bottom);
+    lines.push('VERDICT: '+(h2.top>=-1&&worst<=innerHeight+1?'ALL THREE CHOICE LISTS FIT THE FIRST SCREEN':'STILL OVERFLOWS by '+Math.round(worst-innerHeight)+'px'));
   }catch(err){lines.push('ERROR: '+err.message);}
   const pre=document.createElement('pre');
   pre.id='selftest';
