@@ -61,7 +61,7 @@ export default function Home() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon-cyan opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-neon-cyan" />
               </span>
-              {facilities.length} 医局を収録
+              {facilities.length} 件の外科チームを収録
             </div>
             <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               全国外科DX・最新テクノロジー
@@ -120,7 +120,7 @@ export default function Home() {
 
           {/* Results Count */}
           <div className="mb-6 text-center text-sm text-muted-foreground">
-            {filteredFacilities.length} 件の医局
+            {filteredFacilities.length} 件の外科チーム
             {selectedArea !== "すべて" && ` - ${selectedArea}`}
             {searchQuery && ` - 「${searchQuery}」の検索結果`}
           </div>
@@ -136,7 +136,7 @@ export default function Home() {
           {filteredFacilities.length === 0 && (
             <div className="py-16 text-center">
               <p className="text-muted-foreground">
-                該当する医局が見つかりませんでした。
+                該当する外科チームが見つかりませんでした。
               </p>
               <button
                 onClick={() => {

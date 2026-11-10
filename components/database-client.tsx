@@ -50,7 +50,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon-cyan opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-neon-cyan" />
           </span>
-          {totalCount} 医局を収録
+          {totalCount} 件の外科チームを収録
         </div>
         <h1 className="mb-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           全国消化器外科系医局
@@ -128,7 +128,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
       {/* Results Count & Reset Button */}
       <div className="mb-6 flex items-center justify-center gap-4">
         <span className="text-sm text-muted-foreground">
-          {filteredFacilities.length} 件の医局
+          {filteredFacilities.length} 件の外科チーム
         </span>
         {(selectedArea || searchQuery) && (
           <button
@@ -138,7 +138,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
             }}
             className="inline-flex items-center gap-1.5 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 px-4 py-1.5 text-sm font-medium text-neon-cyan transition-colors hover:bg-neon-cyan/20"
           >
-            <span>全医局を表示</span>
+            <span>全件を表示</span>
           </button>
         )}
       </div>
@@ -168,7 +168,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
           >
             {p}
             <span className="ml-2 text-sm font-normal text-muted-foreground">
-              {filteredFacilities.filter((f) => f.prefecture === p).length} 医局
+              {filteredFacilities.filter((f) => f.prefecture === p).length} 件
             </span>
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -185,7 +185,7 @@ export function DatabaseClient({ facilities, areas, totalCount }: DatabaseClient
       {filteredFacilities.length === 0 && (
         <div className="py-16 text-center">
           <p className="text-muted-foreground">
-            該当する医局が見つかりませんでした。
+            該当する外科チームが見つかりませんでした。
           </p>
           <button
             onClick={() => {
