@@ -218,6 +218,13 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .statement{margin:12px 0 0}
 }
 
+/* PC LIFE size correction (rev 3.6.16): separating the display lines
+   (line-height .75 -> 1.06) grew the block by ~190px and pushed the
+   closing text out of the screen. The type size comes down so the
+   two-line block keeps the ORIGINAL poster's total height
+   (2 x S x .75 = 2 x S' x 1.06, S' = .707 S). Wide screens only. */
+@media(min-width:701px){#life .life-type{font-size:clamp(85px,13.5vw,212px)}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>

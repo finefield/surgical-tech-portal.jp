@@ -218,6 +218,13 @@ background-position:210px 168px,108px 238px,318px 690px,58px 606px,262px 452px,3
 #life .statement{margin:12px 0 0}
 }
 
+/* PC LIFE size correction (rev 3.6.16): separating the display lines
+   (line-height .75 -> 1.06) grew the block by ~190px and pushed the
+   closing text out of the screen. The type size comes down so the
+   two-line block keeps the ORIGINAL poster's total height
+   (2 x S x .75 = 2 x S' x 1.06, S' = .707 S). Wide screens only. */
+@media(min-width:701px){#life .life-type{font-size:clamp(85px,13.5vw,212px)}}
+
 </style></head><body>
 <a class="skip" href="#explore">情報を探す</a>
 <div id="world" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"></div>
@@ -294,7 +301,7 @@ addEventListener('load',()=>{setTimeout(async()=>{
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const lines=[];
   try{
-    lines.push('SELFTEST v2 - PC LIFE layout');
+    lines.push('SELFTEST v3 - PC LIFE fit check');
     lines.push('viewport: '+innerWidth+'x'+innerHeight);
     const sec=document.querySelector('#life');
     const secTop=sec.getBoundingClientRect().top+scrollY, secH=sec.offsetHeight, H=innerHeight;
@@ -302,21 +309,13 @@ addEventListener('load',()=>{setTimeout(async()=>{
     await sleep(600);
     const R=s=>document.querySelector(s).getBoundingClientRect();
     const cure=R('#life .life-type span'), life=R('#life .life-type em'), h2=R('#life h2'), stmt=R('#life .statement'), link=R('#life .text-link');
-    lines.push('CURE  x='+Math.round(cure.x)+' bottom='+Math.round(cure.bottom));
-    lines.push('LIFE  x='+Math.round(life.x)+' top='+Math.round(life.top));
-    lines.push('line gap (LIFE top - CURE bottom): '+Math.round(life.top-cure.bottom)+'px (0 = lines abut, no overlap)');
+    lines.push('at chapter-centred reading position:');
+    lines.push('CURE top: '+Math.round(cure.top)+' (must be >= 0)');
+    lines.push('link bottom: '+Math.round(link.bottom)+' (must be <= viewport height '+H+')');
+    lines.push('whole block height (CURE top -> link bottom): '+Math.round(link.bottom-cure.top)+'px');
+    lines.push('line gap (LIFE top - CURE bottom): '+Math.round(life.top-cure.bottom)+'px');
     lines.push('left edges: CURE='+Math.round(cure.x)+' LIFE='+Math.round(life.x)+' h2='+Math.round(h2.x)+' statement='+Math.round(stmt.x)+' link='+Math.round(link.x));
-    lines.push('gap h2 bottom -> statement top: '+Math.round(stmt.top-h2.bottom)+'px');
-    lines.push('gap life-type bottom -> h2 top: '+Math.round(h2.top-life.bottom)+'px');
-    const stmtEl=document.querySelector('#life .statement');
-    const y0=Math.max(0,Math.round(secTop+secH/2-H/2-0.45*H));
-    scrollTo({top:y0,behavior:'instant'});
-    await sleep(300);
-    const x1=Math.round(stmtEl.getBoundingClientRect().x);
-    scrollTo({top:Math.max(0,Math.round(secTop+secH/2-H/2)),behavior:'instant'});
-    await sleep(300);
-    const x2=Math.round(stmtEl.getBoundingClientRect().x);
-    lines.push('LIFE statement travel (motion regression check): '+(x1-x2)+'px (positive = from RIGHT)');
+    lines.push('VERDICT: '+(cure.top>=-1&&link.bottom<=H+1?'WHOLE BLOCK VISIBLE IN ONE SCREEN':'STILL OVERFLOWS'));
   }catch(err){lines.push('ERROR: '+err.message);}
   const pre=document.createElement('pre');
   pre.id='selftest';
