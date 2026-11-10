@@ -28,17 +28,17 @@ const MACHINES: { name: string; patterns: string[]; note: string }[] = [
   {
     name: "da Vinci（ダヴィンチ）",
     patterns: ["da Vinci", "ダヴィンチ", "ダビンチ"],
-    note: "Intuitive 社の手術支援ロボット。収録カード内で機種名が明記されている医局を数えています。",
+    note: "Intuitive 社の手術支援ロボット。収録カード内で機種名が明記されている外科チームを数えています。",
   },
   {
     name: "hinotori（ヒノトリ）",
     patterns: ["hinotori", "ヒノトリ"],
-    note: "メディカロイド社の国産手術支援ロボット。収録カード内で機種名が明記されている医局を数えています。",
+    note: "メディカロイド社の国産手術支援ロボット。収録カード内で機種名が明記されている外科チームを数えています。",
   },
   {
     name: "Saroa（サロア）",
     patterns: ["Saroa", "サロア"],
-    note: "リバーフィールド社の手術支援ロボット（空気圧駆動・力覚フィードバック）。収録カード内で機種名が明記されている医局を数えています。",
+    note: "リバーフィールド社の手術支援ロボット（空気圧駆動・力覚フィードバック）。収録カード内で機種名が明記されている外科チームを数えています。",
   },
 ]
 
@@ -82,8 +82,8 @@ export default function InsightsPage() {
             </h1>
             <p className="max-w-3xl leading-relaxed text-muted-foreground">
               本ページの数値は、Surgical Tech Portal
-              に収録している医局データ（{total}
-              医局）から自動集計したものです。各医局の掲載情報は、大学・病院等の公式情報を出典としており、{VERIFIED_DATE}
+              に収録している外科チームのデータ（全{total}
+              件）から自動集計したものです。各外科チームの掲載情報は、大学・病院等の公式情報を出典としており、{VERIFIED_DATE}
               に全件の照合を行いました。集計方法の注意点はページ末尾に記載しています。
             </p>
           </div>
@@ -91,17 +91,17 @@ export default function InsightsPage() {
           {/* 主要指標 */}
           <div className="mb-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
-              { label: "収録医局", value: `${total}`, unit: "医局" },
+              { label: "収録外科チーム", value: `${total}`, unit: "件" },
               { label: "収録のある都道府県", value: `${prefectures}`, unit: "都道府県" },
               {
-                label: "ロボット支援手術への言及がある医局",
+                label: "ロボット支援手術への言及がある外科チーム",
                 value: `${robotCount}`,
-                unit: `医局（${pct(robotCount)}）`,
+                unit: `件（${pct(robotCount)}）`,
               },
               {
-                label: "腹腔鏡手術への言及がある医局",
+                label: "腹腔鏡手術への言及がある外科チーム",
                 value: `${lapCount}`,
-                unit: `医局（${pct(lapCount)}）`,
+                unit: `件（${pct(lapCount)}）`,
               },
             ].map((s) => (
               <div
@@ -125,7 +125,7 @@ export default function InsightsPage() {
               手術支援ロボット 機種別の記載状況
             </h2>
             <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              収録カードの本文・タグに機種名が明記されている医局の一覧です。ロボット支援手術に取り組んでいても、公式情報に機種名の記載がない医局は含まれません（導入の有無そのものを示す一覧ではありません）。
+              収録カードの本文・タグに機種名が明記されている外科チームの一覧です。ロボット支援手術に取り組んでいても、公式情報に機種名の記載がない外科チームは含まれません（導入の有無そのものを示す一覧ではありません）。
             </p>
             <div className="space-y-8">
               {machineLists.map((m) => (
@@ -136,7 +136,7 @@ export default function InsightsPage() {
                   <div className="mb-1 flex flex-wrap items-baseline gap-3">
                     <h3 className="text-lg font-semibold text-foreground">{m.name}</h3>
                     <span className="text-sm text-muted-foreground">
-                      {m.list.length} 医局
+                      {m.list.length} 件
                     </span>
                   </div>
                   <p className="mb-4 text-sm text-muted-foreground">{m.note}</p>
@@ -175,7 +175,7 @@ export default function InsightsPage() {
                     >
                       <td className="px-5 py-3 text-foreground">{tag}</td>
                       <td className="px-5 py-3 text-right tabular-nums text-muted-foreground">
-                        {count} 医局
+                        {count} 件
                       </td>
                     </tr>
                   ))}
@@ -199,7 +199,7 @@ export default function InsightsPage() {
                   <p className="text-2xl font-bold text-foreground">
                     {a.count}
                     <span className="ml-1 text-sm font-medium text-muted-foreground">
-                      医局
+                      件
                     </span>
                   </p>
                 </div>
@@ -214,15 +214,15 @@ export default function InsightsPage() {
             </h2>
             <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
               <li>
-                数値はすべて、収録データ（{total}
-                医局）から表示のたびに自動集計しています。手作業で固定した数値は使っていません。
+                数値はすべて、収録データ（全{total}
+                件）から表示のたびに自動集計しています。手作業で固定した数値は使っていません。
               </li>
               <li>
-                各医局の掲載情報の出典は、大学・病院・医局の公式ページ等です。{VERIFIED_DATE}
+                各外科チームの掲載情報の出典は、大学・病院等の公式ページ等です。{VERIFIED_DATE}
                 に全件を公式情報と照合し、裏付けの取れない記載は削除・訂正しました。
               </li>
               <li>
-                「言及がある医局」は、カード本文・見出し・タグに該当語が含まれる医局の数です。実施規模や件数の大小を示すものではありません。
+                「言及がある外科チーム」は、カード本文・見出し・タグに該当語が含まれる外科チームの数です。実施規模や件数の大小を示すものではありません。
               </li>
               <li>
                 掲載情報は定期的に再確認し、変更があればデータベースと
