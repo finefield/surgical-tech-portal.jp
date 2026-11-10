@@ -5270,4 +5270,669 @@ DX要素： 基礎・臨床研究、治療成績解析、機能温存、患者�
       { label: "山梨大学 外科学講座第1教室「胆膵」", url: "https://y-surg1.jp/%E6%82%A3%E8%80%85%E3%81%AE%E3%81%BF%E3%81%AA%E3%81%95%E3%81%BE%E3%81%B8/shinryou/tansui" },
     ],
   },
+  // 2026-11-10 追加：がん専門病院等の診療科（20件、公式資料で確認）
+  {
+    id: 952,
+    area: "関東",
+    prefecture: "東京都",
+    university: "国立がん研究センター中央病院",
+    name: "食道外科",
+    tags: ["ロボット支援手術", "ロボット食道手術", "胸腔鏡手術"],
+    latestActivity: "食道がんの切除・再建にロボット支援手術を標準治療として実施し、縦隔鏡手術など患者の状態に応じた低侵襲手術を行う",
+    headline: "食道がん手術で、ロボット支援下手術を標準治療として実施。",
+    description: `■ 診療科の紹介
+国立がん研究センター中央病院 食道外科は、食道がんの切除と再建を担う診療科です。2024年1月に開設されたロボット手術・開発センターのもとで、ロボット手術を行っている診療科の一つとして公式サイトに明示されています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Esophageal Surgery】
+当科の専用サイトには「ロボット支援下手術を標準治療にしています」と明記されています。食道がんのロボット支援手術は2018年より保険適用となっています。
+
+開胸を伴わない縦隔鏡手術（右胸腔手術の既往のある方や超高齢の方が対象）や、切除と再建の時期を分けて行う二期分割手術（80歳以上・合併症の多い方が対象）など、患者の状態に応じた術式の選択肢も提示されています。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター中央病院 食道外科
+主な領域： 食道がん
+導入・活用技術： ロボット支援手術、縦隔鏡手術
+DX要素： ロボット手術・開発センターと連携したロボット支援手術の標準化`,
+    officialWebsite: {
+      label: "国立がん研究センター中央病院「ロボット手術・開発センター」",
+      url: "https://pod.ncc.go.jp/jp/ncch/division/robotic_surgery/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター中央病院「ロボット手術・開発センター」", url: "https://pod.ncc.go.jp/jp/ncch/division/robotic_surgery/index.html"},
+      { label: "国立がん研究センター中央病院 食道外科専用サイト「Surgery」", url: "https://esophageal-surgery.ncc.go.jp/surgery.html"},
+    ],
+  },
+  {
+    id: 953,
+    area: "関東",
+    prefecture: "東京都",
+    university: "国立がん研究センター中央病院",
+    name: "胃外科",
+    tags: ["ロボット支援手術", "da Vinci SP", "ロボット胃がん手術"],
+    latestActivity: "ダビンチSPによる胃切除術「MILLER」を導入し、ロボット手術は2024年に105例を実施",
+    headline: "胃切除にダビンチSPを用いる術式「MILLER」を世界に先駆けて導入。",
+    description: `■ 診療科の紹介
+国立がん研究センター中央病院 胃外科は、胃がんの外科治療を担う診療科です。公式サイトの外科治療ページでは「腹腔鏡／胸腔鏡／ロボットのアプローチを基本としています」と紹介されています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Gastrectomy & Single-Port Innovation】
+当科は、ダビンチSPによる胃切除術「MILLER」（腹腔鏡とロボットを組み合わせた方法）を世界に先駆けて導入しました。早期胃がんから進行胃がんまで、全術式で実施可能とされています。この成果は英文誌 Asian Journal of Endoscopic Surgery（2025）に当科から報告されています。
+
+ロボット手術の実施件数は年々増え、2020年19例、2021年36例、2022年56例、2023年48例、2024年105例と公式サイトに年度別の内訳が掲載されています。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター中央病院 胃外科
+主な領域： 胃がん
+導入・活用技術： ロボット支援手術、ダビンチSP
+DX要素： 単孔式ロボットを用いた胃切除術式の開発と実践`,
+    officialWebsite: {
+      label: "国立がん研究センター中央病院 胃外科「外科治療について」",
+      url: "https://www.ncc.go.jp/jp/ncch/clinic/gastric_surgery/030/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター中央病院 胃外科「外科治療について」", url: "https://www.ncc.go.jp/jp/ncch/clinic/gastric_surgery/030/index.html"},
+      { label: "国立がん研究センター中央病院「ロボット手術・開発センター」", url: "https://pod.ncc.go.jp/jp/ncch/division/robotic_surgery/index.html"},
+    ],
+  },
+  {
+    id: 954,
+    area: "関東",
+    prefecture: "東京都",
+    university: "国立がん研究センター中央病院",
+    name: "大腸外科",
+    tags: ["ロボット支援手術", "複数機種ロボット", "da Vinci SP", "hinotori", "ロボット支援下大腸手術"],
+    latestActivity: "4機種の手術支援ロボットを使い分け、ロボット手術は2025年に215件（結腸67件・直腸148件）を実施",
+    headline: "ダビンチXi・5・SPとhinotoriの4機種を使い分け、大腸がんのロボット手術を実施。",
+    description: `■ 診療科の紹介
+国立がん研究センター中央病院 大腸外科は、結腸がん・直腸がんの外科治療を担う診療科です。ロボット手術に力を入れ、複数機種を使い分ける体制を公式サイトで紹介しています。
+
+■ DX・テクノロジーの取り組み
+
+【Multi-Platform Robotic Colorectal Surgery】
+従来のダビンチXi 2台に加え、ダビンチ5、ダビンチSP、国産ロボットhinotoriを新たに導入し、計5台体制で大腸がんの手術を行っています。病状や体格に応じて機種を選択し、ダビンチ5のフォースフィードバック（力覚）機能にも言及されています。
+
+ロボット手術の実施件数は、2021年87件、2022年149件、2023年152件、2024年178件、2025年215件（結腸がん67件、直腸がん148件）と公式サイトに掲載されています。なお新規ロボットの治療成績については現時点で定まった見解がないため、臨床試験として手術の実施を提案する場合がある旨も明記されています。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター中央病院 大腸外科
+主な領域： 結腸がん、直腸がん
+導入・活用技術： ロボット支援手術（ダビンチXi、ダビンチ5、ダビンチSP、hinotori）
+DX要素： 複数機種ロボットの使い分けによる大腸がん手術`,
+    officialWebsite: {
+      label: "国立がん研究センター中央病院 大腸外科「診療実績」",
+      url: "https://www.ncc.go.jp/jp/ncch/clinic/colorectal_surgery/030/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター中央病院 大腸外科「診療実績」", url: "https://www.ncc.go.jp/jp/ncch/clinic/colorectal_surgery/030/index.html"},
+      { label: "国立がん研究センター中央病院 大腸外科「新規手術支援ロボットの導入について」", url: "https://pod.ncc.go.jp/jp/ncch/clinic/colorectal_surgery/200/index.html"},
+      { label: "国立がん研究センター中央病院「ロボット手術・開発センター」", url: "https://pod.ncc.go.jp/jp/ncch/division/robotic_surgery/index.html"},
+    ],
+  },
+  {
+    id: 955,
+    area: "関東",
+    prefecture: "東京都",
+    university: "国立がん研究センター中央病院",
+    name: "肝胆膵外科",
+    tags: ["3D術前画像", "術前シミュレーション", "ロボット支援下肝切除", "腹腔鏡下肝切除"],
+    latestActivity: "肝切除全症例への3D術前シミュレーションと、ロボット支援下肝切除を診療で運用",
+    headline: "肝切除の全症例に、肝臓3D解析による術前シミュレーションを実施。",
+    description: `■ 診療科の紹介
+国立がん研究センター中央病院 肝胆膵外科は、肝臓・胆道・膵臓のがんに対する高難度手術を担う診療科です。術前計画の精緻化と低侵襲手術の両面でテクノロジーを活用しています。
+
+■ DX・テクノロジーの取り組み
+
+【3D Simulation & Minimally Invasive HBP Surgery】
+肝切除では、造影CT画像から3Dシミュレーションソフトで血管や腫瘍を立体的に描出し、切除時の喪失肝容積を計算して、複数の術式を術前に比較します。当科では「肝切除を行うすべての患者さん」にこの肝臓3D解析を行っていると明記されています。
+
+ロボット支援下肝切除は、2022年に保険適用となったことを受け、当院でも積極的に導入されています。一方、膵切除は腹腔鏡下（膵体尾部切除、腹腔鏡補助下膵頭十二指腸切除）で行われており、ロボット支援下の膵頭十二指腸切除は今後導入予定の段階です。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター中央病院 肝胆膵外科
+主な領域： 肝がん、胆道がん、膵がん
+導入・活用技術： 肝臓3D解析（術前シミュレーション）、ロボット支援下肝切除、腹腔鏡下膵切除
+DX要素： 全肝切除症例への3D術前シミュレーションの標準化`,
+    officialWebsite: {
+      label: "国立がん研究センター中央病院 肝胆膵外科「精緻な術前シミュレーションによる肝切除」",
+      url: "https://www.ncc.go.jp/jp/ncch/clinic/hepatobiliary_surgery/025/020/030/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター中央病院 肝胆膵外科「精緻な術前シミュレーションによる肝切除」", url: "https://www.ncc.go.jp/jp/ncch/clinic/hepatobiliary_surgery/025/020/030/index.html"},
+      { label: "国立がん研究センター中央病院 肝胆膵外科「低侵襲肝切除（腹腔鏡下肝切除）」", url: "https://pod.ncc.go.jp/jp/ncch/clinic/hepatobiliary_surgery/025/020/010/index.html"},
+      { label: "国立がん研究センター中央病院 肝胆膵外科「低侵襲膵切除（腹腔鏡下膵切除）」", url: "https://pod.ncc.go.jp/jp/ncch/clinic/hepatobiliary_surgery/025/030/020/index.html"},
+      { label: "国立がん研究センター中央病院「ロボット手術・開発センター」", url: "https://pod.ncc.go.jp/jp/ncch/division/robotic_surgery/index.html"},
+    ],
+  },
+  {
+    id: 956,
+    area: "関東",
+    prefecture: "千葉県",
+    university: "国立がん研究センター東病院",
+    name: "食道外科",
+    tags: ["ロボット支援手術", "hinotori"],
+    latestActivity: "食道がんのロボット支援手術を実施し、2025年度導入の国産ロボットHINOTORIも食道外科で開始",
+    headline: "食道がんにロボット支援胸腔鏡下食道亜全摘を実施。国産ロボットHINOTORIも開始。",
+    description: `■ 診療科の紹介
+国立がん研究センター東病院 食道外科は、食道がんの外科治療を担う診療科です。通常の胸腔鏡手術や腹腔鏡手術に加えて、ロボット支援手術にも取り組んでいます。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Esophageal Surgery】
+東病院のロボット支援手術ページでは、食道外科の適応疾患・術式として「食道がん／ロボット支援胸腔鏡下食道亜全摘」（保険適用）が明示されています。
+
+東病院では2014年に手術支援ロボット「ダ・ヴィンチ」を導入し、ダ・ヴィンチXi 3台を運用しています。2025年度に導入した国産手術支援ロボットHINOTORIは、泌尿器科・胃外科とともに食道外科で使用が始まりました。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター東病院 食道外科
+主な領域： 食道がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチ、HINOTORI）
+DX要素： 複数機種のロボットによる食道がん手術`,
+    officialWebsite: {
+      label: "国立がん研究センター東病院「ロボット支援手術の実績」",
+      url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター東病院「ロボット支援手術の実績」", url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"},
+      { label: "国立がん研究センター東病院「食道外科」", url: "https://www.ncc.go.jp/jp/ncce/clinic/esophageal_surgery/index.html"},
+    ],
+  },
+  {
+    id: 957,
+    area: "関東",
+    prefecture: "千葉県",
+    university: "国立がん研究センター東病院",
+    name: "胃外科",
+    tags: ["ロボット支援手術", "da Vinci Xi", "hinotori", "AI手術研究"],
+    latestActivity: "胃がんロボット支援手術は2022年12月までに370例以上。AI手術支援・手技評価システムを研究開発中",
+    headline: "2014年から胃がんのロボット支援手術を開始。AI手術支援システムの研究開発も進める。",
+    description: `■ 診療科の紹介
+国立がん研究センター東病院 胃外科は、胃がんの外科治療を担う診療科です。開腹手術、腹腔鏡手術、ロボット手術から適した手法を選択する診療を行っています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Gastrectomy】
+当科は全国に先駆けて2014年から胃がんに対するロボット支援手術を開始し、2022年12月までに370例以上を実施しました。適応は胃がんに対する幽門側胃切除、幽門保存胃切除、噴門側胃切除、胃全摘のほか、食道胃接合部がんも含まれます。ダ・ヴィンチXiを用いた手術症例見学施設の認定も受けています。2025年度導入の国産ロボットHINOTORIも当科で使用が始まりました。
+
+【AI Surgical Support Research】
+AIを用いて手術をサポートするシステムの研究開発にも取り組んでいます。公式サイトの研究紹介には「人工知能AIを用いた腹腔鏡／ロボット胃がん手術支援システム、手技評価システムの開発」が掲載されています。これは研究開発段階の取り組みであり、診療での使用を示すものではありません。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター東病院 胃外科
+主な領域： 胃がん、食道胃接合部がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチXi、HINOTORI）、腹腔鏡手術
+DX要素： ロボット胃がん手術の先行実施と、AI手術支援・手技評価システムの研究開発`,
+    officialWebsite: {
+      label: "国立がん研究センター東病院「ロボット支援手術の実績」",
+      url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター東病院「ロボット支援手術の実績」", url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"},
+      { label: "国立がん研究センター東病院 胃外科「研究について」", url: "https://www.ncc.go.jp/jp/ncce/clinic/gastric_surgery/040/index.html"},
+      { label: "国立がん研究センター東病院「胃外科」", url: "https://www.ncc.go.jp/jp/ncce/clinic/gastric_surgery/index.html"},
+    ],
+  },
+  {
+    id: 958,
+    area: "関東",
+    prefecture: "千葉県",
+    university: "国立がん研究センター東病院",
+    name: "大腸外科",
+    tags: ["ロボット支援手術", "手術支援AI", "TaTME"],
+    latestActivity: "Jmeesと共同開発した手術支援AI「SurVis-Pel」が2025年12月に薬事承認を取得",
+    headline: "ロボット支援手術を導入し、手術支援AI「SurVis-Pel」を共同開発（薬事承認取得）。",
+    description: `■ 診療科の紹介
+国立がん研究センター東病院 大腸外科は、結腸がん・直腸がんの外科治療を担う診療科です。腹腔鏡手術やロボット支援手術といった低侵襲手術を積極的に導入し、安全性と根治性の両立に努めていると公式サイトに紹介されています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic & Endoscopic Colorectal Surgery】
+当科では低侵襲手術として腹腔鏡手術とロボット支援手術を実施しています。経肛門アプローチを用いたTaTME（経肛門的直腸間膜切除）を国内に先駆けて導入したことでも知られています。
+
+【Surgical AI Co-Development】
+当科は株式会社Jmeesと内視鏡手術支援プログラム「SurVis-Pel」を共同開発しました。内視鏡手術中の映像をAIが解析し、骨盤／側方リンパ節郭清術で重要な解剖構造（外腸骨動脈・外腸骨静脈・閉鎖神経・尿管）をモニター上で強調表示するプログラム医療機器です。大腸外科・婦人科・泌尿器科における鏡視下の骨盤／側方リンパ節郭清術を対象とし、2025年12月22日に薬事承認（製造販売承認）を取得しました。販売体制は整備中と発表されており、日常診療での使用開始を示すものではありません。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター東病院 大腸外科
+主な領域： 結腸がん、直腸がん
+導入・活用技術： ロボット支援手術、腹腔鏡手術、TaTME、手術支援AI（共同開発・薬事承認取得）
+DX要素： 手術支援AIの共同開発と薬事承認取得`,
+    officialWebsite: {
+      label: "国立がん研究センター東病院「大腸外科」",
+      url: "https://www.ncc.go.jp/jp/ncce/clinic/lowerabd_surgery/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター東病院「大腸外科」", url: "https://www.ncc.go.jp/jp/ncce/clinic/lowerabd_surgery/index.html"},
+      { label: "国立がん研究センター プレスリリース「Jmeesと国立がん研究センター東病院が共同開発した『内視鏡手術支援プログラム SurVis-Pel』が薬事承認を取得」（2026年3月25日）", url: "https://pod.ncc.go.jp/jp/information/pr_release/2026/0325/index.html"},
+    ],
+  },
+  {
+    id: 959,
+    area: "関東",
+    prefecture: "千葉県",
+    university: "国立がん研究センター東病院",
+    name: "肝胆膵外科",
+    tags: ["ロボット支援手術", "ロボット支援下肝切除", "ロボット膵切除"],
+    latestActivity: "2022年4月よりロボット支援下手術を開始し、膵腫瘍・肝腫瘍を対象に実施",
+    headline: "2022年4月から、膵体尾部切除と肝部分切除にロボット支援下手術を実施。",
+    description: `■ 診療科の紹介
+国立がん研究センター東病院 肝胆膵外科は、肝臓・胆道・膵臓のがんに対する手術を担う診療科です。小さな創のロボット手術や腹腔鏡手術、機能温存を重視した手術まで、幅広い治療選択肢を提示しています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic HBP Surgery】
+当科では2022年4月よりロボット支援下手術を行っています。現在の対象は、膵腫瘍に対するロボット支援下膵体尾部切除術と、肝腫瘍（肝細胞がん、転移性肝がんなど）に対するロボット支援下肝部分切除術・肝外側区域切除術で、いずれも保険適用の術式として公式サイトに掲載されています。今後は保険適用の範囲内で実施する術式を拡大していく予定とされています。
+
+■ 実績・スタッツ
+正式名称： 国立がん研究センター東病院 肝胆膵外科
+主な領域： 肝がん、膵がん、胆道がん
+導入・活用技術： ロボット支援下膵体尾部切除術、ロボット支援下肝部分切除術・肝外側区域切除術
+DX要素： 肝胆膵領域へのロボット支援手術の導入と術式拡大`,
+    officialWebsite: {
+      label: "国立がん研究センター東病院「ロボット支援手術の実績」",
+      url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"
+    },
+    references: [
+      { label: "国立がん研究センター東病院「ロボット支援手術の実績」", url: "https://www.ncc.go.jp/jp/ncce/robot/index.html"},
+      { label: "国立がん研究センター東病院「肝胆膵外科」", url: "https://www.ncc.go.jp/jp/ncce/clinic/hepatobiliary_and_pancreatic_surgery/index.html"},
+    ],
+  },
+  {
+    id: 960,
+    area: "関東",
+    prefecture: "東京都",
+    university: "がん研有明病院",
+    name: "食道外科",
+    tags: ["ロボット支援手術", "ロボット食道手術"],
+    latestActivity: "食道がんのロボット支援手術を2020年に開始し、250例超を実施",
+    headline: "2020年に食道がんのロボット手術を開始し、これまでに250例を超える症例に実施。",
+    description: `■ 診療科の紹介
+がん研有明病院 食道外科は、食道がんの外科治療を担う診療科です。病院のロボット支援手術の歩みの中で、2020年にロボット手術を開始した診療科の一つです。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Esophageal Surgery】
+公式サイトの診療科コメントによれば、当科は2020年よりロボット手術を開始し、これまでに250例を超える患者さんに安全に施行してきました。拡大視によるリンパ節郭清や、胸腔内吻合などの縫合操作にロボット支援手術が活用されています。
+
+■ 実績・スタッツ
+正式名称： がん研有明病院 食道外科
+主な領域： 食道がん
+導入・活用技術： ロボット支援手術
+DX要素： 食道がん手術へのロボット支援手術の導入と症例集積`,
+    officialWebsite: {
+      label: "がん研有明病院 中央手術部「ロボット支援手術について」",
+      url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"
+    },
+    references: [
+      { label: "がん研有明病院 中央手術部「ロボット支援手術について」", url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"},
+    ],
+  },
+  {
+    id: 961,
+    area: "関東",
+    prefecture: "東京都",
+    university: "がん研有明病院",
+    name: "胃外科",
+    tags: ["ロボット支援手術", "da Vinci SP", "ロボット胃がん手術"],
+    latestActivity: "ダビンチSPを含む複数機種で、標準的な胃切除から機能温存手術までロボット支援下で実施",
+    headline: "2019年にロボット支援下胃切除術を開始し、現在は胃切除の多くをロボットで実施。",
+    description: `■ 診療科の紹介
+がん研有明病院 胃外科は、胃がんの外科治療を担う診療科です。2019年からロボット支援下胃切除術に取り組んでいます。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Gastrectomy】
+公式サイトの診療科コメントによれば、当科は2019年よりロボット支援下胃切除術に取り組み、現在では胃切除の多くをロボット支援下で行っています。単孔式に対応するダビンチSPを含む複数の機種を備え、標準的な胃切除から機能温存手術まで対応しています。
+
+■ 実績・スタッツ
+正式名称： がん研有明病院 胃外科
+主な領域： 胃がん
+導入・活用技術： ロボット支援下胃切除術（ダビンチSPを含む複数機種）
+DX要素： 胃切除のロボット支援手術への移行と複数機種の運用`,
+    officialWebsite: {
+      label: "がん研有明病院 中央手術部「ロボット支援手術について」",
+      url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"
+    },
+    references: [
+      { label: "がん研有明病院 中央手術部「ロボット支援手術について」", url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"},
+    ],
+  },
+  {
+    id: 962,
+    area: "関東",
+    prefecture: "東京都",
+    university: "がん研有明病院",
+    name: "大腸外科",
+    tags: ["ロボット支援手術", "da Vinci Xi", "da Vinci SP", "ロボット支援下大腸手術"],
+    latestActivity: "多孔式のダビンチXiと単孔式のダビンチSPを使い分け、2026年6月までに約1,320人がロボット手術を受けた",
+    headline: "ダビンチXiに加え2025年7月にダビンチSPを導入。ロボット手術は約1,320人に実施。",
+    description: `■ 診療科の紹介
+がん研有明病院 大腸外科は、結腸がん・直腸がんの外科治療を担う診療科です。病院の中でも早い時期からロボット手術に取り組んできた診療科です。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Colorectal Surgery】
+公式サイトの診療科コメントによれば、これまでに約1,320人の患者さんが当科でロボット手術を受けました（2026年6月まで）。狭く深い骨盤内など、技術的に難しい場面でロボット手術が活用されています。
+
+機種は多孔式のダビンチXiに加え、2025年7月に単孔式のダビンチSPを導入し、使い分けています。
+
+■ 実績・スタッツ
+正式名称： がん研有明病院 大腸外科
+主な領域： 結腸がん、直腸がん
+導入・活用技術： ロボット支援手術（ダビンチXi、ダビンチSP）
+DX要素： 多孔式・単孔式ロボットの使い分けによる大腸がん手術`,
+    officialWebsite: {
+      label: "がん研有明病院 中央手術部「ロボット支援手術について」",
+      url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"
+    },
+    references: [
+      { label: "がん研有明病院 中央手術部「ロボット支援手術について」", url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"},
+    ],
+  },
+  {
+    id: 963,
+    area: "関東",
+    prefecture: "東京都",
+    university: "がん研有明病院",
+    name: "肝・胆・膵外科",
+    tags: ["ロボット支援手術", "ロボット支援下肝切除", "ICG蛍光", "3D術前画像"],
+    latestActivity: "肝胆膵領域のロボット手術は2026年3月までに550例。ICG蛍光法と3Dシミュレーションを診療で運用",
+    headline: "ロボット支援下の肝切除・膵切除に、ICG蛍光法と3Dシミュレーションを組み合わせる。",
+    description: `■ 診療科の紹介
+がん研有明病院 肝・胆・膵外科は、肝臓・胆道・膵臓のがんに対する手術を担う診療科です。ロボット支援手術に、蛍光イメージングと3Dシミュレーションを組み合わせた診療を行っています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic HBP Surgery with Fluorescence & 3D Planning】
+ロボット支援手術は2020年に開始し、保険診療としてロボット支援下膵切除術（膵頭十二指腸切除術、膵体尾部切除術）、ロボット支援下肝切除術などを行っています。公式サイトによれば、肝胆膵領域のロボット手術は2026年3月までに550例に達しました。
+
+肝切除では、原発性肝癌に対する系統的肝切除を高精度に行うため、ICG蛍光法を用いる技術を開発し、開腹・腹腔鏡手術のいずれでも実践しています。腹腔鏡下肝切除では術中造影超音波（全例）と併用し、術中診断に活用しています。
+
+さらに、3Dシミュレーションソフトを用いた切除プランニングを毎週の術前検討会で行い、術式決定に活かしています。胆道癌でも3Dシミュレーションによる手術プランニングが行われています。
+
+■ 実績・スタッツ
+正式名称： がん研有明病院 肝・胆・膵外科
+主な領域： 肝がん、胆道がん、膵がん
+導入・活用技術： ロボット支援下肝切除術・膵切除術、ICG蛍光法、3Dシミュレーション
+DX要素： 蛍光イメージングと3D計画を組み合わせた肝胆膵手術`,
+    officialWebsite: {
+      label: "がん研有明病院 肝・胆・膵外科「診療科の特徴」",
+      url: "https://www.jfcr.or.jp/hospital/department/clinic/disease/gastro/gastrosurgery/hbpsurgery/feature.html"
+    },
+    references: [
+      { label: "がん研有明病院 肝・胆・膵外科「診療科の特徴」", url: "https://www.jfcr.or.jp/hospital/department/clinic/disease/gastro/gastrosurgery/hbpsurgery/feature.html"},
+      { label: "がん研有明病院 中央手術部「ロボット支援手術について」", url: "https://www.jfcr.or.jp/hospital/department/clinic/central/surgical_operation_sernice/robot.html"},
+    ],
+  },
+  {
+    id: 964,
+    area: "中部",
+    prefecture: "静岡県",
+    university: "静岡がんセンター",
+    name: "食道外科",
+    tags: ["ロボット支援手術"],
+    latestActivity: "食道がんのロボット支援手術（ダ・ヴィンチ）を2021年に導入。hinotoriの臨床研究は今後開始予定",
+    headline: "2021年から、食道がんにダ・ヴィンチによるロボット支援手術を導入。",
+    description: `■ 診療科の紹介
+静岡がんセンター 食道外科は、食道がんの外科治療を担う診療科です。静岡がんセンターは2011年12月に手術支援ロボット「ダ・ヴィンチ」を導入した病院で、診療科ごとに導入が広がってきました。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Esophageal Surgery】
+公式サイトによれば、2021年から食道外科でもダ・ヴィンチによるロボット支援手術の導入が始まり、食道がんが実施対象疾患に明記されています。
+
+なお、国産ロボットhinotoriを用いた手術の自動化・遠隔手術に関する臨床研究は病院全体の取り組みですが、食道外科では今後順次研究を開始する予定の段階とされており、診療での運用とは区別されています。
+
+■ 実績・スタッツ
+正式名称： 静岡がんセンター 食道外科
+主な領域： 食道がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチ）
+DX要素： 食道がん手術へのロボット支援手術の導入`,
+    officialWebsite: {
+      label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」",
+      url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"
+    },
+    references: [
+      { label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」", url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"},
+      { label: "静岡がんセンター「ロボット支援手術が年間1,000件を超えました」（2025年5月29日）", url: "https://www.scchr.jp/news/20250529-2.html"},
+      { label: "静岡がんセンター「診療科一覧」", url: "https://www.scchr.jp/division/index.html"},
+    ],
+  },
+  {
+    id: 965,
+    area: "中部",
+    prefecture: "静岡県",
+    university: "静岡がんセンター",
+    name: "胃外科",
+    tags: ["ロボット支援手術"],
+    latestActivity: "胃がんのロボット支援手術（ダ・ヴィンチ）を診療で運用",
+    headline: "大腸外科に次いで、胃がんにダ・ヴィンチによるロボット支援手術を開始。",
+    description: `■ 診療科の紹介
+静岡がんセンター 胃外科は、胃がんの外科治療を担う診療科です。静岡がんセンターのロボット支援手術は大腸外科から導入が始まり、次いで胃外科、泌尿器科、呼吸器外科へと広がりました。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Gastrectomy】
+公式サイトでは、胃がんがロボット支援手術の実施対象疾患に明記され、腹腔鏡下胃切除術・胃全摘術などが対象術式として掲載されています。当科のロボット支援手術は診療として運用されています。
+
+なお、病院全体ではダヴィンチXi 4台と国産ロボットhinotori 1台の体制で、2024年度のロボット支援手術は病院全体で1,024件でした。これは病院全体の数字であり、当科単独の機種・症例数は公表されていません。
+
+■ 実績・スタッツ
+正式名称： 静岡がんセンター 胃外科
+主な領域： 胃がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチ）
+DX要素： 胃がん手術へのロボット支援手術の導入`,
+    officialWebsite: {
+      label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」",
+      url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"
+    },
+    references: [
+      { label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」", url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"},
+      { label: "静岡がんセンター「ロボット支援手術が年間1,000件を超えました」（2025年5月29日）", url: "https://www.scchr.jp/news/20250529-2.html"},
+      { label: "静岡がんセンター「診療科一覧」", url: "https://www.scchr.jp/division/index.html"},
+    ],
+  },
+  {
+    id: 966,
+    area: "中部",
+    prefecture: "静岡県",
+    university: "静岡がんセンター",
+    name: "大腸外科",
+    tags: ["ロボット支援手術", "ロボット支援下大腸手術"],
+    latestActivity: "直腸がん・結腸がんの手術の多くをロボット支援下で実施",
+    headline: "病院のロボット導入の起点となった診療科で、ほとんどの手術をロボット支援で実施。",
+    description: `■ 診療科の紹介
+静岡がんセンター 大腸外科は、結腸がん・直腸がんの外科治療を担う診療科です。静岡がんセンターのロボット支援手術は、当初大腸外科から導入が始まりました。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Colorectal Surgery】
+公式サイトによれば、当科ではほとんどの手術がロボット支援で行われています。直腸がん・結腸がんが実施対象疾患に明記され、腹腔鏡下直腸切除術、結腸悪性腫瘍切除術などが対象術式として掲載されています。
+
+当科単独の機種・症例数は公表されていません（台数や年間件数は病院全体の数字です）。
+
+■ 実績・スタッツ
+正式名称： 静岡がんセンター 大腸外科
+主な領域： 結腸がん、直腸がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチ）
+DX要素： 大腸がん手術のロボット支援手術への移行`,
+    officialWebsite: {
+      label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」",
+      url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"
+    },
+    references: [
+      { label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」", url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"},
+      { label: "静岡がんセンター「ロボット支援手術が年間1,000件を超えました」（2025年5月29日）", url: "https://www.scchr.jp/news/20250529-2.html"},
+      { label: "静岡がんセンター「診療科一覧」", url: "https://www.scchr.jp/division/index.html"},
+    ],
+  },
+  {
+    id: 967,
+    area: "中部",
+    prefecture: "静岡県",
+    university: "静岡がんセンター",
+    name: "肝・胆・膵外科",
+    tags: ["ロボット支援手術", "ロボット支援下肝切除", "ロボット膵切除"],
+    latestActivity: "肝・胆・膵領域のロボット支援手術を2022年に導入し、診療で運用",
+    headline: "2022年から、肝切除・膵切除にダ・ヴィンチによるロボット支援手術を導入。",
+    description: `■ 診療科の紹介
+静岡がんセンター 肝・胆・膵外科は、肝臓・胆道・膵臓のがんに対する手術を担う診療科です（診療科一覧の正式表記は「肝・胆・膵外科」）。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic HBP Surgery】
+公式サイトによれば、2022年から肝胆膵外科でもダ・ヴィンチによるロボット支援手術の導入が始まりました。ロボット支援手術のページには、現在実施している手術として肝切除・膵切除の術式が掲載されています。
+
+なお、国産ロボットhinotoriを用いた臨床研究については、当科では今後順次研究を開始する予定の段階とされています。当科単独の機種・症例数は公表されていません。
+
+■ 実績・スタッツ
+正式名称： 静岡がんセンター 肝・胆・膵外科
+主な領域： 肝がん、胆道がん、膵がん
+導入・活用技術： ロボット支援手術（ダ・ヴィンチ）による肝切除・膵切除
+DX要素： 肝胆膵領域へのロボット支援手術の導入`,
+    officialWebsite: {
+      label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」",
+      url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"
+    },
+    references: [
+      { label: "静岡がんセンター「ロボット支援手術（da Vinci／hinotori）」", url: "https://www.scchr.jp/ideal-care/minimally-ope/robotic-surgery.html"},
+      { label: "静岡がんセンター「ロボット支援手術が年間1,000件を超えました」（2025年5月29日）", url: "https://www.scchr.jp/news/20250529-2.html"},
+      { label: "静岡がんセンター「診療科一覧」", url: "https://www.scchr.jp/division/index.html"},
+    ],
+  },
+  {
+    id: 968,
+    area: "近畿",
+    prefecture: "大阪府",
+    university: "大阪国際がんセンター",
+    name: "消化器外科",
+    tags: ["ロボット支援手術", "ICG蛍光", "ロボット支援下大腸手術"],
+    latestActivity: "胃・大腸のロボット支援手術と、肝がん手術におけるICG蛍光法による術中診断を実施",
+    headline: "胃がん・大腸がんにロボット支援手術を導入し、肝がん手術ではICG蛍光法で微小病変を診断。",
+    description: `■ 診療科の紹介
+大阪国際がんセンター 消化器外科は、食道・胃・大腸・肝臓などの消化器がんの外科治療を担う診療科です。臓器ごとに低侵襲手術と画像支援技術を使い分けた診療を行っています。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Surgery for Gastric & Colorectal Cancer】
+胃がんでは、腹腔鏡下手術と並んでロボット支援手術を積極的に導入しています。大腸がんには低侵襲手術としてロボット手術と腹腔鏡手術が導入されています。
+
+【ICG Fluorescence for Liver Surgery】
+肝がんの手術では、ICG蛍光法を用いた術中微小肝がんの診断が行われています。根治的切除範囲の同定とあわせ、新しい治療法として開発・実践されていると公式サイトに紹介されています。
+
+このほか、食道がんへの胸腔鏡下手術や腹腔鏡下肝切除も同科の診療として行われています。
+
+■ 実績・スタッツ
+正式名称： 大阪国際がんセンター 消化器外科
+主な領域： 食道がん、胃がん、大腸がん、肝がん
+導入・活用技術： ロボット支援手術（胃・大腸）、ICG蛍光法（肝）、腹腔鏡手術
+DX要素： 臓器別に使い分けるロボット支援手術と蛍光イメージング`,
+    officialWebsite: {
+      label: "大阪国際がんセンター「消化器外科」",
+      url: "https://oici.jp/hospital/department/gansenmoni/syoukakigeka/"
+    },
+    references: [
+      { label: "大阪国際がんセンター「消化器外科」", url: "https://oici.jp/hospital/department/gansenmoni/syoukakigeka/"},
+    ],
+  },
+  {
+    id: 969,
+    area: "関東",
+    prefecture: "千葉県",
+    university: "千葉県がんセンター",
+    name: "食道・胃腸外科",
+    tags: ["ロボット支援手術", "鏡視下手術"],
+    latestActivity: "食道・胃・大腸の手術でロボット支援下アプローチを選択肢とし、ロボット支援手術認定プロクターの資格を持つ医師が在籍",
+    headline: "開腹・鏡視下・ロボット支援下の3アプローチから、病状に応じて手術法を提案。",
+    description: `■ 診療科の紹介
+千葉県がんセンター 食道・胃腸外科は、食道・胃・大腸などの消化管がんの外科治療を担う診療科です。
+
+■ DX・テクノロジーの取り組み
+【Three Approaches: Open, Endoscopic & Robotic】
+診療案内には「疾患や病状に応じて開腹・鏡視下・ロボット支援下の3つのアプローチをご提案し」と明記されており、ロボット支援下手術が当科の診療の選択肢の一つとなっています。
+
+医師紹介では、ロボット支援手術認定プロクターの資格を持つ医師が在籍していることも確認できます（加野将之、外岡亨の2名で、外岡亨は直腸・結腸の認定プロクター）。なお、公式ページにはロボットの機種名・導入年・症例数の記載はありません。
+
+■ 実績・スタッツ
+正式名称： 千葉県がんセンター 食道・胃腸外科
+主な領域： 食道がん、胃がん、大腸がん
+導入・活用技術： ロボット支援手術、鏡視下手術
+DX要素： 病状に応じた手術アプローチの選択`,
+    officialWebsite: {
+      label: "千葉県がんセンター「食道・胃腸外科」",
+      url: "https://www.pref.chiba.lg.jp/gan/shinryoka/shokakigeka/index.html"
+    },
+    references: [
+      { label: "千葉県がんセンター「食道・胃腸外科」", url: "https://www.pref.chiba.lg.jp/gan/shinryoka/shokakigeka/index.html" },
+    ],
+  },
+  {
+    id: 970,
+    area: "近畿",
+    prefecture: "大阪府",
+    university: "大阪市立総合医療センター",
+    name: "消化器外科",
+    tags: ["ロボット支援手術", "da Vinci SP"],
+    latestActivity: "2018年から消化器癌にダヴィンチ手術を保険診療で開始し、2026年3月までに食道110例・胃350例・大腸450例・肝臓140例・膵臓62例を実施",
+    headline: "2018年に消化器癌のロボット支援手術を保険診療で開始。2025年にはダヴィンチSPも導入。",
+    description: `■ 診療科の紹介
+大阪市立総合医療センター 消化器外科は、消化管と肝胆膵の領域で消化器がんの外科治療を担う診療科です。ロボット支援手術（ダヴィンチ手術）に早期から取り組み、疾患別の実施件数を公式サイトで公表しています。
+
+■ DX・テクノロジーの取り組み
+【Robotic Surgery with da Vinci】
+公式サイトによれば、当院では2018年より消化器癌に対するロボット支援手術を保険診療で開始しています。対象疾患は胃がん、食道がん、大腸がん、肝臓がん、膵臓がんで、2026年7月からはそけいヘルニアにも適応を拡大しています。
+
+2026年3月までの実施件数は、食道がん110例、胃がん350例、大腸がん450例、肝臓がん140例、膵臓がん62例と公表されています。2025年からは、1つの創から手術が行えるダヴィンチSP（シングルポート）も導入しています。
+
+ダヴィンチを使用した胃切除術では、手術時の平均出血量は30mlで、平均入院期間は11日でしたと掲載されています。胃がんに対しては胃の部分切除・全摘出術などを行い、手術時は腹腔鏡やロボット支援下手術を用いています。
+
+■ 実績・スタッツ
+正式名称： 大阪市立総合医療センター 消化器外科
+主な領域： 食道がん、胃がん、大腸がん、肝臓がん、膵臓がん
+導入・活用技術： ロボット支援手術（ダヴィンチ、ダヴィンチSP）
+DX要素： 疾患別件数を公表するロボット支援手術の実践`,
+    officialWebsite: {
+      label: "大阪市立総合医療センター「消化器外科」",
+      url: "https://www.osakacity-hp.or.jp/ocgh/dep/sur/s_g/index.html"
+    },
+    references: [
+      { label: "大阪市立総合医療センター「消化器外科」", url: "https://www.osakacity-hp.or.jp/ocgh/dep/sur/s_g/index.html" },
+    ],
+  },
+  {
+    id: 971,
+    area: "近畿",
+    prefecture: "大阪府",
+    university: "大阪赤十字病院",
+    name: "消化器外科",
+    tags: ["ロボット支援手術", "da Vinci Xi", "ロボット支援下肝切除", "3D術前画像", "ICG蛍光"],
+    latestActivity: "ロボット支援下根治手術は直近3年間で604件。肝切除の3D術前シミュレーションとICG蛍光法を運用",
+    headline: "ダビンチXiによるロボット支援手術を保険診療で実施。肝切除では3D術前シミュレーションを活用。",
+    description: `■ 診療科の紹介
+大阪赤十字病院 消化器外科は、食道・胃・大腸・肝胆膵など消化器がんの外科治療を担う診療科です。手術支援ロボットを用いた低侵襲手術と、画像支援による肝切除に取り組んでいます。
+
+■ DX・テクノロジーの取り組み
+
+【Robotic Surgery with da Vinci Xi】
+公式サイトによれば、当科ではダビンチの最新鋭機Xiを用いた手術を保険診療で受けられます。対象は食道がん、胃がん、結腸がん、直腸がん、肝がん、膵がん、ヘルニアなどです。直近3年間（2025年12月まで）のロボット支援下根治手術は604件で、内訳は食道69件、胃104件、結腸168件、直腸191件、肝臓45件、膵臓27件と公表されています。
+
+【3D Simulation & ICG for Liver Resection】
+肝切除では、3D画像解析ソフトを用いて、切除範囲や血管の位置を術前にシミュレーションしています。ロボット支援下肝切除術は2022年の保険適用に合わせて当院でも導入されました。ICG蛍光法を用いた術中ナビゲーションによる肝切除も行われています。
+
+■ 実績・スタッツ
+正式名称： 大阪赤十字病院 消化器外科
+主な領域： 食道がん、胃がん、大腸がん、肝がん、膵がん
+導入・活用技術： ロボット支援手術（ダビンチXi）、3D術前シミュレーション、ICG蛍光法
+DX要素： ロボット支援手術の症例集積と、画像支援による肝切除計画`,
+    officialWebsite: {
+      label: "大阪赤十字病院「消化器外科」",
+      url: "https://www.osaka-med.jrc.or.jp/department/s11.html"
+    },
+    references: [
+      { label: "大阪赤十字病院「消化器外科」", url: "https://www.osaka-med.jrc.or.jp/department/s11.html"},
+      { label: "大阪赤十字病院 消化器外科「肝胆膵外科について」（PDF）", url: "https://www.osaka-med.jrc.or.jp/department/upload/136bf2bf9f3d658ab1fa2487b5027887_2.pdf"},
+    ],
+  },
 ]

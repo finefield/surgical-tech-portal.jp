@@ -1,5 +1,12 @@
 const updateLogs = [
   {
+    date: "2026.11.10",
+    type: "お知らせ",
+    area: "全体",
+    title: "掲載情報をアップデートしました",
+    description: "サイト全体の掲載情報を見直し、更新しました。",
+  },
+  {
     date: "2026.11.09",
     type: "お知らせ",
     area: "全体",
