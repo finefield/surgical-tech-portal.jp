@@ -1667,12 +1667,12 @@ DX要素： AI手術見える化、手術動画解析、スキル評価、NCD症
 体制： 上部消化管グループ、下部消化管グループ
 DX要素： 専門グループ制、内視鏡・腹腔鏡映像、低侵襲手術、IBD治療設計、手術教育`,
     officialWebsite: {
-      label: "大阪公立大学大学院医学研究科 外科学講座 消化器外科 公式ページ",
-      url: "https://www.omu.ac.jp/med/surgery/digestive/index.html"
+      label: "大阪公立大学医学部附属病院「診療科・部門一覧」",
+      url: "https://www.omu.ac.jp/hosp/about/departments"
     },
     references: [
-      { label: "大阪公立大学大学院医学研究科 外科学講座", url: "https://www.omu.ac.jp/med/surgery/" },
-      { label: "大阪公立大学大学院医学研究科 外科学講座「消化器外科」", url: "https://www.omu.ac.jp/med/surgery/digestive/index.html" },
+      { label: "大阪公立大学医学部附属病院「消化器外科」診療案内", url: "https://www.omu.ac.jp/hosp/_media/036_%E6%B6%88%E5%8C%96%E5%99%A8%E5%A4%96%E7%A7%91-original.pdf" },
+      { label: "大阪公立大学医学部附属病院「診療科・部門一覧」", url: "https://www.omu.ac.jp/hosp/about/departments" },
     ],
   },
   {
@@ -2429,11 +2429,11 @@ DX要素： 腹腔鏡手術、ロボット支援手術、低侵襲手術教育`,
 主な領域： 肝臓、胆道、膵臓、肝胆膵悪性腫瘍
 DX要素： 術前画像評価、集学的治療、重粒子線治療連携、腹腔鏡手術、症例検討`,
     officialWebsite: {
-      label: "群馬大学大学院 総合外科学講座 公式Webサイト",
-      url: "https://gunma-surgery.jp/"
+      label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト",
+      url: "https://gunmahbpsurg.med.gunma-u.ac.jp/"
     },
     references: [
-      { label: "群馬大学大学院 総合外科学講座 公式Webサイト", url: "https://gunma-surgery.jp/" },
+      { label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト", url: "https://gunmahbpsurg.med.gunma-u.ac.jp/" },
       { label: "群馬大学 重粒子線医学研究センター", url: "https://heavy-ion.showa.gunma-u.ac.jp/" },
       { label: "群馬大学医学部附属病院「肝胆膵外科」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10429" },
       { label: "群馬大学医学部附属病院「重粒子線医学センター」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10511" },
@@ -3087,11 +3087,10 @@ DX要素： 3班体制、チーム医療、腹腔鏡・ロボット映像、患�
 導入・活用技術： ロボット支援手術、腹腔鏡手術、低侵襲手術
 DX要素： 3グループ体制、腹腔鏡・ロボット映像、チーム医療、患者負担軽減`,
     officialWebsite: {
-      label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト",
-      url: "https://www.marianna-u.ac.jp/stmsurgery/"
+      label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」",
+      url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf"
     },
     references: [
-      { label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト", url: "https://www.marianna-u.ac.jp/stmsurgery/" },
       { label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」", url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf" },
     ],
   },
