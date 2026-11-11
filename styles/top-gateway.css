@@ -123,12 +123,14 @@
   left:-1%;width:112%;max-width:none;
  }
  #st-top-gateway .beat{width:72%}
- #st-top-gateway .insight{left:27%;width:67%}
+ #st-top-gateway .insight{left:calc(27% + 20px);top:calc(9% - 20px);width:calc(67% - 20px)}
  #st-top-gateway .preserve{left:6%;top:23.5%}
- #st-top-gateway .precision{left:51%;top:42%;width:43%}
- #st-top-gateway .connection{top:58.5%}
- #st-top-gateway .life{left:27%;top:79%;width:67%}
- #st-top-gateway .life h2{font-size:clamp(22px,6.4vw,36px)}
+ #st-top-gateway .precision{left:calc(51% + 20px);top:42%;width:calc(43% - 20px)}
+ #st-top-gateway .connection{left:5%;top:58.5%}
+ #st-top-gateway .precision p{max-width:9em}
+ #st-top-gateway .connection p{max-width:7em}
+ #st-top-gateway .life{left:38%;top:79%;width:59%}
+ #st-top-gateway .life h2{font-size:clamp(20px,5.6vw,36px)}
 }
 @media(max-width:440px){
  #st-top-gateway .choice{grid-template-columns:1fr 18px;gap:4px 8px}
