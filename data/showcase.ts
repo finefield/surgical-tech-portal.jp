@@ -77,15 +77,12 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "USA",
     university: "Intuitive Surgical",
     department: "da Vinci 5",
-    tags: ["da Vinci 5", "データ駆動型手術", "AI評価"],
-    title: "THE STANDARD：外科手術のOSを書き換える次世代の標準",
-    description: `【Data-Driven Surgery】
-2024-25年に登場した最新機『da Vinci 5』。外科手術は「ビデオゲーム」から「ビッグデータ解析」の領域へ。術中の組織抵抗を感知するフォースフィードバックに加え、手術の全プロセスをデータ化。術後、AIが執刀医の手技を自動評価し改善点をレポートとして提示します。`,
+    tags: ["da Vinci 5", "Force Feedback", "手術データ"],
+    title: "THE STANDARD：da Vinci 5 と手術データの活用",
+    description: `『da Vinci 5』は、2024年に登場し、限定導入を経て2025年に本格展開が始まった手術支援ロボットです。組織に加わる力を術者が感じ取れる Force Feedback 技術を備えます（対応する器具は optional です）。手術中のシステムデータ、器具の動き、映像などは収集・解析され、『Case Insights』が客観的な指標や技能向上に向けた示唆を提示します（My Intuitive+ の利用が前提です）。`,
     refs: [
       { label: "Intuitive Surgical - da Vinci 5", url: "https://www.intuitive.com/en-us/products/da-vinci-surgical-system/da-vinci-5" },
       { label: "PA Consulting - Digital Surgery 2026", url: "https://www.paconsulting.com/newsroom/med-device-online-digital-surgery-in-2026-the-data-driven-operating-room-18-december-2025" },
-      { label: "MedTech Dive", url: "https://www.medtechdive.com/news/intuitive-surgical-da-vinci-5-launch/710682/" },
-      { label: "Robotics Business Review", url: "https://www.roboticsbusinessreview.com/" },
     ],
   },
   {
@@ -95,15 +92,12 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "CN/EU",
     university: "China-Europe 5G Link",
     department: "Telesurgery Network",
-    tags: ["5G遠隔手術", "大陸間執刀", "低遅延通信"],
-    title: "THE CONNECTED：約7,400kmの距離をゼロにする究極のネットワーク",
-    description: `【Beyond Borders】
-2025年、中国とドイツを結ぶ大陸間遠隔手術の実証に成功。低遅延ネットワークが物理的な距離を完全に克服しました。5Gのバックボーンを活用し、広州・中山大学のChen教授がハンブルクのコンソールから、北京の患者の前立腺癌手術を遠隔で実施。宇宙空間や紛争地、僻地医療を救う「究極のインフラ」として世界が注視しています。`,
+    tags: ["5G遠隔手術", "大陸間遠隔手術", "低遅延通信"],
+    title: "THE CONNECTED：中国とドイツを結んだ遠隔手術の実証",
+    description: `2025年11月14日、ドイツのロボット手術シンポジウム DRUS 2025 で、中山大学第一附属医院の Lingwu Chen 教授がハンブルクのコンソールから、北京の中国人民解放軍総医院の患者に、遠隔で根治的前立腺摘除術を実施しました。中山大学の発表では、通信距離は約12,000km、平均遅延は125ミリ秒、手術時間は90分でした。学会の場でのライブ実証であり、通常診療として行われたものではありません。`,
     refs: [
       { label: "IDW Online - European Breakthrough", url: "https://nachrichten.idw-online.de/2025/11/14/european-breakthrough-in-tele-robotic-surgery" },
-      { label: "Surgery International", url: "https://surgery.international/china-research-offers-hope-for-routine-robotic-telesurgery/" },
-      { label: "BMJ", url: "https://www.bmj.com/content/384/bmj-2023-078345" },
-      { label: "UroToday", url: "https://www.urotoday.com/conference-highlights/wcet-2025/163044-wcet-2025-state-of-the-art-lecture-remote-robotic-surgery-current-state-of-telesurgery.html" },
+      { label: "中山大学 公式発表", url: "https://www.sysu.edu.cn/sysuen/info/1012/57871.htm" },
     ],
   },
   {
@@ -113,10 +107,9 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "USA",
     university: "Vicarious Surgical",
     department: "Single-port Robotics",
-    tags: ["VicariousSurgical", "没入型手術", "最小侵襲"],
-    title: "THE HUMANOID：1.8cmの穴から外科医の「分身」を体内に送り込む",
-    description: `【Molecular Dexterity】
-わずか2cm足らずの穴から、人間の腕の動きを完全に再現したロボットアームが潜入。Vicariousは「患者の腹部内に外科医の分身が入る」という没入型コンセプト。360度の3Dマッピングによる没入型の操作コンセプトを掲げる、開発中の単一孔手術システムです（FDA未承認。設計凍結は2026年末目標とされ、実用化を目指しています）。`,
+    tags: ["単孔式手術", "開発中", "手術支援ロボット"],
+    title: "THE HUMANOID：単一の切開から入る手術支援ロボット（開発中）",
+    description: `Vicarious Surgical は、腹部の単一の切開（現行のディスポーザブルでは1.8cm）からカメラと2本のロボット器具を挿入する、開発中の単孔式手術支援システムです。ロボットアームは、肩・肘・手首に至る術者の上半身の自然な動きを再現するよう設計され、360°の視野と没入型の3D表示を備えます。FDA 未承認で、設計凍結は2026年末が目標とされています。`,
     refs: [
       { label: "Vicarious Surgical", url: "https://www.vicarioussurgical.com/" },
       { label: "Business Wire", url: "https://www.businesswire.com/news/home/20260105183855/en/Vicarious-Surgical-Advances-Toward-Design-Freeze-with-Successful-In-Vivo-Porcine-Lab" },
@@ -131,15 +124,11 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "USA",
     university: "NVIDIA",
     department: "NVIDIA Holoscan",
-    tags: ["NVIDIAHoloscan", "サージカルAI", "エッジAI"],
-    title: "THE ENGINE：手術室全体を「巨大なAIコンピュータ」に変える最強の演算基盤",
-    description: `【Surgical Intelligence】
-手術室にあるあらゆるカメラ、内視鏡、生体モニターを統合。NVIDIAのGPUパワーにより、術中映像へのAI推論をリアルタイムに重ねる高度支援を超低遅延で提供。特定のロボットに依存せず、手術室そのものを知能化するこのプラットフォームは、世界の医療機器開発の共通言語となっています。`,
+    tags: ["Holoscan", "手術映像", "AI推論"],
+    title: "THE ENGINE：手術データ処理の基盤『Holoscan』",
+    description: `NVIDIA の Holoscan は、手術映像やセンサーなどのストリーミングデータをリアルタイムに処理するための開発基盤です。手術映像に対するAIモデル（器具の検出やセグメンテーションなど）を低遅延で動かす用途が示されています。特定の手術支援ロボットに依存しない基盤で、医療機器メーカーなどが自社製品に組み込んで使うものです。Holoscan 自体は医療機器ではなく、開発用のプラットフォームです。`,
     refs: [
-      { label: "NVIDIA Holoscan SDK", url: "https://www.nvidia.com/en-us/clara/holoscan-sdk/" },
-      { label: "NVIDIA News - GTC 2024", url: "https://nvidianews.nvidia.com/news/nvidia-announces-new-medical-imaging-ai-partnerships-at-gtc-2024" },
-      { label: "Developer Portal", url: "https://developer.nvidia.com/holoscan-sdk" },
-      { label: "NVIDIA Blog - Healthcare AI", url: "https://blogs.nvidia.com/blog/gtc-2024-healthcare-ai/" },
+      { label: "NVIDIA Developer - Holoscan SDK", url: "https://developer.nvidia.com/holoscan-sdk" },
     ],
   },
   {
@@ -149,15 +138,12 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "UK",
     university: "Proximie",
     department: "AR Collaboration",
-    tags: ["Proximie", "AR遠隔指導", "手術の民主化"],
-    title: "THE COLLECTIVE：世界中の名医をARで召喚する「知能の民主化」",
-    description: `【Borderless Expertise】
-「手術室に物理的な壁はない」。現地の執刀医の視界に、地球の裏側にいる名医の「ARの手」をリアルタイムで重ね合わせ、直接的な手技指導を可能にします。世界100カ国以上で導入され、あらゆる手術室が「知の共有放送局」へと変貌。若手医師が世界最高峰の技術をインタラクティブに学習できる、外科教育のパラダイムシフトです。`,
+    tags: ["AR遠隔指導", "テレメンタリング", "手術教育"],
+    title: "THE COLLECTIVE：ARでつなぐ遠隔手術指導",
+    description: `Proximie は、遠隔地の専門医が、現地の執刀医が見ている術野の映像に手のジェスチャーや注釈を重ねて助言できるプラットフォームです。ARによる遠隔指導は、実際の臨床現場での使用が学術レビューでも報告されています。同社の公式サイトでは、50カ国以上・500を超える施設での導入が示されています。`,
     refs: [
       { label: "Proximie", url: "https://www.proximie.com/" },
-      { label: "Global Partnership", url: "https://www.proximie.com/news/proximie-announces-global-partnership" },
-      { label: "MobiHealthNews", url: "https://www.mobihealthnews.com/news/proximie-raises-80m-remote-surgical-collaboration-platform" },
-      { label: "HealthTech Digital", url: "https://www.healthtechdigital.com/proximie-reaches-major-milestone/" },
+      { label: "JMIR スコーピングレビュー（2025）", url: "https://www.jmir.org/2025/1/e63939/" },
     ],
   },
 ]

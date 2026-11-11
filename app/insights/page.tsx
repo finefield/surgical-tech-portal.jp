@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 // 集計の基準日（掲載情報の全件照合を行った日）
-const VERIFIED_DATE = "2026年11月9日"
+const VERIFIED_DATE = "2026年11月11日"
 
 function blob(f: Facility): string {
   return [f.name, f.headline, f.description, ...f.tags].join("\n")
@@ -225,9 +225,9 @@ export default function InsightsPage() {
                 「言及がある外科チーム」は、カード本文・見出し・タグに該当語が含まれる外科チームの数です。実施規模や件数の大小を示すものではありません。
               </li>
               <li>
-                掲載情報は定期的に再確認し、変更があればデータベースと
-                <a href="/" className="underline underline-offset-2">
-                  更新情報
+                掲載情報は定期的に再確認し、変更があれば
+                <a href="/database" className="underline underline-offset-2">
+                  データベース
                 </a>
                 に反映します。誤りにお気づきの場合は
                 <a href="/contact" className="underline underline-offset-2">
