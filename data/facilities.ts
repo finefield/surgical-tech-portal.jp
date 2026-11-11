@@ -16,6 +16,7 @@ export interface Facility {
   name: string
   tags: string[]
   headline: string
+  latestActivity?: string
   description: string
   officialWebsite?: OfficialWebsite
   references: Reference[]
@@ -3994,7 +3995,7 @@ DX要素： 技術認定医教育、ロボットプロクター、3グループ�
     references: [
       { label: "鳥取大学医学部 器官制御外科学講座 消化器外科・小児外科 公式Webサイト", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
       { label: "鳥取大学医学部附属病院「第一外科診療科群 消化器外科」", url: "https://www2.hosp.med.tottori-u.ac.jp/departments/medical/digestive-surgery/" },
-      { label: "鳥取大学 消化器外科・小児外科 公式Webサイト（紹介動画）", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
+      { label: "鳥取大学 消化器外科・小児外科「紹介動画」", url: "https://www.med.tottori-u.ac.jp/surgonco/class/video.html" },
     ],
   },
   {
@@ -4896,7 +4897,7 @@ DX要素： 鏡視下映像、先端技術展開外科学、移植医療イン�
       url: "https://kumamoto-gesurg.com/"
     },
     references: [
-      { label: "熊本大学 消化器外科 公式Webサイト", url: "https://kumamoto-gesurg.com/" },
+      { label: "熊本大学 消化器外科学「診療内容・臨床研究の取り組み」", url: "https://kumamoto-gesurg.com/treatment" },
     ],
   },
   {
