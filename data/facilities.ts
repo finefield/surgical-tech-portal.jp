@@ -221,7 +221,7 @@ DX要素： チーム医療、周術期管理、栄養・代謝、症例検討�
     area: "北海道",
     prefecture: "北海道",
     university: "旭川医科大学",
-    name: "外科学講座 肝胆膵・移植外科学分野／消化管外科学分野",
+    name: "外科学講座 消化器・移植外科学分野",
     tags: ["EMARO", "da Vinci", "TaTME", "8K内視鏡", "省力化手術"],
     headline: "ロボットで視野を安定させ、8Kで解剖を見つめ、少人数でも安全な手術へ。",
     description: `■ 医局の紹介
@@ -250,13 +250,13 @@ EMAROは、腹腔鏡下手術での人員削減を目的に使用されており
 省力化要素： 通常5人の外科医が必要な手術を3人で実施可能と紹介
 主な領域： 食道癌、胃癌、大腸癌、直腸癌、炎症性腸疾患、肝胆膵疾患、移植医療`,
     officialWebsite: {
-      label: "旭川医科大学外科学講座 肝胆膵・移植外科学分野／消化管外科学分野 公式Webサイト",
+      label: "旭川医科大学外科学講座 消化器・移植外科学分野 公式Webサイト",
       url: "https://asahikawa-hbpt-gastro.jp/"
     },
     references: [
       { label: "旭川医科大学「教室の歴史 消化管外科学分野」", url: "https://www.asahikawa-med.ac.jp/dept/mc/surgery/greet/gr-03" },
       { label: "旭川医科大学 外科学講座「消化管グループ」（2026年4月の分野統合）", url: "https://asahikawa-hbpt-gastro.jp/about/digestive.php" },
-      { label: "旭川医科大学外科学講座 肝胆膵・移植外科学分野／消化管外科学分野 公式Webサイト", url: "https://asahikawa-hbpt-gastro.jp/" },
+      { label: "旭川医科大学外科学講座 消化器・移植外科学分野 公式Webサイト", url: "https://asahikawa-hbpt-gastro.jp/" },
       { label: "旭川医科大学病院「消化管外科」", url: "https://www.asahikawa-med.ac.jp/dept/mc/surgery/team/digest" },
       { label: "旭川医科大学外科学講座「消化管外科」", url: "https://asahikawa-hbpt-gastro.jp/about/digestive.php" },
       { label: "旭川医科大学外科学講座「消化管外科 診療案内」", url: "https://asahikawa-hbpt-gastro.jp/treatment/digestive.php" },
@@ -446,7 +446,7 @@ DX要素： 腹腔鏡手術、低侵襲手術、症例検討、術前画像評�
     references: [
       { label: "東北大学病院 肝胆膵外科・胃腸外科 公式Webサイト", url: "https://www.surg.med.tohoku.ac.jp/surg1/index.html" },
       { label: "東北大学病院 肝胆膵外科・胃腸外科「生体調節外科学分野 スタッフ紹介」", url: "https://www.surg.med.tohoku.ac.jp/surg1/class/gas-staff.html" },
-      { label: "東北大学病院 肝胆膵外科・胃腸外科「教室紹介」", url: "https://www.surg.med.tohoku.ac.jp/surg1/class/" },
+      { label: "東北大学病院 肝胆膵外科・胃腸外科「教室紹介・教授ページ」", url: "https://www.surg.med.tohoku.ac.jp/surg1/class/p-professor.html" },
       { label: "東北大学大学院医学系研究科・医学部「消化器外科学分野（総合外科）」紹介資料", url: "https://www.med.tohoku.ac.jp/wp-content/uploads/2024/07/Department-of-Surgery_2024.pdf" },
     ],
   },
@@ -721,6 +721,7 @@ DX要素： ロボット支援手術、腹腔鏡手術、低侵襲手術、集�
       { label: "福島県立医科大学「肝胆膵・移植外科学講座」", url: "https://www.fmu.ac.jp/education/medicine/department/hbpts/" },
       { label: "福島県立医科大学附属病院 先端的低侵襲手術センター「肝胆膵・移植外科」", url: "https://www.fmu.ac.jp/hospitals/hikarigaoka/sosiki/amisc/department/hbpts.html" },
       { label: "福島県立医科大学 肝胆膵・移植外科学講座「移植領域」", url: "https://www.fmu.ac.jp/education/medicine/department/hbpts/medical/transplant.html" },
+      { label: "福島県立医科大学附属病院「肝胆膵・移植外科」", url: "https://www.fmu.ac.jp/hospitals/hikarigaoka/sinryoka/kantansui.html" },
     ],
   },
   // 中部
@@ -1681,14 +1682,14 @@ DX要素： 専門グループ制、内視鏡・腹腔鏡映像、低侵襲手�
     university: "大阪公立大学大学院医学研究科 外科学講座",
     name: "肝胆膵外科",
     tags: ["高度技能専門医", "ロボット支援手術", "低侵襲（腹腔鏡・ロボット）肝切除", "低侵襲（腹腔鏡・ロボット）膵切除"],
-    latestActivity: "高度技能専門医・指導医のもと、ロボット支援手術・低侵襲（腹腔鏡・ロボット）肝切除・膵切除を推進",
-    headline: "肝胆膵の高難度手術を、チーム医療で支える。",
+    latestActivity: "腹腔鏡下・ロボット支援下の肝切除と膵切除を行っています。",
+    headline: "肝胆膵の手術を、内科・放射線科との連携で支える。",
     description: `■ 医局の紹介
 大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科は、肝臓、胆道、膵臓領域の高難度手術を担う外科です。
 
 ■ DX・テクノロジーの取り組み
 【High-Volume HBP Surgical Platform】
-大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科では、肝胆膵外科学会が認定する高度技能専門医・指導医を取得したスタッフのもと、安全で高度な手術を行っていると紹介されています。
+大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科では、日本肝胆膵外科学会の高度技能専門医が在籍し、安全で高度な手術を行っていると紹介されています。
 
 症例蓄積は、高難度手術の安全性向上、術式選択の判断、若手外科医教育、チーム運用の基盤として機能しています。
 
@@ -1702,19 +1703,18 @@ DX要素： 専門グループ制、内視鏡・腹腔鏡映像、低侵襲手�
 
 ■ 実績・スタッツ
 正式名称： 大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科
-主な領域： 肝臓、胆道、膵臓、肝胆膵がん
-専門体制： 高度技能専門医・指導医
+主な領域： 肝臓・胆道・膵臓の良性疾患と悪性腫瘍
+専門体制： 日本肝胆膵外科学会の高度技能専門医が在籍
 導入・活用技術： ロボット支援手術、腹腔鏡下肝切除、腹腔鏡下膵切除、術前画像評価
 DX要素： 症例蓄積、治療方針決定、腹腔鏡映像`,
     officialWebsite: {
-      label: "大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科 公式ページ",
-      url: "https://www.omu.ac.jp/med/surgery/abdomen/index.html"
+      label: "大阪公立大学医学部附属病院「診療科一覧」",
+      url: "https://www.omu.ac.jp/hosp/about/departments"
     },
     references: [
       { label: "日本肝胆膵外科学会／日本内視鏡外科学会「ロボット支援膵切除術プロクター」一覧（2026年11月4日現在）", url: "https://www.jshbps.jp/uploads/files/p_261104.pdf" },
-      { label: "大阪公立大学大学院医学研究科 外科学講座", url: "https://www.omu.ac.jp/med/surgery/" },
-      { label: "大阪公立大学大学院医学研究科 外科学講座「肝胆膵外科」", url: "https://www.omu.ac.jp/med/surgery/abdomen/index.html" },
-      { label: "大阪公立大学大学院医学研究科 外科学講座「肝胆膵外科 スタッフ紹介」", url: "https://www.omu.ac.jp/med/surgery/abdomen/stuff.html" },
+      { label: "大阪公立大学医学部附属病院「肝胆膵外科」診療案内", url: "https://www.omu.ac.jp/hosp/_media/039_%E8%82%9D%E8%83%86%E8%86%B5%E5%A4%96%E7%A7%91%EF%BC%88%E8%82%9D%E8%87%93%E3%83%BB%E8%83%86%E9%81%93%E3%83%BB%E8%86%B5%E8%87%93%E5%A4%96%E7%A7%91%EF%BC%89-original.pdf" },
+      { label: "大阪公立大学医学部附属病院「診療科一覧」", url: "https://www.omu.ac.jp/hosp/about/departments" },
     ],
   },
   {
@@ -2027,6 +2027,7 @@ DX要素： 鏡視下映像、ロボット手術、医工連携、手術教育�
       { label: "神戸大学大学院医学研究科外科学講座 食道胃腸外科学分野 公式Webサイト", url: "https://www.med.kobe-u.ac.jp/surg1/" },
       { label: "神戸大学医学研究科・医学部「食道胃腸外科学分野」", url: "https://www.med.kobe-u.ac.jp/about/research/field/index.html?bid=106" },
       { label: "神戸大学 食道胃腸外科学分野「教室紹介」", url: "https://www.med.kobe-u.ac.jp/surg1/info.html" },
+      { label: "神戸大学 食道胃腸外科学分野「患者様へ」", url: "https://www.med.kobe-u.ac.jp/surg1/patient.html" },
     ],
   },
   {
@@ -2386,10 +2387,10 @@ DX要素： 映像記録、画像処理、手術支援機器開発、手術教�
 DX要素： 腹腔鏡手術、ロボット支援手術、低侵襲手術教育`,
     officialWebsite: {
       label: "群馬大学大学院 総合外科学講座 公式Webサイト",
-      url: "https://gunma-surgery.jp/"
+      url: "https://g-surg.med.gunma-u.ac.jp/"
     },
     references: [
-      { label: "群馬大学大学院 総合外科学講座 公式Webサイト", url: "https://gunma-surgery.jp/" },
+      { label: "群馬大学大学院 総合外科学講座 公式Webサイト", url: "https://g-surg.med.gunma-u.ac.jp/" },
       { label: "群馬大学大学院医学系研究科 総合外科学講座「消化管外科学分野」", url: "https://surgery.med.gunma-u.ac.jp/department_gastroenterology/" },
       { label: "群馬大学 総合外科学講座 消化管外科学分野「医師紹介」", url: "https://g-surg.med.gunma-u.ac.jp/ourteam/" },
       { label: "群馬大学大学院医学系研究科 総合外科学講座「消化管外科」（附属病院診療科ページ）", url: "https://surgery.med.gunma-u.ac.jp/clinic_gastroenterology/" },
@@ -2814,7 +2815,7 @@ DX要素： 画像診断、術前評価、治療方針検討、チーム医療`,
     prefecture: "千葉県",
     university: "千葉大学",
     name: "先端応用外科学",
-    tags: ["内視鏡治療", "腹腔鏡手術", "胸腔鏡手術", "食道胃腸外科", "先端医療"],
+    tags: ["内視鏡治療", "腹腔鏡手術", "胸腔鏡手術", "食道・胃腸外科"],
     headline: "食道・胃腸領域で、人にやさしい先端医療を追求する。",
     description: `■ 医局の紹介
 千葉大学 先端応用外科学は、千葉大学病院の食道・胃腸外科を担う教室です。
@@ -2847,7 +2848,7 @@ DX要素： 画像診断、術前評価、治療方針検討、チーム医療`,
 主な領域： 食道、胃、小腸、大腸、肛門、食道がん、胃がん、大腸がん、食道アカラシア、逆流性食道炎
 導入・活用技術： 内視鏡治療、腹腔鏡手術、胸腔鏡手術
 
-DX要素： 低侵襲治療、内視鏡治療、鏡視下手術、臨床研究、先端医療`,
+DX要素： 低侵襲治療、内視鏡治療、鏡視下手術、臨床研究`,
     officialWebsite: {
       label: "千葉大学大学院医学研究院 先端応用外科学 公式Webサイト",
       url: "https://www.ho.chiba-u.ac.jp/dept/academic-surgery/"
@@ -2905,7 +2906,7 @@ DX要素： ロボット支援手術、低侵襲手術、術式選択、国際�
     },
     references: [
       { label: "国際医療福祉大学成田病院「消化器外科」", url: "https://naritahospital.iuhw.ac.jp/departments/gastroenterological-surgery/index.html" },
-      { label: "国際医療福祉大学成田病院「手術支援ロボット da Vinci」", url: "https://naritahospital.iuhw.ac.jp/davinci/index.html" },
+      { label: "国際医療福祉大学成田病院「手術支援ロボット da Vinci」", url: "https://naritahospital.iuhw.ac.jp/davinci/" },
     ],
   },
   {
@@ -3091,8 +3092,6 @@ DX要素： 3グループ体制、腹腔鏡・ロボット映像、チーム医�
     },
     references: [
       { label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト", url: "https://www.marianna-u.ac.jp/stmsurgery/" },
-      { label: "聖マリアンナ医科大学病院「消化器・一般外科」", url: "https://www.marianna-u.ac.jp/hospital/departments/general_surgery/index.html" },
-      { label: "聖マリアンナ医科大学 消化器・一般外科「スタッフ紹介」", url: "https://www.marianna-u.ac.jp/stmsurgery/staff/index.html" },
       { label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」", url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf" },
     ],
   },
@@ -3799,7 +3798,7 @@ DX要素：低侵襲手術移行、症例蓄積、専門医取得支援、教育
     },
     references: [
       { label: "日本大学医学部外科学系 消化器外科学分野", url: "https://www.med.nihon-u.ac.jp/department/surgery3/" },
-      { label: "日本大学医学部外科学系 消化器外科学分野「グループ紹介」", url: "https://www.med.nihon-u.ac.jp/department/surgery3/group.php" },
+      { label: "日本大学医学部附属板橋病院「消化器外科」", url: "https://www.itabashi.med.nihon-u.ac.jp/division/digestive_surgery" },
       { label: "日本大学医学部附属板橋病院「消化器外科の取り組みについて」", url: "https://www.itabashi.med.nihon-u.ac.jp/news/post/710" },
       { label: "日本大学医学部外科学系 消化器外科学分野「お知らせ」", url: "https://www.med.nihon-u.ac.jp/department/surgery3/news2024.php" },
       { label: "日本大学医学部外科学系 消化器外科学分野「教授挨拶」", url: "https://www.med.nihon-u.ac.jp/department/surgery3/greeting.php" },
@@ -4089,7 +4088,7 @@ DX要素： 技術認定医教育、ロボットプロクター、3グループ�
     references: [
       { label: "鳥取大学医学部 器官制御外科学講座 消化器外科・小児外科 公式Webサイト", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
       { label: "鳥取大学医学部附属病院「第一外科診療科群 消化器外科」", url: "https://www2.hosp.med.tottori-u.ac.jp/departments/medical/digestive-surgery/" },
-      { label: "鳥取大学 消化器外科・小児外科「紹介動画」", url: "https://www.med.tottori-u.ac.jp/surgonco/class/video.html" },
+      { label: "鳥取大学 消化器外科・小児外科 公式Webサイト（紹介動画）", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
     ],
   },
   {
@@ -4412,12 +4411,12 @@ DX要素： ロボット映像、手術教育、症例検討、移植医療、�
 DX要素： ロボット支援手術、施設基準・資格制度、膵臓・胆道センター、地域啓発`,
     officialWebsite: {
       label: "香川大学医学部附属病院 消化器外科 公式Webサイト",
-      url: "https://www.kms.ac.jp/~surgeryg/"
+      url: "https://www.med.kagawa-u.ac.jp/~surgeryg/"
     },
     references: [
       { label: "香川大学 医学部・医学系研究科「消化器外科学」", url: "https://www.med.kagawa-u.ac.jp/faculty/center/igaku_kouza/shoukaki_geka/" },
-      { label: "香川大学医学部附属病院 消化器外科 公式Webサイト", url: "https://www.kms.ac.jp/~surgeryg/" },
-      { label: "香川大学医学部附属病院 消化器外科「肝胆膵外科」", url: "https://www.kms.ac.jp/~surgeryg/opinfo/kat.php" },
+      { label: "香川大学医学部附属病院 消化器外科 公式Webサイト", url: "https://www.med.kagawa-u.ac.jp/~surgeryg/" },
+      { label: "香川大学医学部附属病院 消化器外科「肝胆膵外科」", url: "https://www.med.kagawa-u.ac.jp/~surgeryg/opinfo/kat.html" },
       { label: "香川大学「NEXT INNOVATION vol.17」", url: "https://www.kagawa-u.ac.jp/information/public/kagaado/next-innovation/next-innovation-vol17for-future/" },
       { label: "香川大学医学部附属病院「ロボット手術センター」", url: "https://www.med.kagawa-u.ac.jp/hosp/shinryoka/robot/ishi/" },
     ],
@@ -4983,7 +4982,7 @@ DX要素： 鏡視下映像、先端技術展開外科学、移植医療イン�
 ロボット手術： ロボット支援手術を行っている
 `,
     references: [
-      { label: "熊本大学 消化器外科 公式", url: "https://www.kumamoto-u.ac.jp/surgery/" },
+      { label: "熊本大学 消化器外科 公式Webサイト", url: "https://kumamoto-gesurg.com/" },
       { label: "熊本大学病院「医療の現場から 特色と取り組み｜ロボットを活用した低侵襲な手術で、患者さんの負担軽減に取り組む」", url: "https://www.kuh.kumamoto-u.ac.jp/kuh/feature/g03_202412/" },
     ],
   },
@@ -5067,13 +5066,13 @@ DX要素： 鏡視下映像、先端技術展開外科学、移植医療イン�
 
 DX要素： 低侵襲手術、術野映像、手術教育、症例蓄積、集学的治療`,
     officialWebsite: {
-      label: "宮崎大学医学部 外科学講座 消化管・内分泌・小児外科 公式Webサイト",
-      url: "https://miyazaki-ge1.jp/"
+      label: "宮崎大学医学部 外科学講座 消化管・内分泌・小児外科",
+      url: "https://www.med.miyazaki-u.ac.jp/home/surgery/info-field/field-5/"
     },
     references: [
-      { label: "宮崎大学医学部 外科学講座 消化管・内分泌・小児外科 公式Webサイト", url: "https://miyazaki-ge1.jp/" },
-      { label: "宮崎大学医学部附属病院「消化管・内分泌・小児外科」", url: "https://www.miyazaki-u.ac.jp/hospital/section/shoukakan-naibunseki-shouni.html" },
-      { label: "宮崎大学 消化管・内分泌・小児外科「スタッフ紹介」", url: "https://miyazaki-ge1.jp/staff/" },
+      { label: "宮崎大学医学部 外科学講座 消化管・内分泌・小児外科", url: "https://www.med.miyazaki-u.ac.jp/home/surgery/info-field/field-5/" },
+      { label: "宮崎大学医学部附属病院「外科」", url: "https://www.med.miyazaki-u.ac.jp/home/hospital/departments/surgery/" },
+      { label: "宮崎大学 外科学講座 消化管・内分泌・小児外科「スタッフ紹介」", url: "https://www.med.miyazaki-u.ac.jp/home/surgery/staff_field_cat/staff-cat-5/" },
       { label: "宮崎県外科医会「令和7年度冬期講演会プログラム」", url: "https://www.miyazaki-geka.jp/ctrl-mgeka/wp-content/uploads/2026/01/6f3de0b37d29f258b014da1dd16aa121.pdf" },
     ],
   },
@@ -5087,7 +5086,7 @@ DX要素： 低侵襲手術、術野映像、手術教育、症例蓄積、集�
     latestActivity: "",
     headline: "宮崎大学肝胆膵外科は、肝臓、胆道、膵臓の外科治療を担う。",
     description: `■ 医局の紹介
-宮崎大学医学部 外科学講座 肝胆膵外科は、肝臓、胆道、膵臓の良性・悪性疾患に対する外科治療を担う講座です。
+宮崎大学医学部附属病院の肝胆膵外科では、肝がん、肝転移、胆道がん、膵がんなどの外科治療を行っています。
 
 消化管・内分泌・小児外科（第一外科）とは別カードとし、肝胆膵外科としての診療・研究・教育を中心に紹介しています。
 
@@ -5109,13 +5108,13 @@ DX要素： 低侵襲手術、術野映像、手術教育、症例蓄積、集�
 
 `,
     officialWebsite: {
-      label: "宮崎大学医学部 外科学講座 肝胆膵外科 公式Webサイト",
-      url: "https://miyazaki-hbp.jp/"
+      label: "宮崎大学医学部 外科学講座 公式Webサイト",
+      url: "https://www.med.miyazaki-u.ac.jp/home/surgery/"
     },
     references: [
-      { label: "宮崎大学医学部 外科学講座 肝胆膵外科 公式Webサイト", url: "https://miyazaki-hbp.jp/" },
-      { label: "宮崎大学医学部附属病院「肝胆膵外科」", url: "https://www.miyazaki-u.ac.jp/hospital/section/kantansui.html" },
-      { label: "宮崎大学 肝胆膵外科「スタッフ紹介」", url: "https://miyazaki-hbp.jp/staff/" },
+      { label: "宮崎大学医学部附属病院「外科」", url: "https://www.med.miyazaki-u.ac.jp/home/hospital/departments/surgery/" },
+      { label: "宮崎大学医学部附属病院 病院指標「肝胆膵外科」", url: "https://www.med.miyazaki-u.ac.jp/Shihyo/R7/template_R07.html" },
+      { label: "宮崎大学医学部 外科学講座", url: "https://www.med.miyazaki-u.ac.jp/home/surgery/" },
     ],
   },
   {
@@ -5123,12 +5122,12 @@ DX要素： 低侵襲手術、術野映像、手術教育、症例蓄積、集�
     area: "九州・沖縄",
     prefecture: "鹿児島県",
     university: "鹿児島大学大学院医歯学総合研究科",
-    name: "消化器・乳腺甲状腺外科学",
-    tags: ["消化器・乳腺甲状腺外科", "高度技能専門医修練施設A"],
-    latestActivity: "消化管、肝胆膵、乳腺、甲状腺・副甲状腺を一体で担い、ロボット支援手術・腹腔鏡手術・集学的治療を推進",
-    headline: "消化器から乳腺・甲状腺まで、ロボット・腹腔鏡・集学的治療で支える。",
+    name: "消化器外科学",
+    tags: ["高度技能専門医修練施設A"],
+    latestActivity: "鹿児島大学病院の消化器外科では、腹腔鏡手術やロボット支援手術に取り組んでいます。",
+    headline: "消化管と肝胆膵を担い、低侵襲手術に取り組む。",
     description: `■ 医局の紹介
-鹿児島大学大学院医歯学総合研究科 消化器・乳腺甲状腺外科学は、消化管外科（上部・下部）、肝胆膵外科、乳腺外科、甲状腺・副甲状腺外科を担う講座です。
+鹿児島大学病院の消化器外科は、食道・胃・大腸などの消化管と、肝臓・胆道・膵臓の外科診療を担います。
 
 日本肝胆膵外科学会の高度技能専門医修練施設Aに認定され、高難度肝胆膵手術を行っている。
 
@@ -5136,32 +5135,27 @@ DX要素： 低侵襲手術、術野映像、手術教育、症例蓄積、集�
 【Robotic & Laparoscopic GI/HBP Surgery】
 
 
-ロボット支援手術・腹腔鏡手術は、術野映像の共有、解剖理解、手術手技の標準化、若手外科医教育、症例蓄積を支える外科インフラとして活用されています。消化管と肝胆膵を横断して低侵襲手術を推進することで、患者負担の軽減と治療成績の向上に取り組んでいます。
+鹿児島大学病院の消化器外科では、消化管と肝胆膵の診療で腹腔鏡手術やロボット支援手術に取り組んでいます。
 
 【Advanced HBP Training Platform】
 鹿児島大学では、高難度肝胆膵手術の専門医育成を担っています。
 
 高難度肝胆膵外科を、術前画像評価、手術計画、複雑な血管・胆管・膵管周囲の解剖理解、専門医育成、症例蓄積をつなぐ高難度外科プラットフォームとして取り組んでいます。
 
-【Multimodal Oncology & Breast/Endocrine Integration】
-同講座では、消化器がん治療に加えて、乳腺外科、甲状腺・副甲状腺外科も担当し、腫瘍外科として幅広い領域をカバーしています。
-
-消化器・乳腺・内分泌領域を一体の講座として担うことで、多様な腫瘍外科的経験の蓄積が可能です。
-
 ■ 実績・スタッツ
-正式名称： 鹿児島大学大学院医歯学総合研究科 消化器・乳腺甲状腺外科学
-主な領域： 食道、胃、大腸、肝臓、胆道、膵臓、乳腺、甲状腺、副甲状腺
+正式名称： 鹿児島大学大学院医歯学総合研究科 消化器外科学
+主な領域： 食道、胃、大腸、肝臓、胆道、膵臓
 
 DX要素： 専門医育成、高難度肝胆膵手術`,
     officialWebsite: {
-      label: "鹿児島大学大学院医歯学総合研究科 消化器・乳腺甲状腺外科学 公式Webサイト",
-      url: "https://kago-ge.jp/"
+      label: "鹿児島大学大学院医歯学総合研究科 消化器外科学 公式Webサイト",
+      url: "https://gekaichi.com/"
     },
     references: [
-      { label: "鹿児島大学大学院医歯学総合研究科 消化器・乳腺甲状腺外科学 公式Webサイト", url: "https://kago-ge.jp/" },
-      { label: "鹿児島大学医学部・歯学部附属病院「消化器・乳腺甲状腺外科」", url: "https://www.kufm.kagoshima-u.ac.jp/~surgery2/top.html" },
-      { label: "鹿児島大学 消化器・乳腺甲状腺外科学「スタッフ紹介」", url: "https://kago-ge.jp/staff/" },
-      { label: "鹿児島大学 消化器・乳腺甲状腺外科「肝胆膵外科」", url: "https://kago-ge.jp/treatment/liver-biliary-pancreas/" },
+      { label: "鹿児島大学大学院医歯学総合研究科「研究分野一覧」", url: "https://www2.kufm.kagoshima-u.ac.jp/outline/research-areas/" },
+      { label: "鹿児島大学大学院医歯学総合研究科「消化器外科学」", url: "https://www2.kufm.kagoshima-u.ac.jp/field/digestive-surgery-breast-and-thyroid-surgery/" },
+      { label: "鹿児島大学病院「消化器外科」", url: "https://www.hosp.kagoshima-u.ac.jp/medicine/009/" },
+      { label: "鹿児島大学病院 病院指標「消化器外科」", url: "https://www.hosp.kagoshima-u.ac.jp/dpc/r07/template_R08.html" },
       { label: "鹿児島大学病院「学会等認定施設一覧」", url: "https://www.hosp.kagoshima-u.ac.jp/information/certification/" },
     ],
   },
@@ -5175,7 +5169,7 @@ DX要素： 専門医育成、高難度肝胆膵手術`,
     latestActivity: "消化管・肝胆膵領域において、腹腔鏡手術、ロボット支援手術と、内科・放射線科と連携した治療を推進",
     headline: "沖縄の消化器外科を、腹腔鏡・ロボット手術と他科連携の治療で支える。",
     description: `■ 医局の紹介
-琉球大学 消化器・腫瘍外科は、食道、胃、大腸などの消化管外科と、肝臓、胆道、膵臓の肝胆膵外科を含む消化器外科・腫瘍外科領域を担う医局です。
+琉球大学病院の第一外科（消化器・乳腺内分泌・小児外科）は、消化器領域では食道・胃・小腸・大腸と肝臓・胆道・膵臓を担当します。
 
 消化管と肝胆膵を一体として扱い、腫瘍外科学として診療・研究・教育を推進しています。
 
@@ -5203,13 +5197,11 @@ DX要素： 専門医育成、高難度肝胆膵手術`,
 DX要素： 低侵襲手術、術野映像、集学的治療、カンファレンス`,
     officialWebsite: {
       label: "琉球大学 消化器・腫瘍外科 公式Webサイト",
-      url: "https://ryudai-gesurg.com/"
+      url: "https://www.ryukyu-surg1.org/"
     },
     references: [
-      { label: "琉球大学 消化器・腫瘍外科 公式Webサイト", url: "https://ryudai-gesurg.com/" },
-      { label: "琉球大学病院「消化器・腫瘍外科」", url: "https://www.ryudai.ac.jp/hospital/departments/gesurg/" },
-      { label: "琉球大学 消化器・腫瘍外科「スタッフ紹介」", url: "https://ryudai-gesurg.com/staff/" },
-      { label: "琉球大学病院「消化器・乳腺内分泌・小児外科」診療科紹介", url: "https://www.hosp.u-ryukyu.ac.jp/departments/geka_1.html" },
+      { label: "琉球大学 消化器・腫瘍外科 公式Webサイト", url: "https://www.ryukyu-surg1.org/" },
+      { label: "琉球大学病院「第一外科（消化器・乳腺内分泌・小児外科）」", url: "https://www.hosp.u-ryukyu.ac.jp/departments/geka_1.html" },
     ],
   },
   // 関東（追加）
