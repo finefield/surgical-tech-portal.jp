@@ -3092,7 +3092,6 @@ DX要素： 3グループ体制、腹腔鏡・ロボット映像、チーム医�
     },
     references: [
       { label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト", url: "https://www.marianna-u.ac.jp/stmsurgery/" },
-      { label: "聖マリアンナ医科大学 消化器・一般外科「スタッフ紹介」", url: "https://www.marianna-u.ac.jp/stmsurgery/staff" },
       { label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」", url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf" },
     ],
   },
@@ -4417,7 +4416,7 @@ DX要素： ロボット支援手術、施設基準・資格制度、膵臓・�
     references: [
       { label: "香川大学 医学部・医学系研究科「消化器外科学」", url: "https://www.med.kagawa-u.ac.jp/faculty/center/igaku_kouza/shoukaki_geka/" },
       { label: "香川大学医学部附属病院 消化器外科 公式Webサイト", url: "https://www.med.kagawa-u.ac.jp/~surgeryg/" },
-      { label: "香川大学医学部附属病院 消化器外科「肝胆膵外科」", url: "https://www.med.kagawa-u.ac.jp/~surgeryg/opinfo/kat.php" },
+      { label: "香川大学医学部附属病院 消化器外科「肝胆膵外科」", url: "https://www.med.kagawa-u.ac.jp/~surgeryg/opinfo/kat.html" },
       { label: "香川大学「NEXT INNOVATION vol.17」", url: "https://www.kagawa-u.ac.jp/information/public/kagaado/next-innovation/next-innovation-vol17for-future/" },
       { label: "香川大学医学部附属病院「ロボット手術センター」", url: "https://www.med.kagawa-u.ac.jp/hosp/shinryoka/robot/ishi/" },
     ],
