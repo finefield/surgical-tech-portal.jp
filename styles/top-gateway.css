@@ -110,7 +110,36 @@
 #st-top-gateway .search{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:23px;padding:13px 16px;border:1px solid #789f9f;color:var(--cyan);background:#102733;text-decoration:none}
 #st-top-gateway .search:hover{background:#193c45}
 @media(max-width:650px){#st-top-gateway .gateway-grid{grid-template-columns:1fr;gap:20px}#st-top-gateway .choice{min-height:54px}}
-@media(max-width:440px){#st-top-gateway .opening img{object-position:84% center}#st-top-gateway .journey img{width:132%;left:-16%}#st-top-gateway .beat{width:72%}#st-top-gateway .precision{left:50%;width:49%}#st-top-gateway .life{left:30%;width:68%}#st-top-gateway .choice{grid-template-columns:1fr 18px;gap:4px 8px}#st-top-gateway .descr{grid-row:2}#st-top-gateway .arr{grid-column:2;grid-row:1/3}#st-top-gateway .opening h1{white-space:nowrap;font-size:clamp(27px,7.8vw,35px)}}
+@media(max-width:650px){
+ #st-top-gateway .opening img{
+  top:6%;height:94%;object-position:69% center;transform-origin:80% 55%;
+  mask-image:linear-gradient(transparent,#000 13%,#000 75%,transparent 98%);
+ }
+ #st-top-gateway .opening:after{
+  background:linear-gradient(90deg,#030e1be8,#030e1b80 58%,transparent),
+   linear-gradient(0deg,var(--night) 5%,transparent 40%);
+ }
+ #st-top-gateway .journey > img{
+  left:-6%;width:112%;max-width:none;
+ }
+ #st-top-gateway .beat{width:72%;isolation:isolate}
+ #st-top-gateway .beat::before{
+  content:"";position:absolute;inset:-12px -14px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 40% 50%,#030e1bd9 12%,#030e1ba6 48%,transparent 75%);
+ }
+ #st-top-gateway .insight{left:22%}
+ #st-top-gateway .preserve{top:24%}
+ #st-top-gateway .precision{left:42%;width:52%}
+ #st-top-gateway .connection{top:62%}
+ #st-top-gateway .life{left:17%;width:77%}
+ #st-top-gateway .life h2{font-size:clamp(22px,6.4vw,36px)}
+}
+@media(max-width:440px){
+ #st-top-gateway .choice{grid-template-columns:1fr 18px;gap:4px 8px}
+ #st-top-gateway .descr{grid-row:2}
+ #st-top-gateway .arr{grid-column:2;grid-row:1/3}
+ #st-top-gateway .opening h1{font-size:clamp(24px,7.8vw,35px)}
+}
 #st-top-gateway .opening img,#st-top-gateway .journey img{
  filter:brightness(var(--tube-brightness,1)) saturate(var(--tube-saturation,1));
  transition:filter 280ms ease-out;
