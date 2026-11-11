@@ -115,6 +115,9 @@
   top:6%;height:94%;object-position:69% center;transform-origin:80% 55%;
   mask-image:linear-gradient(transparent,#000 13%,#000 75%,transparent 98%);
  }
+ #st-top-gateway .opening h1{
+  font-family:system-ui,"Hiragino Sans","Yu Gothic",sans-serif;font-weight:500;
+ }
  #st-top-gateway .opening:after{
   background:linear-gradient(90deg,#030e1be8,#030e1b80 58%,transparent),
    linear-gradient(0deg,var(--night) 5%,transparent 40%);
@@ -125,7 +128,8 @@
  #st-top-gateway .beat{width:72%}
  #st-top-gateway .insight{left:calc(27% + 20px);top:calc(9% - 20px);width:calc(67% - 20px)}
  #st-top-gateway .preserve{left:6%;top:23.5%}
- #st-top-gateway .precision{left:calc(51% + 20px);top:42%;width:calc(43% - 20px)}
+ #st-top-gateway .precision{left:calc(51% + 12px);top:42%;width:calc(43% - 12px)}
+ #st-top-gateway .precision h2 button{white-space:nowrap}
  #st-top-gateway .connection{left:5%;top:58.5%}
  #st-top-gateway .precision p{max-width:9em}
  #st-top-gateway .connection p{max-width:7em}
