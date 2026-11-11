@@ -150,20 +150,6 @@ export function TopGateway() {
     }
   }, [])
 
-  const visiblePageArea = () =>
-    new Promise<DOMRectReadOnly>((resolve) => {
-      const root = rootRef.current
-      if (!root) {
-        resolve(new DOMRectReadOnly(0, 0, window.innerWidth, window.innerHeight))
-        return
-      }
-      const observer = new IntersectionObserver(([entry]) => {
-        observer.disconnect()
-        resolve(entry.intersectionRect)
-      })
-      observer.observe(root)
-    })
-
   const openChapter = async (
     key: ExplorerThemeKey,
     trigger: HTMLButtonElement,
@@ -188,17 +174,16 @@ export function TopGateway() {
       )
       await pulse.finished.catch(() => {})
     }
-    const visibleArea = await visiblePageArea()
-    const center = visibleArea.height
-      ? visibleArea.top + visibleArea.height / 2
-      : window.innerHeight / 2
+    // 中心と最大高はビューポート基準にする。本番では共通フッターが画面下部を占め、
+    // ゲートウェイの可視高で測るとモーダルが目減りして内容が溢れるため（試作は単独ページで同値だった）
+    const center = window.innerHeight / 2
     const rect = trigger.getBoundingClientRect()
     const entryOffset = (distance: number) =>
       `${Math.max(-40, Math.min(40, distance * 0.15))}px`
     setDialogStyle({
       "--chapter-light": chapter.theme.light,
       "--dialog-center": `${center}px`,
-      "--dialog-height": `${visibleArea.height || window.innerHeight}px`,
+      "--dialog-height": `${window.innerHeight}px`,
       "--entry-x": entryOffset(rect.x + rect.width / 2 - window.innerWidth / 2),
       "--entry-y": entryOffset(rect.y + rect.height / 2 - center),
     } as React.CSSProperties)

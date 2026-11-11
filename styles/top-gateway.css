@@ -158,9 +158,9 @@
  box-shadow:0 24px 85px #000a,0 0 28px color-mix(in srgb,var(--chapter-light,var(--cyan)),transparent 75%);
 }
 #st-top-gateway dialog::backdrop{background:#010914ad}
-#st-top-gateway dialog[open]{animation:st-top-chapter-wipe 570ms cubic-bezier(.19,1,.25,1) both}
+#st-top-gateway dialog[open]{display:flex;flex-direction:column;overflow:hidden;animation:st-top-chapter-wipe 570ms cubic-bezier(.19,1,.25,1) both}
 #st-top-gateway dialog[open]::backdrop{animation:st-top-backdrop 340ms ease-out both}
-#st-top-gateway .chapter-frame{position:relative;isolation:isolate}
+#st-top-gateway .chapter-frame{position:relative;isolation:isolate;display:flex;flex-direction:column;flex:1;min-height:0}
 #st-top-gateway .chapter-frame::after{
  content:"";position:absolute;inset:8px;pointer-events:none;z-index:2;
  background:linear-gradient(var(--chapter-light),var(--chapter-light)) top left / 29px 1px no-repeat,
@@ -168,7 +168,7 @@
   linear-gradient(var(--chapter-light),var(--chapter-light)) bottom right / 29px 1px no-repeat,
   linear-gradient(var(--chapter-light),var(--chapter-light)) bottom right / 1px 29px no-repeat;
 }
-#st-top-gateway .chapter-intro{position:relative;isolation:isolate;overflow:hidden;padding:clamp(66px,10vw,104px) 7% clamp(22px,5vw,49px)}
+#st-top-gateway .chapter-intro{position:relative;isolation:isolate;overflow:hidden;flex:none;padding:clamp(54px,8vw,84px) 7% clamp(18px,4vw,38px)}
 #st-top-gateway .chapter-intro::before{
  content:"";position:absolute;inset:0;z-index:-1;
  background:linear-gradient(90deg,#030e1bee 4%,#030e1b96 59%,#030e1b14 100%),linear-gradient(0deg,var(--night),transparent 65%);
@@ -180,7 +180,7 @@
  animation:st-top-scan 590ms cubic-bezier(.19,1,.25,1) both;
 }
 #st-top-gateway dialog h3{
- max-width:22em;margin:0;color:var(--ink);font:400 clamp(22px,4.4vw,43px)/1.5 var(--mincho);
+ max-width:22em;margin:0;color:var(--ink);font:400 clamp(21px,3.6vw,36px)/1.45 var(--mincho);
  text-wrap:balance;word-break:auto-phrase;text-shadow:0 2px 12px #001020,0 0 22px #001020;
 }
 #st-top-gateway .chapter-controls{position:sticky;top:0;z-index:3;height:0;display:flex;justify-content:flex-end;padding-inline:14px;pointer-events:none}
@@ -190,11 +190,11 @@
  min-height:44px;padding:8px 14px;font:inherit;
 }
 #st-top-gateway dialog button:hover{border-color:var(--chapter-light);background:#183543}
-#st-top-gateway .chapter-teams{margin:0 7%;padding:0;list-style:none;border-top:1px solid var(--line)}
+#st-top-gateway .chapter-teams{margin:0 7%;padding:0;list-style:none;border-top:1px solid var(--line);overflow-y:auto;min-height:0;overscroll-behavior:contain}
 #st-top-gateway .chapter-teams li{border-bottom:1px solid var(--line)}
 #st-top-gateway .chapter-teams a{
  display:grid;grid-template-columns:3em minmax(0,1fr) 1em;gap:12px;align-items:center;
- padding:12px 4px;color:var(--ink);text-decoration:none;
+ padding:10px 4px;color:var(--ink);text-decoration:none;
 }
 #st-top-gateway .chapter-teams a:hover{color:var(--chapter-light);background:#142533}
 #st-top-gateway .chapter-team-name{display:block;font:400 clamp(16px,2.4vw,22px)/1.5 var(--mincho)}
@@ -202,7 +202,7 @@
 #st-top-gateway .chapter-region,#st-top-gateway .chapter-team-arrow{color:var(--chapter-light)}
 #st-top-gateway .chapter-region{font-size:11px}
 #st-top-gateway .chapter-explore{
- margin:clamp(14px,3vw,24px) 7% clamp(20px,4vw,35px);padding:10px 14px;
+ flex:none;margin:clamp(12px,2.4vw,18px) 7% clamp(16px,3.2vw,28px);padding:10px 14px;
  display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;
  color:var(--chapter-light);border:1px solid color-mix(in srgb,var(--chapter-light) 54%,transparent);
  background:#102432;text-decoration:none;
