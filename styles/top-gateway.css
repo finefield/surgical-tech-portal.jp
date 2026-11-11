@@ -126,9 +126,6 @@
   object-position:69% center;transform-origin:80% 55%;
   mask-image:linear-gradient(#000 75%,transparent 98%);
  }
- #st-top-gateway .opening h1{
-  font-family:system-ui,"Hiragino Sans","Yu Gothic",sans-serif;font-weight:500;
- }
  #st-top-gateway .opening:after{
   background:linear-gradient(90deg,#030e1be8,#030e1b80 58%,transparent),
    linear-gradient(0deg,var(--night) 5%,transparent 40%);
