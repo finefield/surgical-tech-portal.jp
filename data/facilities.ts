@@ -16,6 +16,7 @@ export interface Facility {
   name: string
   tags: string[]
   headline: string
+  latestActivity?: string
   description: string
   officialWebsite?: OfficialWebsite
   references: Reference[]
@@ -330,9 +331,6 @@ DX要素： 3D視野、ロボット鉗子、腹腔鏡手術、専門医教育、
 【Robotic & Endoscopic Surgery】
 岩手医科大学 外科学講座では、消化器外科領域において腹腔鏡・内視鏡外科、ロボット支援手術を含む低侵襲手術の活用を進めています。
 
-
-単なる機器導入ではなく、研究会や症例共有を通じて、手技の共有、術式の改善、専門医間のディスカッションを進めている点は、外科教育・技術継承の取り組みとして位置づけられます。
-
 【ctDNA, Biomarkers & Precision Oncology】
 同講座では、切除不能肝胆道がん治療におけるctDNA動態の観察研究、大腸癌患者におけるctDNA治療ナビゲーションシステムの基盤構築など、多様な研究テーマに取り組んでいます。
 
@@ -347,7 +345,7 @@ DX要素： 3D視野、ロボット鉗子、腹腔鏡手術、専門医教育、
 主な領域： 上部消化管、下部消化管、肝胆膵、乳腺、内分泌、小児外科
 導入・活用技術： ロボット支援手術、内視鏡外科、腹腔鏡手術
 研究領域： MASLD/MASH、ctDNA、乳癌術後再発バイオマーカー
-DX要素： ctDNA治療ナビゲーション、バイオマーカー研究、代謝改善手術、研究会、低侵襲手術教育`,
+DX要素： ctDNA治療ナビゲーション、バイオマーカー研究、代謝改善手術、低侵襲手術教育`,
     officialWebsite: {
       label: "岩手医科大学医学部 外科学講座 公式Webサイト",
       url: "https://surgery-iwate-med.jp/"
@@ -355,8 +353,6 @@ DX要素： ctDNA治療ナビゲーション、バイオマーカー研究、代
     references: [
       { label: "岩手医科大学医学部 外科学講座 公式Webサイト", url: "https://surgery-iwate-med.jp/" },
       { label: "岩手医科大学「外科学講座」", url: "https://www.iwate-med.ac.jp/research/daigakuin/med/kouza-bunya/m28/" },
-      { label: "岩手医科大学医学部 外科学講座「第26回岩手内視鏡外科研究会 開催告知」", url: "https://surgery-iwate-med.jp/16367/" },
-      { label: "岩手医科大学医学部 外科学講座「第27回岩手内視鏡外科研究会 開催告知」", url: "https://surgery-iwate-med.jp/16602/" },
     ],
   },
   {
@@ -618,13 +614,12 @@ DX要素： ロボット支援手術、TaTME、ISR、LECS、D-LECS、腹腔鏡�
 重粒子線連携： 重粒子線照射後のConversion手術 1年間で8例
 主な領域： 食道、胃、大腸、肝胆膵、乳腺、甲状腺、一般外科`,
     officialWebsite: {
-      label: "山形大学大学院医学系研究科医学専攻 外科学第一講座 公式Webサイト",
-      url: "https://www.surgery1-yamagata.net/"
+      label: "山形大学医学部附属病院「第一外科」",
+      url: "https://www1.id.yamagata-u.ac.jp/MIDINFO/clinics/department/suf.html"
     },
     references: [
-      { label: "山形大学大学院医学系研究科医学専攻 外科学第一講座 公式Webサイト", url: "https://www.surgery1-yamagata.net/" },
+      { label: "山形大学医学部附属病院「第一外科」", url: "https://www1.id.yamagata-u.ac.jp/MIDINFO/clinics/department/suf.html" },
       { label: "山形大学「第一外科（消化器・乳腺・一般外科）」", url: "https://www.id.yamagata-u.ac.jp/kenshu/shinryo/shinryo8.html" },
-      { label: "山形大学 外科学第一講座「下部消化管チーム」", url: "https://surgery1-yamagata.net/group/02-lgt.html" },
       { label: "山形大学医学部東日本重粒子センター", url: "https://hic-east.jp/" },
     ],
   },
@@ -1276,7 +1271,7 @@ DX要素： 4診療グループ制、症例検討、治療方針共有、横断�
     },
     references: [
       { label: "愛知医科大学 消化器外科 公式Webサイト", url: "https://www.aichi-med-surg.jp/" },
-      { label: "愛知医科大学病院「消化器外科」", url: "https://www.aichi-med-u.ac.jp/hospital/sh04/sh0403/sh040303/index.html" },
+      { label: "愛知医科大学病院「消化器外科」", url: "https://www.aichi-med-u.ac.jp/hospital/sh04/sh0402/sh040201/index.html" },
     ],
   },
   {
@@ -2120,7 +2115,7 @@ DX要素： キャンサーボード、症例検討、低侵襲手術、専門�
     references: [
       { label: "兵庫医科大学 消化器外科学講座 肝胆膵外科 公式Webサイト", url: "https://hyogo-hbp-surgery.com/" },
       { label: "兵庫医科大学病院「肝・胆・膵外科」", url: "https://www.hosp.hyo-med.ac.jp/service/department/hpd_surgery/" },
-      { label: "兵庫医科大学病院 Doctor's Interview「肝・胆・膵外科」", url: "https://www.hosp.hyo-med.ac.jp/medical/seminar/interview/file35/" },
+      { label: "兵庫医科大学病院「長期生存を目指した肝胆膵外科治療」", url: "https://www.hosp.hyo-med.ac.jp/medical/interview/file03/" },
     ],
   },
   {
@@ -2341,11 +2336,11 @@ DX要素： 腹腔鏡手術、ロボット支援手術、低侵襲手術教育`,
 主な領域： 肝臓、胆道、膵臓、肝胆膵悪性腫瘍
 DX要素： 術前画像評価、集学的治療、重粒子線治療連携、腹腔鏡手術、症例検討`,
     officialWebsite: {
-      label: "群馬大学大学院 総合外科学講座 公式Webサイト",
-      url: "https://gunma-surgery.jp/"
+      label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト",
+      url: "https://gunmahbpsurg.med.gunma-u.ac.jp/"
     },
     references: [
-      { label: "群馬大学大学院 総合外科学講座 公式Webサイト", url: "https://gunma-surgery.jp/" },
+      { label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト", url: "https://gunmahbpsurg.med.gunma-u.ac.jp/" },
       { label: "群馬大学 重粒子線医学研究センター", url: "https://heavy-ion.showa.gunma-u.ac.jp/" },
       { label: "群馬大学医学部附属病院「肝胆膵外科」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10429" },
       { label: "群馬大学医学部附属病院「重粒子線医学センター」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10511" },
@@ -2999,11 +2994,11 @@ DX要素： 3班体制、チーム医療、腹腔鏡・ロボット映像、患�
 導入・活用技術： ロボット支援手術、腹腔鏡手術、低侵襲手術
 DX要素： 3グループ体制、腹腔鏡・ロボット映像、チーム医療、患者負担軽減`,
     officialWebsite: {
-      label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト",
-      url: "https://www.marianna-u.ac.jp/stmsurgery/"
+      label: "聖マリアンナ医科大学病院「消化器・一般外科」",
+      url: "https://www.marianna-u.ac.jp/hospital/departments/general_surgery/"
     },
     references: [
-      { label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト", url: "https://www.marianna-u.ac.jp/stmsurgery/" },
+      { label: "聖マリアンナ医科大学病院「消化器・一般外科」", url: "https://www.marianna-u.ac.jp/hospital/departments/general_surgery/" },
       { label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」", url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf" },
     ],
   },
@@ -4000,7 +3995,7 @@ DX要素： 技術認定医教育、ロボットプロクター、3グループ�
     references: [
       { label: "鳥取大学医学部 器官制御外科学講座 消化器外科・小児外科 公式Webサイト", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
       { label: "鳥取大学医学部附属病院「第一外科診療科群 消化器外科」", url: "https://www2.hosp.med.tottori-u.ac.jp/departments/medical/digestive-surgery/" },
-      { label: "鳥取大学 消化器外科・小児外科 公式Webサイト（紹介動画）", url: "https://www.med.tottori-u.ac.jp/surgonco/" },
+      { label: "鳥取大学 消化器外科・小児外科「紹介動画」", url: "https://www.med.tottori-u.ac.jp/surgonco/class/video.html" },
     ],
   },
   {
@@ -4068,12 +4063,12 @@ DX要素： ロボット・腹腔鏡映像、専門医修練、肝移植体制�
 【Robotic GI Surgery & Low-Invasive Center】
 岡山大学病院では、2024年3月にロボット支援下食道がん手術100例に到達したと紹介されています。
 
-ロボット支援手術は、低侵襲治療センターを中心とした術野映像、精密操作、手術標準化、症例蓄積・教育の基盤として位置づけられています。
+岡山大学病院の消化管外科では、食道がん、胃がん、大腸がんの手術に手術支援ロボットを活用しています。
 
 【da Vinci Three-System Infrastructure】
 岡山大学病院では、2023年4月よりda Vinci 3台体制での運用を開始したことが発表されています。
 
-3台体制は、対象手術の増加、手術待機期間の短縮、複数診療科でのロボット手術展開を支える病院インフラです。「1台導入」ではなく、運用体体制・症例対応力・教育機会を広げる手術インフラとして取り組んでいます。
+3台体制は、対象手術の増加、手術待機期間の短縮、複数診療科でのロボット手術展開を支える病院インフラです。「1台導入」ではなく、運用体制・症例対応力・教育機会を広げる手術インフラとして取り組んでいます。
 
 【HBP Surgery, Proctorship & Transplant Care】
 岡山大学病院 肝胆膵外科では、肝切除、膵切除、肝移植を数多く手掛け、肝胆膵高難度手術にも取り組んでいます。
@@ -4086,17 +4081,17 @@ DX要素： ロボット・腹腔鏡映像、専門医修練、肝移植体制�
 ロボット： da Vinci 3台体制、食道領域のロボット支援下内視鏡手術100例到達（2024年3月）
 肝胆膵領域： 肝切除、膵切除、肝移植、高難度手術
 プロクター： ロボット支援下膵切除、肝切除、総胆管拡張症手術、腹腔鏡下移植用部分肝採取術
-DX要素： 低侵襲治療センター、da Vinci 3台体制、ロボット症例蓄積、プロクター、肝移植、教育`,
+DX要素： da Vinci 3台体制、ロボット症例蓄積、プロクター、肝移植、教育`,
     officialWebsite: {
       label: "岡山大学大学院医歯薬学総合研究科 消化器外科学 公式Webサイト",
       url: "https://www.ges-okayama-u.com/"
     },
     references: [
       { label: "岡山大学大学院医歯薬学総合研究科 消化器外科学 公式Webサイト", url: "https://www.ges-okayama-u.com/" },
-      { label: "岡山大学病院 低侵襲治療センター「消化管外科手術」", url: "https://www.omit-okayama-u.com/digestive/" },
+      { label: "岡山大学病院「消化管外科」", url: "https://www.okayama-u.ac.jp/user/hospital/index122.html" },
       { label: "岡山大学病院「肝・胆・膵外科」", url: "https://www.okayama-u.ac.jp/user/hospital/index123.html" },
       { label: "岡山大学「手術支援ロボット da Vinci Xi 2台目導入」", url: "https://www.okayama-u.ac.jp/tp/release/release_id1079.html" },
-      { label: "岡山大学プレスリリース「手術支援ロボット『ダ・ヴィンチ』年間手術件数が全国国立大学病院第1位に 消化器外科4領域ではそれぞれ100例に到達」（2024年4月24日）", url: "http://www.okayama-u.ac.jp/up_load_files/press_r6/press20240424-5.pdf" },
+      { label: "岡山大学プレスリリース「手術支援ロボット『ダ・ヴィンチ』年間手術件数が全国国立大学病院第1位に 消化器外科4領域ではそれぞれ100例に到達」（2024年4月24日）", url: "https://www.okayama-u.ac.jp/up_load_files/press_r6/press20240424-5.pdf" },
     ],
   },
   {
@@ -4276,12 +4271,12 @@ DX要素： ロボットプロクター、腹腔鏡手術、移植医療、集�
 DX要素： ロボット映像、手術教育、症例検討、移植医療、周術期管理、集学的治療`,
     officialWebsite: {
       label: "徳島大学大学院 消化器・移植外科学 公式Webサイト",
-      url: "https://www.tokugeka.com/"
+      url: "https://tokugeka.clin.med.tokushima-u.ac.jp/"
     },
     references: [
-      { label: "徳島大学大学院 消化器・移植外科学 公式Webサイト", url: "https://www.tokugeka.com/" },
+      { label: "徳島大学大学院 消化器・移植外科学 公式Webサイト", url: "https://tokugeka.clin.med.tokushima-u.ac.jp/" },
       { label: "徳島大学病院「消化器・移植外科」", url: "https://www.tokushima-hosp.jp/department/circulatory.html?belong_code=11&rank_code=unit" },
-      { label: "徳島大学大学院 消化器・移植外科学「医局員プロフィール」", url: "https://www.tokugeka.com/surg1/page2_2.html" },
+      { label: "徳島大学大学院 消化器・移植外科学「メンバー紹介」", url: "https://tokugeka.clin.med.tokushima-u.ac.jp/about/members/" },
     ],
   },
   {
@@ -4770,12 +4765,16 @@ DX要素： 鏡視下映像`,
     latestActivity: "佐賀県内唯一の肝胆膵高度技能医修練施設Aとして、術前シミュレーション、ICGナビゲーション、術中3Dナビゲーション、da Vinci・hinotoriによるロボット支援手術を推進",
     headline: "佐賀大学は、ICG・3Dナビゲーション・国産ロボットで肝胆膵手術を見える化する。",
     description: `■ 医局の紹介
-小規模県ならではの迅速な意思決定を活かし、スピード感を持って最先端のDXインフラを県内全域へ展開する機動力あふれる医局です。
+佐賀大学医学部附属病院の一般・消化器外科は、消化管、肝胆膵、乳腺などの疾患を診療しています。肝胆膵グループでは、肝切除で術前シミュレーションやICG・術中3Dナビゲーションを活用しています。
 
 ■ 実績・スタッツ
 導入ロボット： da Vinci、hinotori
 
 `,
+    officialWebsite: {
+      label: "佐賀大学医学部 一般・消化器外科 公式Webサイト",
+      url: "https://www.surgery.med.saga-u.ac.jp/"
+    },
     references: [
       { label: "佐賀大学医学部 一般・消化器外科 公式サイト「ロボット支援手術について」", url: "https://www.surgery.med.saga-u.ac.jp/patient/39.html" },
       { label: "佐賀大学医学部 一般・消化器外科「肝胆膵グループ」", url: "https://www.surgery.med.saga-u.ac.jp/group/27.html" },
@@ -4893,9 +4892,12 @@ DX要素： 鏡視下映像、先端技術展開外科学、移植医療イン�
 ■ 実績・スタッツ
 ロボット手術： ロボット支援手術を行っている
 `,
+    officialWebsite: {
+      label: "熊本大学 消化器外科 公式Webサイト",
+      url: "https://kumamoto-gesurg.com/"
+    },
     references: [
-      { label: "熊本大学 消化器外科 公式Webサイト", url: "https://kumamoto-gesurg.com/" },
-      { label: "熊本大学病院「医療の現場から 特色と取り組み｜ロボットを活用した低侵襲な手術で、患者さんの負担軽減に取り組む」", url: "https://www.kuh.kumamoto-u.ac.jp/kuh/feature/g03_202412/" },
+      { label: "熊本大学 消化器外科学「診療内容・臨床研究の取り組み」", url: "https://kumamoto-gesurg.com/treatment" },
     ],
   },
   {
@@ -4938,7 +4940,7 @@ DX要素： 鏡視下映像、先端技術展開外科学、移植医療イン�
       { label: "大分大学医学部附属病院「消化器外科」", url: "https://www.med.oita-u.ac.jp/hospital/shinryoka_bumon/g_shokaki.html" },
       { label: "大分大学医学部附属病院「手術支援ロボット（ダヴィンチ・hinotori）によるロボット支援手術」", url: "https://www.med.oita-u.ac.jp/hospital/info/202502robot.html" },
       { label: "大分大学医学部附属病院「低侵襲手術センター」", url: "https://www.med.oita-u.ac.jp/hospital/shinryoka_bumon/teishinshu.html" },
-      { label: "大分大学医学部附属病院「低侵襲手術のあゆみ」（公式PDF）", url: "http://www-ftp.oita-u.ac.jp/000056279.pdf" },
+      { label: "大分大学医学部附属病院「低侵襲手術のあゆみ」（公式PDF）", url: "https://www.oita-u.ac.jp/000056279.pdf" },
     ],
   },
   {
