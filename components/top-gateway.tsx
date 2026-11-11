@@ -236,10 +236,10 @@ export function TopGateway() {
           <br />
           未来をひらけるか。
         </h1>
-        <p>
+        <p className="max-[650px]:font-[family-name:var(--mincho)] max-[650px]:font-normal">
           その一手の先に、まだ見ぬ可能性がある。
           <br />
-          外科の奥へ、旅をしよう。
+          外科の新しい景色を、見にいこう。
         </p>
         <a className="opening-next" href="#st-top-insight" onClick={onOpeningNext}>
           光の先へ <span aria-hidden="true">↓</span>
