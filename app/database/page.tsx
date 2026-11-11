@@ -1,7 +1,15 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { facilities, areas, prefectureOrder } from "@/data/facilities"
 import { DatabaseClient } from "@/components/database-client"
+import { isExplorerThemeKey, type ExplorerViewKey } from "@/data/explorer"
+
+export const metadata: Metadata = {
+  title: "消化器外科チームを探す",
+  description:
+    "関わりたい技術や学びたいことから、全国の消化器外科系外科チームを探せる一覧です。",
+}
 
 // サーバーサイドで都道府県順にソート
 const sortedFacilities = [...facilities].sort((a, b) => {
@@ -13,19 +21,27 @@ const sortedFacilities = [...facilities].sort((a, b) => {
   return orderA - orderB
 })
 
-export default function DatabasePage() {
+export default async function DatabasePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ theme?: string }>
+}) {
+  const sp = await searchParams
+  // テーマ指定がない・未知のキーの場合は「すべて」
+  const initialTheme: ExplorerViewKey =
+    sp.theme && isExplorerThemeKey(sp.theme) ? sp.theme : "all"
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#06111e]">
       <Header />
 
-      <main className="pt-24 pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <DatabaseClient 
-            facilities={sortedFacilities} 
-            areas={areas} 
-            totalCount={facilities.length} 
-          />
-        </div>
+      <main className="pt-16 pb-16">
+        <DatabaseClient
+          facilities={sortedFacilities}
+          areas={areas}
+          totalCount={facilities.length}
+          initialTheme={initialTheme}
+        />
       </main>
 
       <Footer />
