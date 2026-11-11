@@ -3440,7 +3440,7 @@ DX要素： 専門医教育、プロクター、症例蓄積、低侵襲手術�
       { label: "日本医科大学付属病院「消化器外科」", url: "https://www.nms.ac.jp/hosp/section/digestive.html" },
       { label: "日本医科大学 消化器外科 公式サイト", url: "https://nms-surgery1.com/" },
       { label: "日本医科大学 消化器外科「肝・胆・膵グループ」", url: "https://nms-surgery1.com/kyoushitsu_staff_02.html" },
-      { label: "日本肝胆膵外科学会／日本内視鏡外科学会「ロボット支援肝切除術プロクター」一覧（2025年10月31日現在）", url: "https://www.jshbps.jp/uploads/files/hep_251031.pdf" },
+      { label: "日本肝胆膵外科学会／日本内視鏡外科学会「ロボット支援肝切除術プロクター」一覧（2026年11月4日現在）", url: "https://www.jshbps.jp/uploads/files/hep_261104.pdf" },
       { label: "日本医科大学付属病院 消化器外科「膵臓の腹腔鏡下手術」", url: "https://nms-surgery1.com/paper/suizou-h29.pdf" },
       { label: "日本医科大学広報誌「安全で低侵襲な腹腔鏡下手術で患者の予後を改善させたい」", url: "https://hippocrates.nms.ac.jp/creator/406/" },
     ],
