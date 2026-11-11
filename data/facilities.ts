@@ -1632,92 +1632,6 @@ DX要素： AI手術見える化、手術動画解析、スキル評価、NCD症
     ],
   },
   {
-    id: 34,
-    area: "近畿",
-    prefecture: "大阪府",
-    university: "大阪公立大学大学院医学研究科 外科学講座",
-    name: "消化器外科",
-    tags: ["上部・下部消化管", "消化管悪性腫瘍", "低侵襲手術", "IBD", "専門グループ制"],
-    latestActivity: "上部消化管グループと下部消化管グループを中心に、食道癌、胃癌、大腸癌、炎症性腸疾患に対する外科治療を推進",
-    headline: "上部と下部を専門グループで磨き、消化管がんとIBDに向き合う。",
-    description: `■ 医局の紹介
-大阪公立大学大学院医学研究科 外科学講座 消化器外科は、消化管全般の悪性腫瘍を中心に幅広く診療する外科です。
-
-上部消化管グループは食道癌、胃癌などを中心に担当し、下部消化管グループは大腸癌や炎症性腸疾患を主に扱っています。
-
-■ DX・テクノロジーの取り組み
-【Upper & Lower GI Specialist Platform】
-大阪公立大学大学院医学研究科 外科学講座 消化器外科では、上部消化管グループと下部消化管グループが、それぞれ食道・胃、大腸・炎症性腸疾患を中心に診療しています。
-
-専門グループ制は、臓器別の専門知識を深めながら、症例情報、内視鏡所見、画像診断、手術適応、薬物療法、術後管理を共有する診療プラットフォームとして機能しています。グループを越えた症例検討や治療方針の議論が、患者ごとの最適な治療選択を支えています。
-
-【Minimally Invasive GI Surgery】
-消化管外科領域では、腹腔鏡手術やロボット支援手術などの低侵襲手術が重要な技術です。
-
-腹腔鏡・内視鏡映像を活用した術野共有は、若手外科医が解剖を理解し、手術手技を学ぶ映像教育基盤としても機能します。鏡視下手術などの低侵襲手術を行い、若手外科医教育のためのビデオも用意しています。
-
-【IBD & Colorectal Decision-Making】
-下部消化管グループでは、大腸癌だけでなく、炎症性腸疾患も重要な診療対象です。
-
-炎症性腸疾患では、薬物療法、内視鏡評価、手術適応の判断、術後フォローをつなぐ治療設計が必要です。外科手術を単独の治療としてではなく、消化器内科・内視鏡・薬物療法・画像診断と接続する消化管診療プロセスの一部として取り組んでいます。
-
-■ 実績・スタッツ
-正式名称： 大阪公立大学大学院医学研究科 外科学講座 消化器外科
-主な領域： 食道癌、胃癌、大腸癌、炎症性腸疾患、消化管悪性腫瘍
-体制： 上部消化管グループ、下部消化管グループ
-DX要素： 専門グループ制、内視鏡・腹腔鏡映像、低侵襲手術、IBD治療設計、手術教育`,
-    officialWebsite: {
-      label: "大阪公立大学医学部附属病院「診療科・部門一覧」",
-      url: "https://www.omu.ac.jp/hosp/about/departments"
-    },
-    references: [
-      { label: "大阪公立大学医学部附属病院「消化器外科」診療案内", url: "https://www.omu.ac.jp/hosp/_media/036_%E6%B6%88%E5%8C%96%E5%99%A8%E5%A4%96%E7%A7%91-original.pdf" },
-      { label: "大阪公立大学医学部附属病院「診療科・部門一覧」", url: "https://www.omu.ac.jp/hosp/about/departments" },
-    ],
-  },
-  {
-    id: 341,
-    area: "近畿",
-    prefecture: "大阪府",
-    university: "大阪公立大学大学院医学研究科 外科学講座",
-    name: "肝胆膵外科",
-    tags: ["高度技能専門医", "ロボット支援手術", "低侵襲（腹腔鏡・ロボット）肝切除", "低侵襲（腹腔鏡・ロボット）膵切除"],
-    latestActivity: "腹腔鏡下・ロボット支援下の肝切除と膵切除を行っています。",
-    headline: "肝胆膵の手術を、内科・放射線科との連携で支える。",
-    description: `■ 医局の紹介
-大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科は、肝臓、胆道、膵臓領域の高難度手術を担う外科です。
-
-■ DX・テクノロジーの取り組み
-【High-Volume HBP Surgical Platform】
-大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科では、日本肝胆膵外科学会の高度技能専門医が在籍し、安全で高度な手術を行っていると紹介されています。
-
-症例蓄積は、高難度手術の安全性向上、術式選択の判断、若手外科医教育、チーム運用の基盤として機能しています。
-
-【Laparoscopic HBP Surgery】
-同科では、低侵襲手術として腹腔鏡下の肝切除・膵切除にも積極的に取り組んでいます。
-
-ロボット支援手術を含む低侵襲手術を推進しており、ロボット支援膵体尾部切除術のプロクターとして、学会の認定リストに同科の医師2名が掲載されています。
-
-腹腔鏡下肝切除・膵切除は、患者負担を抑えるだけでなく、術前画像評価、血管・胆管・膵管の解剖把握、腹腔鏡映像による術野共有、若手外科医の手技教育を支える高難度外科テクノロジーとして機能しています。
-
-
-■ 実績・スタッツ
-正式名称： 大阪公立大学大学院医学研究科 外科学講座 肝胆膵外科
-主な領域： 肝臓・胆道・膵臓の良性疾患と悪性腫瘍
-専門体制： 日本肝胆膵外科学会の高度技能専門医が在籍
-導入・活用技術： ロボット支援手術、腹腔鏡下肝切除、腹腔鏡下膵切除、術前画像評価
-DX要素： 症例蓄積、治療方針決定、腹腔鏡映像`,
-    officialWebsite: {
-      label: "大阪公立大学医学部附属病院「診療科一覧」",
-      url: "https://www.omu.ac.jp/hosp/about/departments"
-    },
-    references: [
-      { label: "日本肝胆膵外科学会／日本内視鏡外科学会「ロボット支援膵切除術プロクター」一覧（2026年11月4日現在）", url: "https://www.jshbps.jp/uploads/files/p_261104.pdf" },
-      { label: "大阪公立大学医学部附属病院「肝胆膵外科」診療案内", url: "https://www.omu.ac.jp/hosp/_media/039_%E8%82%9D%E8%83%86%E8%86%B5%E5%A4%96%E7%A7%91%EF%BC%88%E8%82%9D%E8%87%93%E3%83%BB%E8%83%86%E9%81%93%E3%83%BB%E8%86%B5%E8%87%93%E5%A4%96%E7%A7%91%EF%BC%89-original.pdf" },
-      { label: "大阪公立大学医学部附属病院「診療科一覧」", url: "https://www.omu.ac.jp/hosp/about/departments" },
-    ],
-  },
-  {
     id: 35,
     area: "近畿",
     prefecture: "大阪府",
@@ -1754,13 +1668,11 @@ MRI画像、診断モデル、オルガノイド、薬剤感受性予測を、�
 教育要素： 若手外科医の教育システム開発
 DX要素： 画像診断モデル、個別化治療、患者由来オルガノイド、教育システム`,
     officialWebsite: {
-      label: "関西医科大学 上部消化管外科学講座 公式Webサイト",
-      url: "https://www7.kmu.ac.jp/uppergisurg/"
+      label: "関西医科大学「上部消化管外科学」（大学公式サイト）",
+      url: "https://www.kmu.ac.jp/faculty/medical/category3/unit81.html"
     },
     references: [
-      { label: "関西医科大学 上部消化管外科学講座 公式Webサイト", url: "https://www7.kmu.ac.jp/uppergisurg/" },
-      { label: "関西医科大学 上部消化管外科学講座「主任教授挨拶」", url: "https://www7.kmu.ac.jp/uppergisurg/greetings/" },
-      { label: "関西医科大学 上部消化管外科学講座「研究活動」", url: "https://www7.kmu.ac.jp/uppergisurg/researcher/" },
+      { label: "関西医科大学「上部消化管外科学」（大学公式サイト）", url: "https://www.kmu.ac.jp/faculty/medical/category3/unit81.html" },
     ],
   },
   {
@@ -1805,7 +1717,7 @@ DX要素： 予後因子解析、治療成績解析、症例データ活用、�
     references: [
       { label: "関西医科大学「胆膵外科学」", url: "https://www.kmu.ac.jp/faculty/medical/category3/unit84.html" },
       { label: "関西医科大学 研究組織「胆膵外科学講座」", url: "https://www.kmu.ac.jp/research/micd/organization/index.html" },
-      { label: "関西医科大学 上部消化管外科学講座「主任教授挨拶」", url: "https://www7.kmu.ac.jp/uppergisurg/greetings/" },
+      { label: "関西医科大学「上部消化管外科学」（大学公式サイト）", url: "https://www.kmu.ac.jp/faculty/medical/category3/unit81.html" },
     ],
   },
   {
@@ -2429,11 +2341,11 @@ DX要素： 腹腔鏡手術、ロボット支援手術、低侵襲手術教育`,
 主な領域： 肝臓、胆道、膵臓、肝胆膵悪性腫瘍
 DX要素： 術前画像評価、集学的治療、重粒子線治療連携、腹腔鏡手術、症例検討`,
     officialWebsite: {
-      label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト",
-      url: "https://gunmahbpsurg.med.gunma-u.ac.jp/"
+      label: "群馬大学大学院 総合外科学講座 公式Webサイト",
+      url: "https://gunma-surgery.jp/"
     },
     references: [
-      { label: "群馬大学大学院 総合外科学講座 肝胆膵外科学分野 公式Webサイト", url: "https://gunmahbpsurg.med.gunma-u.ac.jp/" },
+      { label: "群馬大学大学院 総合外科学講座 公式Webサイト", url: "https://gunma-surgery.jp/" },
       { label: "群馬大学 重粒子線医学研究センター", url: "https://heavy-ion.showa.gunma-u.ac.jp/" },
       { label: "群馬大学医学部附属病院「肝胆膵外科」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10429" },
       { label: "群馬大学医学部附属病院「重粒子線医学センター」", url: "https://hospital.med.gunma-u.ac.jp/?page_id=10511" },
@@ -3087,10 +2999,11 @@ DX要素： 3班体制、チーム医療、腹腔鏡・ロボット映像、患�
 導入・活用技術： ロボット支援手術、腹腔鏡手術、低侵襲手術
 DX要素： 3グループ体制、腹腔鏡・ロボット映像、チーム医療、患者負担軽減`,
     officialWebsite: {
-      label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」",
-      url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf"
+      label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト",
+      url: "https://www.marianna-u.ac.jp/stmsurgery/"
     },
     references: [
+      { label: "聖マリアンナ医科大学 消化器・一般外科 公式Webサイト", url: "https://www.marianna-u.ac.jp/stmsurgery/" },
       { label: "聖マリアンナ医科大学病院「2026年度 診療科紹介（消化器・一般外科）」", url: "https://www.marianna-u.ac.jp/hospital/data/media/marianna-u_hospital/page/shinryoutaisei/pdf/general_surgery.pdf" },
     ],
   },
@@ -5919,5 +5832,46 @@ DX要素： ロボット支援手術の症例集積と、画像支援による�
       { label: "大阪赤十字病院「消化器外科」", url: "https://www.osaka-med.jrc.or.jp/department/s11.html"},
       { label: "大阪赤十字病院 消化器外科「肝胆膵外科について」（PDF）", url: "https://www.osaka-med.jrc.or.jp/department/upload/136bf2bf9f3d658ab1fa2487b5027887_2.pdf"},
     ],
+  },
+
+  {
+    id: 972,
+    area: "近畿",
+    prefecture: "大阪府",
+    university: "関西医科大学",
+    name: "下部消化管外科学講座",
+    tags: ["結腸・直腸・肛門", "ロボット支援手術", "3機種の手術支援ロボット", "機能温存・肛門温存", "IBD・肛門疾患"],
+    latestActivity: "大腸がん手術の約99％を腹腔鏡またはロボット支援下で施行しています。",
+    headline: "3機種の手術支援ロボットで、大腸がんの低侵襲手術を担う。",
+    description: `■ 医局の紹介
+関西医科大学 下部消化管外科学講座は、大腸がん（結腸がん、直腸がん、肛門管がん）を中心に、GIST、神経内分泌腫瘍（NET）、炎症性腸疾患（クローン病、潰瘍性大腸炎）、肛門疾患、直腸脱、腹部救急疾患に対する手術治療、化学療法・放射線療法を行っています。
+
+下部消化管疾患（特に大腸がん）に関する専門知識と技術を基に、根治性の追求と低侵襲性に加えて、術後の生活の質（QOL）を考慮した治療を目指しています。
+
+■ DX・テクノロジーの取り組み
+【Three Robotic Platforms】
+関西医科大学附属病院 下部消化管外科では、da Vinci Xi、hinotori、Hugoの3機種の手術支援ロボットを備え、結腸がん、直腸がんのロボット手術を保険診療で施行しています。ロボット手術では3次元画像、多関節機能をもった鉗子、手振れ防止機能により、直腸周囲の自律神経や血管の温存に配慮した繊細な手術が可能とされています。直腸がんは2018年、結腸がんは2022年に保険適応となっています。
+
+【Function-Preserving Rectal Surgery】
+直腸がんに対しては、根治性を担保しながら排尿機能・性機能の温存に努め、下部直腸がんの90％以上で肛門温存手術を実現しています。進行下部直腸がんに対しては側方リンパ節郭清を腹腔鏡・ロボット手術で実施し、術前治療として放射線療法と全身化学療法を組み合わせたTotal Neoadjuvant Therapy（TNT）を導入し、腫瘍が消失した症例では手術を行わないNon Operative Management（NOM）も取り入れています。
+
+【Team & Information Sharing】
+カンファレンスや電子カルテを活用した情報共有体制により、多職種が連携したチーム医療を実践しています。
+
+■ 診療・体制
+主な領域： 大腸がん（結腸がん、直腸がん、肛門管がん）、GIST、神経内分泌腫瘍（NET）、炎症性腸疾患、肛門疾患、直腸脱、腹部救急疾患
+手術実績： 附属病院では年間約500件の手術を実施し、大腸がんの原発切除は約300件（2025年は総手術数537例、初発大腸がん283例のうちロボット手術189例）
+専門体制： 内視鏡外科学会技術認定医8名、ロボット手術プロクター4名の指導体制のもと、大腸がん手術の約99％を腹腔鏡またはロボット支援下で施行
+教授： 渡邉純（診療部長・診療科長・教授）
+正式名称： 関西医科大学 下部消化管外科学講座`,
+    officialWebsite: {
+      label: "関西医科大学 下部消化管外科学講座 公式Webサイト",
+      url: "https://www.kmu-kabu.com/"
+    },
+    references: [
+      { label: "関西医科大学 下部消化管外科学講座 公式Webサイト", url: "https://www.kmu-kabu.com/" },
+      { label: "関西医科大学 下部消化管外科学講座「講座のご紹介」", url: "https://www.kmu-kabu.com/department" },
+      { label: "関西医科大学 下部消化管外科学講座「ロボット手術」", url: "https://www.kmu-kabu.com/robotic-surgery" },
+    ]
   },
 ]
