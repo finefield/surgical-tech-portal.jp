@@ -120,14 +120,14 @@
    linear-gradient(0deg,var(--night) 5%,transparent 40%);
  }
  #st-top-gateway .journey > img{
-  left:-6%;width:112%;max-width:none;
+  left:-1%;width:112%;max-width:none;
  }
  #st-top-gateway .beat{width:72%}
  #st-top-gateway .insight{left:27%;width:67%}
- #st-top-gateway .preserve{top:24%}
- #st-top-gateway .precision{left:47%;width:47%}
- #st-top-gateway .connection{top:62%}
- #st-top-gateway .life{left:22%;width:72%}
+ #st-top-gateway .preserve{left:6%;top:23.5%}
+ #st-top-gateway .precision{left:51%;top:42%;width:43%}
+ #st-top-gateway .connection{top:58.5%}
+ #st-top-gateway .life{left:27%;top:79%;width:67%}
  #st-top-gateway .life h2{font-size:clamp(22px,6.4vw,36px)}
 }
 @media(max-width:440px){
