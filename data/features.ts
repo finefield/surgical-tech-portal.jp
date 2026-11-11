@@ -19,22 +19,13 @@ export const features: Feature[] = [
     prefecture: "愛知県",
     university: "藤田医科大学",
     department: "総合消化器外科学",
-    tags: ["ロボット手術国内トップクラス", "hinotori", "サージカルトレーニングセンター", "サージカルDX", "藤田医大", "教育の民主化"],
-    title: "THE HOLY LAND",
-    subtitle: "ロボット手術の概念を塗り替える不動の聖地",
-    description: `【聖地としての宿命】
-ロボット支援手術の延べ実績は7,700例以上（2008年～2025年8月）と国内トップクラス。その姿は、単なる一病院の枠を超え、日本の外科医療の標準（スタンダード）を規定する司令塔です。数多くの日本初・世界初の術式を成し遂げてきた歴史は、常に未知の領域へ踏み込む勇気の積み重ね。ここでの症例データは、そのまま日本の外科の歴史となっています。
-
-【教育の高速道路：サージカルトレーニングセンターの衝撃】
-サージカルトレーニングセンター（CSTC）は、ダビンチ・hinotori・Hugoのトレーニング施設が同一拠点に揃う、世界で唯一のトレーニングセンターです。かつては10年かかると言われたベテランの域へ、若手が数年で到達できる驚異的なラーニング環境を実現しています。
-
-【未来：合併症ゼロへの挑戦】
-最新の取り組みでは、国産ロボット『hinotori』による遠隔手術の実証を国内で初めて実施（10Gbps光専用回線）。2023年には東京―愛知間、シンガポール国立大学との間でも実証を行いました。もはや手術は外科医個人の腕に依存するものではなく、最先端テックが執刀医を全方位からバックアップする「究極の安全」の領域へと突入しています。`,
+    tags: ["手術トレーニング", "ロボット支援手術"],
+    title: "3機種の手術支援ロボットを学ぶ拠点",
+    subtitle: "",
+    description: `ダビンチ、hinotori、Hugoのトレーニング施設が同じ拠点にあります。医療従事者が手術支援ロボットの操作を学ぶ環境を整えています。`,
     references: [
-      { label: "藤田医科大学 ロボット手術センター", url: "https://www.fujita-hu.ac.jp/center/robot/" },
-      { label: "藤田医科大学 ニュース", url: "https://www.fujita-hu.ac.jp/news/" },
-      { label: "日本経済新聞", url: "https://www.nikkei.com/" },
-      { label: "メディカロイド", url: "https://www.medicaroid.com/" },
+      { label: "藤田医科大学病院「ロボット支援手術」", url: "https://hospital.fujita-hu.ac.jp/about/feature/roboticsurgery.html" },
+      { label: "藤田医科大学「医療ロボット・AIの実践」", url: "https://fhu.jp/robot_ai.html" },
     ],
     theme: "holy-land",
   },
@@ -44,22 +35,13 @@ export const features: Feature[] = [
     prefecture: "東京都",
     university: "東京科学大学",
     department: "消化管外科学分野（旧医科歯科大）",
-    tags: ["Saroa", "触覚フィードバック", "東京科学大学", "医工連携", "ScienceTokyo", "国産ロボット"],
-    title: "THE INNOVATOR",
-    subtitle: "人類に「デジタルな触覚」を取り戻す医工融合の最高峰",
-    description: `【知の化学反応：Science Tokyo】
-2024年10月の統合により、医学の最高峰（旧東京医科歯科大学）と工学の最高峰（旧東京工業大学）が一つになった「東京科学大学」。その最前線に立つ消化管外科学分野の哲学は明確です。「外科医の技術を工学で拡張し、不可能を可能にする」。臨床現場の切実なニーズと、世界トップクラスのエンジニアリングが壁を介さずシームレスに融合する環境は、まさにシリコンバレーを凌駕する熱量を持っています。
-
-【国産ロボット『Saroa』が起こした触覚革命】
-世界中の外科医を驚愕させているのが、自前開発に深く関与した国産ロボット『Saroa（サロア）』です。これまでのロボット手術の最大の弱点であった「触感の欠如」を、独自技術の空気圧駆動によって克服。組織を掴んだ際の「硬さ」や「粘り」を執刀医の指先へリアルタイムにフィードバックします。繊細な剥離操作を、あたかも自分の手で直接触れているかのような感覚で実行できるのです。
-
-【身体知をデジタルで継承する】
-この「触覚DX」は、教育への応用も期待されています。力覚フィードバックの教育効果については、前臨床研究で検証が進められています。日本発の技術で世界の外科医療のOSを書き換える。その最前線がここにあります。`,
+    tags: ["Saroa", "医工連携", "力覚フィードバック"],
+    title: "鉗子にかかる力を術者に伝える「Saroa」",
+    subtitle: "",
+    description: `旧・東京医科歯科大学と旧・東京工業大学は、リバーフィールドと手術支援ロボット「Saroa」を共同開発しました。空気圧駆動を利用して、鉗子にかかる力を術者に伝える機能を備えています。`,
     references: [
-      { label: "東京医科歯科大学", url: "https://www.tmd.ac.jp/" },
-      { label: "リバーフィールド", url: "https://www.riverfieldinc.com/" },
-      { label: "消化管外科学分野", url: "https://www.tmd.ac.jp/med/surg2/" },
-      { label: "日本経済新聞", url: "https://www.nikkei.com/" },
+      { label: "東京科学大学 共同開発に関する公表資料", url: "https://www.tmd.ac.jp/files/topics/60014_ext_04_6.pdf" },
+      { label: "リバーフィールド「Saroa」製品資料", url: "https://www.riverfieldinc.com/files/upload/Saroa_catalog.pdf" },
     ],
     theme: "innovator",
   },
@@ -69,21 +51,12 @@ export const features: Feature[] = [
     prefecture: "東京都",
     university: "東京大学",
     department: "肝胆膵外科・人工臓器移植外科",
-    tags: ["AI手術支援", "東大外科", "肝胆膵ロボット", "自動ナビ"],
-    title: "THE INTELLIGENCE",
-    subtitle: "名人芸を「科学」へ昇華させる手術データの科学的活用",
-    description: `【暗黙知を形式知へ。データの王道】
-東京大学が目指すのは、属人的で「名人芸」とされてきた外科手術を、誰もが再現可能な「精密な科学」へと再定義することです。肝胆膵領域という、人体で最も複雑かつ出血リスクの高い難攻不落の領域において、東大は「経験値」という曖昧な言葉を排除。手術データの科学的活用を目指す研究が進められており、世界屈指の症例数と解析力を武器に、外科の未来をデータで描き出しています。
-
-【手術支援AIの研究開発】
-東京大学では、AIによる術中解剖認識・注視点識別などの手術支援AIの研究開発を進めています。
-
-【大規模言語モデル（LLM）と融合する臨床知】東京大学の医局は、もはや単なる診療組織ではなく、世界最先端の「サージカル・インテリジェンス・センター」へと進化を遂げています。`,
+    tags: ["手術映像解析", "AI研究"],
+    title: "手術映像から、術中の注視点を推定する研究",
+    subtitle: "",
+    description: `東京大学では、手術映像に映る器具を深層学習で識別し、その情報から術中の注視点を推定する手法を研究しました。`,
     references: [
-      { label: "東京大学医学部附属病院", url: "https://www.h.u-tokyo.ac.jp/" },
-      { label: "AMED", url: "https://www.amed.go.jp/" },
-      { label: "東京大学医学系研究科", url: "https://www.m.u-tokyo.ac.jp/" },
-      { label: "日経BP", url: "https://project.nikkeibp.co.jp/" },
+      { label: "科研費 研究課題 23K17224", url: "https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-23K17224/" },
     ],
     theme: "intelligence",
   },

@@ -19,21 +19,12 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "愛知県",
     university: "藤田医科大学",
     department: "総合消化器外科学",
-    tags: ["ロボット手術国内トップクラス", "hinotori", "サージカルトレーニングセンター"],
-    title: "THE HOLY LAND：ロボット手術の概念を塗り替える不動の聖地",
-    description: `【聖地としての宿命：国内トップクラスの症例数】
-藤田医科大学は、ロボット支援手術の延べ実績は7,700例以上（2008年～2025年8月）で、国内トップクラスの実績を有する「聖地」です。日本初・世界初の術式を次々と成し遂げてきた歴史は、日本の外科医療の標準（スタンダード）を規定する司令塔。ここでの症例データは、そのまま日本の外科の歴史となっています。
-
-【教育の高速道路：サージカルトレーニングセンター】
-サージカルトレーニングセンター（ダビンチ、hinotori、Hugoのトレーニング施設が同一拠点に揃う世界で唯一のトレーニングセンター）です。
-
-【未来：合併症ゼロへの挑戦】
-最新の取り組みでは、国産ロボット『hinotori』を用いた遠隔手術の実証を、10Gbps光専用回線で実施（2021年に国内初、2023年には約300km離れた東京―愛知間での遠隔指導実証も実施）。最先端テックが執刀医を全方位からバックアップする「究極の安全」の領域へと突入しています。`,
+    tags: ["手術トレーニング", "ロボット支援手術"],
+    title: "3機種の手術支援ロボットを学ぶ拠点",
+    description: `ダビンチ、hinotori、Hugoのトレーニング施設が同じ拠点にあります。医療従事者が手術支援ロボットの操作を学ぶ環境を整えています。`,
     refs: [
-      { label: "藤田医科大学 ロボット手術センター", url: "https://www.fujita-hu.ac.jp/center/robot/" },
-      { label: "藤田医科大学 ニュース", url: "https://www.fujita-hu.ac.jp/news/" },
-      { label: "日経新聞", url: "https://www.nikkei.com/" },
-      { label: "メディカロイド", url: "https://www.medicaroid.com/" },
+      { label: "藤田医科大学病院「ロボット支援手術」", url: "https://hospital.fujita-hu.ac.jp/about/feature/roboticsurgery.html" },
+      { label: "藤田医科大学「医療ロボット・AIの実践」", url: "https://fhu.jp/robot_ai.html" },
     ],
   },
   {
@@ -43,21 +34,12 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "東京都",
     university: "東京科学大学",
     department: "消化管外科学分野（旧医科歯科大）",
-    tags: ["国産ロボ Saroa", "医工融合", "触覚フィードバック"],
-    title: "THE INNOVATOR：人類に「デジタルな触覚」を取り戻す医工融合の最高峰",
-    description: `【知の化学反応：Science Tokyo】
-2024年10月の統合により誕生した「東京科学大学」。医学の最高峰（旧東京医科歯科大）と工学の最高峰（旧東工大）が一つになり、外科医の技術を工学で拡張する「臨床直結型ネットワーク」を構築。シリコンバレーをも凌駕する熱量で新技術を生み出しています。
-
-【国産ロボット『Saroa』が起こした触覚革命】
-世界中の外科医を驚愕させているのが、自前開発に深く関与した国産ロボット『Saroa（サロア）』です。これまでのロボット手術の最大の弱点であった「触感の欠如」を、独自技術の空気圧駆動によって克服。組織を掴んだ際の「硬さ」や「粘り」を執刀医の指先へリアルタイムにフィードバック。繊細な剥離を、あたかも自分の手で触れている感覚で実行できます。
-
-【身体知をデジタルで継承する】
-この「触覚DX」により、若手医師は組織の適切な張力を「体感」として学習。高度な技術を「身体」に効率よく覚え込ませることが可能です。日本発の技術で世界の外科医療のOSを書き換える最前線です。`,
+    tags: ["Saroa", "医工連携", "力覚フィードバック"],
+    title: "鉗子にかかる力を術者に伝える「Saroa」",
+    description: `旧・東京医科歯科大学と旧・東京工業大学は、リバーフィールドと手術支援ロボット「Saroa」を共同開発しました。空気圧駆動を利用して、鉗子にかかる力を術者に伝える機能を備えています。`,
     refs: [
-      { label: "東京科学大学", url: "https://www.tmd.ac.jp/" },
-      { label: "リバーフィールド株式会社", url: "https://www.riverfieldinc.com/" },
-      { label: "消化管外科学分野", url: "https://www.tmd.ac.jp/med/surg2/" },
-      { label: "日経新聞", url: "https://www.nikkei.com/" },
+      { label: "東京科学大学 共同開発に関する公表資料", url: "https://www.tmd.ac.jp/files/topics/60014_ext_04_6.pdf" },
+      { label: "リバーフィールド「Saroa」製品資料", url: "https://www.riverfieldinc.com/files/upload/Saroa_catalog.pdf" },
     ],
   },
   {
@@ -67,20 +49,11 @@ export const showcaseItems: ShowcaseItem[] = [
     prefecture: "東京都",
     university: "東京大学",
     department: "肝胆膵外科・人工臓器移植外科",
-    tags: ["AI手術支援", "AI・データ活用研究", "術中ナビ"],
-    title: "THE INTELLIGENCE：名人芸を「科学」へ昇華させるAI・データ研究の拠点",
-    description: `【暗黙知を形式知へ。データの王道】
-東京大学が目指すのは、属人的な「名人芸」を誰もが再現可能な「精密な科学」へと再定義することです。難攻不落の肝胆膵領域において「経験値」という曖昧な言葉を排除し、人工知能を用いた術前画像シミュレーション、AIによる予後予測、深層学習による術中注視点の自動識別など、AI・データ活用の研究を推進しています。
-
-【AIによる術中支援の研究】
-手術映像を解析し術中判断を支援するシステムの研究開発が進められています。
-
-`,
+    tags: ["手術映像解析", "AI研究"],
+    title: "手術映像から、術中の注視点を推定する研究",
+    description: `東京大学では、手術映像に映る器具を深層学習で識別し、その情報から術中の注視点を推定する手法を研究しました。`,
     refs: [
-      { label: "東京大学医学部附属病院", url: "https://www.h.u-tokyo.ac.jp/" },
-      { label: "AMED", url: "https://www.amed.go.jp/" },
-      { label: "東京大学医学部", url: "https://www.m.u-tokyo.ac.jp/" },
-      { label: "日経BP", url: "https://project.nikkeibp.co.jp/" },
+      { label: "科研費 研究課題 23K17224", url: "https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-23K17224/" },
     ],
   },
   {
@@ -88,22 +61,13 @@ export const showcaseItems: ShowcaseItem[] = [
     type: "FEATURE",
     area: "関東",
     prefecture: "神奈川県",
-    university: "北里大学病院",
-    department: "外科学",
-    tags: ["Surgical Data Science", "4ユニット統合", "チーム北里"],
-    title: "THE SURGICAL DATA HUB：4つの専門性が融合し、データで外科の未来を照らす。",
-    description: `【圧倒的な組織力：4つの外科が「一つのチーム」へ】
-北里大学外科学教室の最大の武器は、上部・下部消化管、一般・小児・肝胆膵、そして乳腺・甲状腺の4つの診療ユニットが『一つの外科』として完全に統合されている点にあります。縦割りの弊害を排し、各専門領域の知見をシームレスに共有。複雑な症例に対しても、全方位から最適な術式を導き出す「チーム北里」の底力が、ここにはあります。
-
-【データ駆動型外科の極致：Surgical Data Science (SDS)】
-北里は、手術を「経験」ではなく「サイエンス」として再定義しています。感覚に頼らない、再現性の高い超精密手術が北里のスタンダードです。
-
-北里柴三郎の『実学』の精神を、21世紀のデジタル技術で具現化し、外科医療の新たな地平を切り拓いています。`,
+    university: "北里大学",
+    department: "医学部 外科",
+    tags: ["上部消化管外科", "下部消化管外科", "肝胆膵外科"],
+    title: "消化管・肝胆膵の診療を担う外科",
+    description: `北里大学医学部外科は、上部消化管外科、下部消化管外科、一般・小児・肝胆膵外科、乳腺・甲状腺外科の4つの診療ユニットを紹介しています。`,
     refs: [
-      { label: "Source 1", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/index.html" },
-      { label: "Source 2", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/jyobu/index.html" },
-      { label: "Source 3", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/kabu/index.html" },
-      { label: "Source 4", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/ippan/index.html" },
+      { label: "北里大学医学部 外科 公式サイト", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/index.html" },
     ],
   },
   {
