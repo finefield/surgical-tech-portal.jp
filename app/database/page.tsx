@@ -24,7 +24,7 @@ const sortedFacilities = [...facilities].sort((a, b) => {
 export default async function DatabasePage({
   searchParams,
 }: {
-  searchParams: Promise<{ theme?: string; area?: string; q?: string }>
+  searchParams: Promise<{ theme?: string; area?: string; q?: string; prefecture?: string }>
 }) {
   const sp = await searchParams
   // テーマ指定がない・未知のキーの場合は「すべて」
@@ -43,6 +43,7 @@ export default async function DatabasePage({
           initialTheme={initialTheme}
           initialArea={areas.find((area) => area === sp.area) ?? null}
           initialKeyword={typeof sp.q === "string" ? sp.q : ""}
+          initialPrefecture={prefectureOrder.find((item) => item === sp.prefecture) ?? ""}
         />
       </main>
 

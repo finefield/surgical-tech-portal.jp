@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Search, X } from "lucide-react"
 import { facilityHref } from "@/lib/portal-themes"
+import { normalizeDirectorySearch, specialties } from "@/lib/directory-search"
 import { prefectureOrder, type Facility } from "@/data/facilities"
 import {
   explorerMappings,
@@ -18,34 +19,23 @@ const SERIF = '"Yu Mincho", "Hiragino Mincho ProN", serif'
 const EDGE = "#304457"
 const MUTED = "#b2c3d2"
 
-// 都道府県の短縮表記（愛知県→愛知、京都府→京都、東京都→東京、北海道はそのまま）
-function shortRegion(prefecture: string): string {
-  if (prefecture === "北海道") return prefecture
-  return prefecture.replace(/(県|府|都)$/, "")
-}
-
 // summary 冒頭の「段階｜」はメタ行の段階と重なるため、見本どおり本文では落とす
 function stripSummaryPrefix(summary: string): string {
   const idx = summary.indexOf("｜")
   return idx >= 0 ? summary.slice(idx + 1) : summary
 }
 
-// 施設説明文の【…】マーカーは一覧表示では落とす（施設カードと同じ扱い）
-function cleanDescription(description: string): string {
-  return description.replace(/【[^】]+】/g, "")
-}
-
 interface RowVM {
   facilityId: number
   prefecture: string
   area: string
-  topic?: string
+  topics: string[]
+  specialties: (typeof specialties)[number][]
   inModal?: boolean
   meta: string
-  headline: string
   feature: string
-  clampFeature: boolean
-  teamName: string
+  institution: string
+  department: string
   sourceUrl?: string
   sourceLabel?: string
   searchText: string
@@ -58,6 +48,7 @@ interface DatabaseClientProps {
   initialTheme: ExplorerViewKey
   initialArea: string | null
   initialKeyword: string
+  initialPrefecture: string
 }
 
 export function DatabaseClient({
@@ -67,166 +58,105 @@ export function DatabaseClient({
   initialTheme,
   initialArea,
   initialKeyword,
+  initialPrefecture,
 }: DatabaseClientProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [theme, setTheme] = useState<ExplorerViewKey>(initialTheme)
   const [topic, setTopic] = useState("")
-  const [prefecture, setPrefecture] = useState("")
+  const [prefecture, setPrefecture] = useState(initialPrefecture)
   const [area, setArea] = useState<string | null>(initialArea)
   const [keyword, setKeyword] = useState(initialKeyword)
   const [currentPrefecture, setCurrentPrefecture] = useState("")
   const railRef = useRef<HTMLElement>(null)
   const groupsRef = useRef<HTMLDivElement>(null)
 
-  const facilityById = useMemo(
-    () => new Map(facilities.map((f) => [f.id, f])),
-    [facilities],
-  )
+  const rowsByTheme = useMemo(() => {
+    const map = new Map<ExplorerViewKey, RowVM[]>(explorerThemes.map(({ key }) => [key, []]))
+    const mappingsByFacility = new Map<number, ExplorerMapping[]>()
+    for (const mapping of explorerMappings) {
+      const existing = mappingsByFacility.get(mapping.facilityId) ?? []
+      existing.push(mapping)
+      mappingsByFacility.set(mapping.facilityId, existing)
+    }
 
-  const mappedVM = useMemo(() => {
-    return (m: ExplorerMapping): RowVM | null => {
-      const facility = facilityById.get(m.facilityId)
-      if (!facility) return null
-      const searchText = [
-        facility.university,
-        facility.name,
-        facility.headline,
-        facility.description,
-        facility.prefecture,
-        ...facility.tags,
-        m.name,
-        m.topic,
-        m.headline,
-        m.summary,
-        m.description,
-      ]
-        .join(" ")
-        .toLowerCase()
-      return {
-        facilityId: m.facilityId,
+    for (const facility of facilities) {
+      const mappings = mappingsByFacility.get(facility.id) ?? []
+      const publishedLabels = [facility.name, ...facility.tags].join(" ")
+      const fields = specialties.filter(({ match }) => match.test(publishedLabels))
+      const searchText = normalizeDirectorySearch([
+        facility.university, facility.name, facility.headline, facility.description, facility.prefecture, facility.area,
+        ...facility.tags, ...fields.map(({ label }) => label),
+        ...mappings.flatMap(({ name, topic, headline, summary, description, technology }) => [name, topic, headline, summary, description, technology ?? ""]),
+      ].join(" "))
+      const common = {
+        facilityId: facility.id,
         prefecture: facility.prefecture,
         area: facility.area,
-        topic: m.topic,
-        inModal: m.inModal,
-        meta: `${m.topic} ／ ${shortRegion(facility.prefecture)} ／ ${m.stage}`,
-        headline: m.headline,
-        feature: stripSummaryPrefix(m.summary),
-        clampFeature: false,
-        teamName: m.name,
-        sourceUrl: m.sourceUrl,
-        sourceLabel: m.sourceLabel ?? "公式資料 ↗",
+        institution: facility.university,
+        department: facility.name,
+        specialties: fields,
         searchText,
       }
-    }
-  }, [facilityById])
-
-  const rowsByTheme = useMemo(() => {
-    const map = new Map<ExplorerViewKey, RowVM[]>()
-    // 「すべて」：既存データベースの全チーム。テーマ対応がある施設は対応行の内容で1行にまとめる
-    const firstMappingByFacility = new Map<number, ExplorerMapping>()
-    for (const m of explorerMappings) {
-      if (!firstMappingByFacility.has(m.facilityId)) {
-        firstMappingByFacility.set(m.facilityId, m)
+      const featured = mappings[0]
+      map.get("all")?.push({
+        ...common,
+        topics: mappings.map(({ topic }) => topic),
+        meta: [facility.prefecture, ...fields.map(({ label }) => label)].join(" ／ "),
+        feature: featured ? stripSummaryPrefix(featured.summary) : facility.headline,
+        sourceUrl: featured?.sourceUrl ?? facility.officialWebsite?.url,
+        sourceLabel: featured ? featured.sourceLabel ?? "公式資料 ↗" : "公式サイト ↗",
+      })
+      for (const mapping of mappings) {
+        map.get(mapping.theme)?.push({
+          ...common,
+          topics: [mapping.topic],
+          inModal: mapping.inModal,
+          meta: `${facility.prefecture} ／ ${mapping.topic} ／ ${mapping.stage}`,
+          feature: stripSummaryPrefix(mapping.summary),
+          sourceUrl: mapping.sourceUrl,
+          sourceLabel: mapping.sourceLabel ?? "公式資料 ↗",
+        })
       }
     }
-    map.set(
-      "all",
-      facilities.flatMap((f) => {
-        const m = firstMappingByFacility.get(f.id)
-        if (m) {
-          const vm = mappedVM(m)
-          return vm ? [vm] : []
-        }
-        const searchText = [
-          f.university,
-          f.name,
-          f.headline,
-          f.description,
-          f.prefecture,
-          ...f.tags,
-        ]
-          .join(" ")
-          .toLowerCase()
-        return [
-          {
-            facilityId: f.id,
-            prefecture: f.prefecture,
-            area: f.area,
-            meta: shortRegion(f.prefecture),
-            headline: f.headline,
-            feature: cleanDescription(f.description),
-            clampFeature: true,
-            teamName: `${f.university} ${f.name}`,
-            sourceUrl: f.officialWebsite?.url,
-            sourceLabel: f.officialWebsite
-              ? `${f.officialWebsite.label} ↗`
-              : undefined,
-            searchText,
-          },
-        ]
-      }),
-    )
-    for (const t of explorerThemes) {
-      if (t.key === "all") continue
-      map.set(
-        t.key,
-        explorerMappings
-          .filter((m) => m.theme === t.key)
-          .flatMap((m) => {
-            const vm = mappedVM(m)
-            return vm ? [vm] : []
-          }),
-      )
+
+    for (const [key, rows] of map) {
+      if (key === "all") continue
+      const position = new Map(explorerMappings.filter((mapping) => mapping.theme === key).map(({ facilityId }, index) => [facilityId, index]))
+      rows.sort((a, b) => (position.get(a.facilityId) ?? 0) - (position.get(b.facilityId) ?? 0))
     }
     return map
-  }, [facilities, mappedVM])
+  }, [facilities])
 
-  const activeTheme =
-    explorerThemes.find((t) => t.key === theme) ?? explorerThemes[0]
-  const accent = activeTheme.accent
+  const chapterMode = theme !== "all" || searchParams.get("mode") === "chapters"
+  const specialty = chapterMode ? undefined : specialties.find(({ key }) => key === searchParams.get("specialty"))
+  const activeTheme = explorerThemes.find((item) => item.key === theme) ?? explorerThemes[0]
+  const accent = chapterMode ? activeTheme.accent : "#a7ece9"
   const themeRows = rowsByTheme.get(theme)
   const moreOnly = theme !== "all" && searchParams.get("view") === "more"
   const baseRows = useMemo(() => {
     const rows = themeRows ?? []
-    return moreOnly ? rows.filter((row) => !row.inModal) : rows
-  }, [themeRows, moreOnly])
+    if (moreOnly) return rows.filter((row) => !row.inModal)
+    if (chapterMode && theme === "all") return rows.filter((row) => row.topics.length)
+    if (specialty) return rows.filter((row) => row.specialties.includes(specialty))
+    return rows
+  }, [themeRows, moreOnly, chapterMode, theme, specialty])
   const featuredCount = theme === "all" ? 0 : themeRows?.filter((row) => row.inModal).length ?? 0
-
-  const topicOptions = useMemo(() => {
-    const topics = theme === "all"
-      ? explorerMappings.map((mapping) => mapping.topic)
-      : baseRows.flatMap((row) => row.topic ? [row.topic] : [])
-    if (topic && !topics.includes(topic)) topics.push(topic)
-    return [...new Set(topics)]
-  }, [baseRows, theme, topic])
-
-  const prefectureOptions = useMemo(() => {
-    const present = [...new Set(baseRows.map((r) => r.prefecture))].sort(
-      (a, b) => {
-        const ia = prefectureOrder.indexOf(a)
-        const ib = prefectureOrder.indexOf(b)
-        return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib)
-      },
-    )
-    // テーマ切替後も都道府県の指定は保持するため、選択中は選択肢に含める
-    if (prefecture && !present.includes(prefecture)) present.push(prefecture)
-    return present
-  }, [baseRows, prefecture])
+  const topicOptions = [...new Set([...baseRows.flatMap((row) => row.topics), ...(topic ? [topic] : [])])]
+  const keywordTerms = normalizeDirectorySearch(keyword).trim().split(/\s+/).filter(Boolean)
 
   const filteredRows = baseRows.filter((row) => {
-    if (topic && row.topic !== topic) return false
+    if (topic && !row.topics.includes(topic)) return false
     if (prefecture && row.prefecture !== prefecture) return false
     if (area && row.area !== area) return false
-    if (keyword && !row.searchText.includes(keyword.toLowerCase())) return false
-    return true
+    return keywordTerms.every((term) => row.searchText.includes(term))
   })
 
-  const hasFilters = Boolean(topic || prefecture || area || keyword)
+  const hasFilters = Boolean(topic || prefecture || area || keywordTerms.length || specialty)
 
   // 「すべて」では都道府県単位の案内（見出し＋ジャンプ）を付ける
   const groupedByPrefecture = useMemo(() => {
-    if (theme !== "all") return null
+    if (chapterMode) return null
     const groups: { prefecture: string; rows: RowVM[] }[] = []
     for (const p of prefectureOrder) {
       const rows = filteredRows.filter((r) => r.prefecture === p)
@@ -240,7 +170,7 @@ export function DatabaseClient({
       }
     }
     return groups
-  }, [theme, filteredRows])
+  }, [chapterMode, filteredRows])
 
   useEffect(() => {
     const rail = railRef.current
@@ -272,13 +202,19 @@ export function DatabaseClient({
     if (rail && current) rail.scrollLeft = current.offsetLeft - (rail.clientWidth - current.offsetWidth) / 2
   }, [currentPrefecture, groupedByPrefecture])
 
-  const selectTheme = (key: ExplorerViewKey) => {
-    if (key === theme) return
+  const selectPath = (key: ExplorerViewKey, mode: "specialties" | "chapters", field?: string, nationwide = false) => {
     setTheme(key)
     setTopic("")
+    if (nationwide) {
+      setPrefecture("")
+      setArea(null)
+    }
     const query = new URLSearchParams()
     if (key !== "all") query.set("theme", key)
-    if (area) query.set("area", area)
+    else if (mode === "chapters") query.set("mode", "chapters")
+    if (field) query.set("specialty", field)
+    if (area && !nationwide) query.set("area", area)
+    if (prefecture && !nationwide) query.set("prefecture", prefecture)
     if (keyword) query.set("q", keyword)
     router.push(query.size ? `/database?${query}` : "/database", { scroll: false })
   }
@@ -298,7 +234,7 @@ export function DatabaseClient({
       const next: ExplorerViewKey = t && isExplorerThemeKey(t) ? t : "all"
       setTheme(next)
       setTopic("")
-      setPrefecture("")
+      setPrefecture(prefectureOrder.find((item) => item === query.get("prefecture")) ?? "")
       setArea(areas.find((area) => area === query.get("area")) ?? null)
       setKeyword(query.get("q") ?? "")
     }
@@ -318,9 +254,10 @@ export function DatabaseClient({
     chips.push({
       key: "theme",
       label: `テーマ：${activeTheme.title}`,
-      clear: () => selectTheme("all"),
+      clear: () => selectPath("all", "chapters"),
     })
   }
+  if (specialty) chips.push({ key: "specialty", label: `診療領域：${specialty.label}`, clear: () => selectPath("all", "specialties") })
   if (topic) {
     chips.push({ key: "topic", label: `取り組み：${topic}`, clear: () => setTopic("") })
   }
@@ -347,42 +284,25 @@ export function DatabaseClient({
   const selectStyle = { borderColor: EDGE, colorScheme: "dark" as const }
 
   const renderRow = (row: RowVM) => (
-    <article
-      key={`${theme}-${row.facilityId}`}
-      className="border-b py-[19px]"
-      style={{ borderColor: EDGE }}
-    >
-      <div className="mb-[7px] text-[11px]" style={{ color: accent }}>
-        {row.meta}
+    <article key={`${theme}-${row.facilityId}`}
+      className="grid gap-2 border-b py-[19px] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-7"
+      style={{ borderColor: EDGE }}>
+      <div>
+        <p className="mb-[7px] text-xs" style={{ color: accent }}>{row.meta}</p>
+        <h3 className="mb-1 text-[clamp(23px,3vw,34px)] leading-[1.35] [overflow-wrap:anywhere]" style={{ fontFamily: SERIF }}>
+          {row.institution}
+        </h3>
+        <p className="text-sm text-[#e5eef1]">{row.department}</p>
+        <p className="mt-2 text-sm leading-[1.75] text-[#b2c3d2]">{row.feature}</p>
       </div>
-      <h3
-        className="mb-1 text-[clamp(18px,2.6vw,25px)] leading-[1.45]"
-        style={{ fontFamily: SERIF }}
-      >
-        {row.headline}
-      </h3>
-      <p
-        className={`text-sm leading-[1.75] text-[#e5eef1] ${row.clampFeature ? "line-clamp-4" : ""}`}
-      >
-        {row.feature}
-      </p>
-      <p className="mt-1.5 text-[13px]">{row.teamName}</p>
-      <div className="mt-1.5 flex flex-wrap gap-5 text-xs">
-        <Link
-          href={facilityHref(row.facilityId, theme)}
-          className="inline-block py-1.5 underline-offset-4"
-          style={{ color: accent }}
-        >
+      <div className="flex flex-wrap items-center gap-x-4 text-xs sm:max-w-[220px] sm:justify-end sm:text-right" style={{ color: accent }}>
+        <Link href={facilityHref(row.facilityId, theme)}
+          className="inline-block py-2 underline-offset-4 hover:underline"
+          aria-label={`${row.institution} ${row.department}の詳細を見る`}>
           チームを見る ↗
         </Link>
         {row.sourceUrl && (
-          <a
-            href={row.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block py-1.5 underline-offset-4"
-            style={{ color: accent }}
-          >
+          <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-block py-2 underline-offset-4 hover:underline">
             {row.sourceLabel}
           </a>
         )}
@@ -408,7 +328,7 @@ export function DatabaseClient({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={t.key}
-            src={t.image}
+            src={t.key === "all" ? "/insight.jpg" : t.image}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-[2] h-full w-full object-cover opacity-0 transition-opacity duration-[240ms] motion-reduce:transition-none"
@@ -432,35 +352,50 @@ export function DatabaseClient({
         >
           消化器外科チームを探す
         </h1>
-        <p style={{ color: MUTED }}>関わりたい技術や、学びたいことから。</p>
+        <p style={{ color: MUTED }}>学びたい領域や、関わりたい取り組みから。</p>
       </section>
 
       {/* 章ボタンと絞り込み */}
       <div className="px-[6%]">
-        <nav aria-label="章から探す" className="flex flex-wrap gap-1.5 pb-[18px] pt-[5px]">
-          {explorerThemes.map((t) => {
-            const active = theme === t.key
+        <nav aria-label="探し方" className="grid grid-cols-2 border-b" style={{ borderColor: EDGE }}>
+          {(["specialties", "chapters"] as const).map((mode) => {
+            const active = chapterMode === (mode === "chapters")
             return (
-              <button
-                key={t.key}
-                type="button"
-                aria-pressed={active}
-                onClick={() => selectTheme(t.key)}
-                className="min-h-[42px] rounded-[3px] border bg-[#102232] px-[11px] py-2 text-sm max-sm:min-h-[44px]"
-                style={
-                  active
-                    ? { background: accent, color: "#092323", borderColor: accent }
-                    : { borderColor: EDGE }
-                }
-              >
-                {t.title}
+              <button key={mode} type="button" aria-pressed={active}
+                onClick={() => { if (!active) selectPath("all", mode) }}
+                className="min-h-[52px] border border-b-2 px-3 text-left text-sm sm:text-base"
+                style={{ borderColor: EDGE, borderBottomColor: active ? accent : EDGE, background: active ? "#13293c" : "#0b1a2a", color: active ? "#f2eee6" : MUTED }}>
+                {mode === "specialties" ? "診療領域から探す" : "5章から探す"}
               </button>
             )
           })}
         </nav>
+        {chapterMode ? (
+          <nav aria-label="章から探す" className="flex flex-wrap gap-1.5 py-4">
+            {explorerThemes.map((item) => (
+              <button key={item.key} type="button" aria-pressed={theme === item.key}
+                onClick={() => { if (theme !== item.key) selectPath(item.key, "chapters") }}
+                className="min-h-[42px] rounded-[3px] border px-[11px] py-2 text-sm max-sm:min-h-[44px]"
+                style={theme === item.key ? { background: accent, color: "#092323", borderColor: accent } : { borderColor: EDGE }}>
+                {item.key === "all" ? "すべての章" : item.title}
+              </button>
+            ))}
+          </nav>
+        ) : (
+          <nav aria-label="診療領域" className="flex flex-wrap gap-1.5 py-4">
+            {[{ key: "", label: "すべての領域" }, ...specialties].map(({ key, label }) => (
+              <button key={key} type="button" aria-pressed={(specialty?.key ?? "") === key}
+                onClick={() => { if ((specialty?.key ?? "") !== key) selectPath("all", "specialties", key) }}
+                className="min-h-[42px] rounded-[3px] border px-[11px] py-2 text-sm max-sm:min-h-[44px]"
+                style={(specialty?.key ?? "") === key ? { background: accent, color: "#092323", borderColor: accent } : { borderColor: EDGE }}>
+                {label}
+              </button>
+            ))}
+          </nav>
+        )}
 
-        <div className="grid grid-cols-1 gap-3 border-t py-[17px] min-[560px]:grid-cols-3" style={{ borderColor: EDGE }}>
-          <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
+        <div className={`grid grid-cols-1 gap-3 border-t py-[17px] ${chapterMode ? "min-[560px]:grid-cols-3" : "grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)]"}`} style={{ borderColor: EDGE }}>
+          {chapterMode && <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
             取り組み
             <select
               aria-label="取り組み"
@@ -476,7 +411,7 @@ export function DatabaseClient({
                 </option>
               ))}
             </select>
-          </label>
+          </label>}
           <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
             都道府県
             <select
@@ -487,7 +422,7 @@ export function DatabaseClient({
               style={selectStyle}
             >
               <option value="">すべての都道府県</option>
-              {prefectureOptions.map((o) => (
+              {prefectureOrder.map((o) => (
                 <option key={o} value={o}>
                   {o}
                 </option>
@@ -502,7 +437,7 @@ export function DatabaseClient({
                 type="text"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
-                placeholder="大学名、医局名、技術タグなど"
+                placeholder="例　東京 大腸"
                 className="min-h-[42px] w-full rounded-[3px] border bg-[#102232] py-2 pl-9 pr-8 text-sm text-[#f2eee6] placeholder:text-[#b2c3d2]/60 max-sm:min-h-[44px]"
                 style={{ borderColor: EDGE }}
               />
@@ -598,14 +533,14 @@ export function DatabaseClient({
           style={{ color: MUTED, borderColor: EDGE }}
         >
           <span>
-            {theme === "all"
-              ? activeTheme.filterLabel
-              : `${activeTheme.title} ／ ${activeTheme.filterLabel}`}
+            {chapterMode
+              ? theme === "all" ? "すべての章" : `${activeTheme.title} ／ ${activeTheme.filterLabel}`
+              : `${specialty?.label ?? "すべての領域"} ／ ${prefecture || area || "全国"}`}
           </span>
           <span aria-live="polite">
             {filteredRows.length} 件
             {hasFilters && `（全${baseRows.length}件中）`}
-            {theme === "all" && !hasFilters && ` ／ ${totalCount} 件の外科チームを収録`}
+            {!chapterMode && !hasFilters && ` ／ ${totalCount} 件の外科チームを収録`}
           </span>
         </div>
 
@@ -626,6 +561,12 @@ export function DatabaseClient({
               <p style={{ color: MUTED }}>
                 この条件に合う外科チームは見つかりませんでした。条件を外して探せます。
               </p>
+              {keywordTerms.length > 0 && (chapterMode || specialty || prefecture || area) && (
+                <button type="button" onClick={() => selectPath("all", "specialties", undefined, true)}
+                  className="mt-3 min-h-[44px] rounded-[3px] border px-3 py-2 text-sm" style={{ borderColor: accent, color: accent }}>
+                  同じキーワードで全国を探す
+                </button>
+              )}
               <div className="mt-4 flex flex-wrap gap-2">
                 {chips.map((chip) => (
                   <button
