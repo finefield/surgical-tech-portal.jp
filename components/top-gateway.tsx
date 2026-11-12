@@ -21,6 +21,7 @@ const facilityById = new Map(facilities.map((f) => [f.id, f]))
 
 interface GatewayChapter {
   theme: ExplorerTheme
+  moreTeamCount: number
   modalTeams: { facilityId: number; region: string; name: string; summary: string }[]
 }
 
@@ -28,6 +29,7 @@ const CHAPTERS: GatewayChapter[] = explorerThemes
   .filter((t) => t.key !== "all")
   .map((theme) => ({
     theme,
+    moreTeamCount: explorerMappings.filter((m) => m.theme === theme.key && !m.inModal && facilityById.has(m.facilityId)).length,
     modalTeams: explorerMappings
       .filter((m) => m.theme === theme.key && m.inModal)
       .map((m) => ({
@@ -394,9 +396,9 @@ export function TopGateway() {
           </ul>
           <Link
             className="chapter-explore"
-            href={`/database?theme=${activeChapter.theme.key}`}
+            href={`/database?theme=${activeChapter.theme.key}&view=more`}
           >
-            このテーマで消化器外科チームを探す <span aria-hidden="true">→</span>
+            同じテーマでほかの{activeChapter.moreTeamCount}チームを探す <span aria-hidden="true">→</span>
           </Link>
         </div>
       </dialog>

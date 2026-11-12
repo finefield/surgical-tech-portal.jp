@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Search, X } from "lucide-react"
 import { facilityHref } from "@/lib/portal-themes"
@@ -40,6 +40,7 @@ interface RowVM {
   prefecture: string
   area: string
   topic?: string
+  inModal?: boolean
   meta: string
   headline: string
   feature: string
@@ -68,6 +69,7 @@ export function DatabaseClient({
   initialKeyword,
 }: DatabaseClientProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [theme, setTheme] = useState<ExplorerViewKey>(initialTheme)
   const [topic, setTopic] = useState("")
   const [prefecture, setPrefecture] = useState("")
@@ -106,6 +108,7 @@ export function DatabaseClient({
         prefecture: facility.prefecture,
         area: facility.area,
         topic: m.topic,
+        inModal: m.inModal,
         meta: `${m.topic} ／ ${shortRegion(facility.prefecture)} ／ ${m.stage}`,
         headline: m.headline,
         feature: stripSummaryPrefix(m.summary),
@@ -182,15 +185,21 @@ export function DatabaseClient({
   const activeTheme =
     explorerThemes.find((t) => t.key === theme) ?? explorerThemes[0]
   const accent = activeTheme.accent
-  const baseRows = rowsByTheme.get(theme) ?? []
+  const themeRows = rowsByTheme.get(theme)
+  const moreOnly = theme !== "all" && searchParams.get("view") === "more"
+  const baseRows = useMemo(() => {
+    const rows = themeRows ?? []
+    return moreOnly ? rows.filter((row) => !row.inModal) : rows
+  }, [themeRows, moreOnly])
+  const featuredCount = theme === "all" ? 0 : themeRows?.filter((row) => row.inModal).length ?? 0
 
   const topicOptions = useMemo(() => {
-    const source =
-      theme === "all"
-        ? explorerMappings
-        : explorerMappings.filter((m) => m.theme === theme)
-    return [...new Set(source.map((m) => m.topic))]
-  }, [theme])
+    const topics = theme === "all"
+      ? explorerMappings.map((mapping) => mapping.topic)
+      : baseRows.flatMap((row) => row.topic ? [row.topic] : [])
+    if (topic && !topics.includes(topic)) topics.push(topic)
+    return [...new Set(topics)]
+  }, [baseRows, theme, topic])
 
   const prefectureOptions = useMemo(() => {
     const present = [...new Set(baseRows.map((r) => r.prefecture))].sort(
@@ -272,6 +281,13 @@ export function DatabaseClient({
     if (area) query.set("area", area)
     if (keyword) query.set("q", keyword)
     router.push(query.size ? `/database?${query}` : "/database", { scroll: false })
+  }
+
+  const toggleFeatured = () => {
+    const query = new URLSearchParams(searchParams.toString())
+    if (moreOnly) query.delete("view")
+    else query.set("view", "more")
+    router.replace(`/database?${query}`, { scroll: false })
   }
 
   // ブラウザの戻る・進むでテーマをURLに合わせる
@@ -555,7 +571,8 @@ export function DatabaseClient({
               type="button"
               onClick={() => {
                 clearFilters()
-                selectTheme("all")
+                setTheme("all")
+                router.push("/database", { scroll: false })
               }}
               className="text-xs underline underline-offset-4"
               style={{ color: MUTED }}
@@ -568,6 +585,14 @@ export function DatabaseClient({
 
       {/* 結果 */}
       <section className="px-[6%] pb-8" aria-label="検索結果">
+        {featuredCount > 0 && (
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t py-2 text-sm" style={{ borderColor: EDGE }}>
+            <span style={{ color: MUTED }}>{moreOnly ? "TOPの紹介例以外から探す" : "このテーマの全チーム"}</span>
+            <button type="button" onClick={toggleFeatured} className="min-h-[44px] underline underline-offset-4" style={{ color: accent }}>
+              {moreOnly ? `TOPで紹介した${featuredCount}件も含める` : "TOPの紹介例以外を表示"}
+            </button>
+          </div>
+        )}
         <div
           className="flex flex-wrap justify-between gap-1 border-b py-2.5 text-xs"
           style={{ color: MUTED, borderColor: EDGE }}
