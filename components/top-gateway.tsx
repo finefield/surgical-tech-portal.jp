@@ -150,20 +150,6 @@ export function TopGateway() {
     }
   }, [])
 
-  const visiblePageArea = () =>
-    new Promise<DOMRectReadOnly>((resolve) => {
-      const root = rootRef.current
-      if (!root) {
-        resolve(new DOMRectReadOnly(0, 0, window.innerWidth, window.innerHeight))
-        return
-      }
-      const observer = new IntersectionObserver(([entry]) => {
-        observer.disconnect()
-        resolve(entry.intersectionRect)
-      })
-      observer.observe(root)
-    })
-
   const openChapter = async (
     key: ExplorerThemeKey,
     trigger: HTMLButtonElement,
@@ -188,24 +174,18 @@ export function TopGateway() {
       )
       await pulse.finished.catch(() => {})
     }
-    const visibleArea = await visiblePageArea()
-    const center = visibleArea.height
-      ? visibleArea.top + visibleArea.height / 2
-      : window.innerHeight / 2
     const rect = trigger.getBoundingClientRect()
     const entryOffset = (distance: number) =>
       `${Math.max(-40, Math.min(40, distance * 0.15))}px`
     setDialogStyle({
       "--chapter-light": chapter.theme.light,
-      "--dialog-center": `${center}px`,
-      "--dialog-height": `${visibleArea.height || window.innerHeight}px`,
       "--entry-x": entryOffset(rect.x + rect.width / 2 - window.innerWidth / 2),
-      "--entry-y": entryOffset(rect.y + rect.height / 2 - center),
+      "--entry-y": entryOffset(rect.y + rect.height / 2 - window.innerHeight / 2),
     } as React.CSSProperties)
     requestAnimationFrame(() => {
       dialog.showModal()
       dialog.scrollTop = 0
-      closeRef.current?.focus()
+      closeRef.current?.focus({ preventScroll: true })
       openingRef.current = false
     })
   }
