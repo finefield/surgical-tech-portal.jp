@@ -285,7 +285,7 @@ export function DatabaseClient({
 
   const renderRow = (row: RowVM) => (
     <article key={`${theme}-${row.facilityId}`}
-      className="grid gap-2 border-b py-[19px] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-7"
+      className="group relative grid gap-2 border-b py-[19px] transition-colors hover:bg-white/[0.04] focus-within:bg-white/[0.04] motion-reduce:transition-none sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-7"
       style={{ borderColor: EDGE }}>
       <div>
         <p className="mb-[7px] text-xs" style={{ color: accent }}>{row.meta}</p>
@@ -297,12 +297,12 @@ export function DatabaseClient({
       </div>
       <div className="flex flex-wrap items-center gap-x-4 text-xs sm:max-w-[220px] sm:justify-end sm:text-right" style={{ color: accent }}>
         <Link href={facilityHref(row.facilityId, theme)}
-          className="inline-block py-2 underline-offset-4 hover:underline"
+          className="inline-block py-2 underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline focus-visible:after:ring-2 focus-visible:after:ring-inset focus-visible:after:ring-[var(--accent)]"
           aria-label={`${row.institution} ${row.department}の詳細を見る`}>
           チームを見る ↗
         </Link>
         {row.sourceUrl && (
-          <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-block py-2 underline-offset-4 hover:underline">
+          <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer" className="relative z-10 inline-block py-2 underline-offset-4 hover:underline">
             {row.sourceLabel}
           </a>
         )}

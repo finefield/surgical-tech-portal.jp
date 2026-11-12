@@ -2886,6 +2886,8 @@ DX要素： 専門グループ・教室連携、症例検討、鏡視下映像�
 
 
 【Digital Education】
+上部消化管外科は、専攻医が指導を受けながら胃切除術の一部を担当できるよう、腹腔鏡とロボットを組み合わせた「LARCS」を開発・導入したと報告しています。
+
 【Regional Innovation】
 消化器外科のDXとしては、ロボット支援手術、内視鏡外科、画像診断、薬物療法、放射線治療、チーム医療を組み合わせた治療戦略として取り組んでいます。
 
@@ -2906,6 +2908,7 @@ DX要素： 臓器別専門体制、ロボット・内視鏡外科映像、術�
       { label: "北里大学病院「一般・消化器外科」", url: "https://www.kitasato-u.ac.jp/khp/section/department/ippang.html" },
       { label: "北里大学医学部 外科「上部消化管外科学」", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/section/joubu.html" },
       { label: "北里大学医学部 外科「下部消化管外科学」", url: "https://www.kitasato-u.ac.jp/khp/syokakigeka/section/kabu.html" },
+      { label: "北里大学上部消化管外科によるLARCSの教育実践報告", url: "https://webview.isho.jp/journal/detail/abs/10.15106/j_geka86_230" },
     ],
   },
   {
