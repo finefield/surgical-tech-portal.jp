@@ -1,189 +1,128 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, MapPin, Tag } from "lucide-react"
-import { Header } from "@/components/header"
+import type { CSSProperties } from "react"
 import { Footer } from "@/components/footer"
 import { FormattedDescription } from "@/components/formatted-description"
-import { facilities, prefectureOrder } from "@/data/facilities"
+import { Header } from "@/components/header"
+import { articles } from "@/data/articles"
+import { facilities, getPrefectureIndex } from "@/data/facilities"
+import { databaseHref, facilityHref, facilityTopics, parseTheme, themeExamples, themeKeys, themes } from "@/lib/portal-themes"
 
-const sorted = [...facilities].sort((a, b) => {
-  const ai = prefectureOrder.indexOf(a.prefecture)
-  const bi = prefectureOrder.indexOf(b.prefecture)
-  return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi)
-})
+const sorted = [...facilities].sort((a, b) => getPrefectureIndex(a.prefecture) - getPrefectureIndex(b.prefecture))
 
 function findFacility(id: string) {
-  return facilities.find((f) => f.id === Number(id))
+  return facilities.find((facility) => String(facility.id) === id)
 }
 
 export function generateStaticParams() {
-  return facilities.map((f) => ({ id: String(f.id) }))
+  return facilities.map(({ id }) => ({ id: String(id) }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}): Promise<Metadata> {
-  const { id } = await params
-  const facility = findFacility(id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const facility = findFacility((await params).id)
   if (!facility) return { title: "医局が見つかりません | Surgical Tech Portal" }
   return {
     title: `${facility.university} ${facility.name} | Surgical Tech Portal`,
-    description: `${facility.prefecture}・${facility.university} ${facility.name}のDX・テクノロジーの取り組み。${facility.headline}`,
+    description: facility.headline,
+    alternates: { canonical: facilityHref(facility.id) },
   }
 }
 
-export default async function FacilityPage({
-  params,
-}: {
+const careerLinks: Record<number, { label: string; url: string }[]> = {
+  74: [
+    { label: "外科専門研修・募集要項", url: "https://www.keio.ac.jp/ja/med/about/sotsugo/senior-resident-center/" },
+    { label: "外科学教室の見学案内", url: "https://keiosurg-shokikenshui.com/recruit/recruit01.html" },
+  ],
+  22: [{ label: "消化器外科の臨床実習", url: "https://www.hosp.gifu-u.ac.jp/origin/2geka/clinical_training/" }],
+}
+
+function ExternalLink({ url, label }: { url: string; label: string }) {
+  return <a href={url} target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span></a>
+}
+
+export default async function FacilityPage({ params, searchParams }: {
   params: Promise<{ id: string }>
+  searchParams: Promise<{ theme?: string | string[] }>
 }) {
-  const { id } = await params
+  const [{ id }, { theme: inputTheme }] = await Promise.all([params, searchParams])
   const facility = findFacility(id)
   if (!facility) notFound()
 
-  const index = sorted.findIndex((f) => f.id === facility.id)
-  const prev = index > 0 ? sorted[index - 1] : null
-  const next = index < sorted.length - 1 ? sorted[index + 1] : null
+  const requested = typeof inputTheme === "string" ? parseTheme(inputTheme) : undefined
+  const supportedThemes = themeKeys.filter((key) => facilityTopics(facility, key).length)
+  const theme = requested && supportedThemes.includes(requested) ? requested : undefined
+  const visual = theme ?? supportedThemes[0]
+  const example = theme && themeExamples[theme].find((item) => item.id === facility.id)
+  const related = articles.filter((article) => facility.id === 74
+    ? article.slug === "feature-5"
+    : article.kind === "国内特集" && article.university === facility.university &&
+      (facility.name.includes(article.department) || article.department.includes(facility.name))).slice(0, 2)
+  const index = sorted.findIndex((item) => item.id === facility.id)
+  const nearby = theme
+    ? sorted.filter((item) => item.id !== facility.id && facilityTopics(item, theme).length).slice(0, 2)
+    : [sorted[index - 1], sorted[index + 1]].filter(Boolean)
+  const career = careerLinks[facility.id] ?? []
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <Header />
-      <main className="pt-24 pb-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="mb-8 text-sm text-muted-foreground">
-            <a href="/database" className="underline-offset-2 hover:underline">
-              データベース
-            </a>
-            <span className="mx-2">/</span>
-            <span>{facility.prefecture}</span>
-            <span className="mx-2">/</span>
-            <span className="text-foreground">{facility.university}</span>
-          </nav>
-
-          {/* Area & Prefecture */}
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-md border border-neon-cyan/30 bg-neon-cyan/10 px-3 py-1 text-sm text-neon-cyan">
-              <MapPin className="h-4 w-4" />
-              {facility.area}
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-md bg-secondary/80 px-3 py-1 text-sm text-muted-foreground">
-              {facility.prefecture}
-            </span>
+      <main className="team-page" style={{ "--portal-accent": visual ? themes[visual].color : "#b9e9ef" } as CSSProperties}>
+        <section className="portal-hero team-hero">
+          {visual && <img className="portal-hero-image" src={`/${visual}.jpg`} alt="" fetchPriority="high" />}
+          <div className="portal-width portal-hero-content">
+            <nav className="portal-crumb" aria-label="現在の位置">
+              <a href={databaseHref(theme)}>← {theme ? themes[theme].label : "消化器外科チームを探す"}</a>
+            </nav>
+            <p className="portal-kicker">{facility.prefecture}{theme ? ` ／ ${themes[theme].word}` : ""}</p>
+            <h1>{facility.university}<span>{facility.name}</span></h1>
+            <p className="team-headline">{example?.summary ?? facility.headline}</p>
+            {example && <div className="team-hero-source"><ExternalLink label="この取り組みの出典" url={example.source} /></div>}
           </div>
+        </section>
 
-          <h1 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
-            {facility.university}
-          </h1>
-          <p className="mb-4 text-lg text-muted-foreground">{facility.name}</p>
-
-          {/* Tags */}
-          <div className="mb-6 flex flex-wrap gap-2">
-            {facility.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center gap-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 px-3 py-1 text-sm font-medium text-neon-cyan"
-              >
-                <Tag className="h-3 w-3" />
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Headline */}
-          <div className="mb-6 rounded-xl border border-border/50 bg-secondary/30 p-4">
-            <h2 className="mb-2 text-sm font-medium text-muted-foreground">
-              最新の取り組み
-            </h2>
-            <p className="text-lg font-semibold text-foreground">{facility.headline}</p>
-          </div>
-
-          {/* Description */}
-          <div className="mb-8">
-            <h2 className="mb-4 text-sm font-medium text-muted-foreground">
-              取り組み内容
-            </h2>
-            <div className="text-base">
-              <FormattedDescription description={facility.description} />
-            </div>
-          </div>
-
-          {/* Official Website */}
-          {facility.officialWebsite && (
-            <div className="mb-6">
-              <h2 className="mb-2 text-sm font-medium text-muted-foreground">
-                医局公式Webサイト
-              </h2>
-              <a
-                href={facility.officialWebsite.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 rounded-md border border-neon-cyan/30 bg-neon-cyan/10 px-3 py-1.5 text-sm text-neon-cyan transition-colors hover:bg-neon-cyan/20"
-              >
-                {facility.officialWebsite.label}
-                <ArrowUpRight className="h-3 w-3" />
-              </a>
-            </div>
-          )}
-
-          {/* References */}
-          {facility.references && facility.references.length > 0 && (
-            <div className="mb-10">
-              <h2 className="mb-2 text-sm font-medium text-muted-foreground">参照元</h2>
-              <ul className="space-y-1.5">
-                {facility.references.map((ref, i) => (
-                  <li key={i}>
-                    <a
-                      href={ref.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-neon-cyan"
-                    >
-                      <span className="text-muted-foreground/50">・</span>
-                      {ref.label}
-                      <ArrowUpRight className="h-3 w-3 flex-shrink-0" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Prev / Next */}
-          <div className="flex items-center justify-between gap-4 border-t border-border/50 pt-6">
-            {prev ? (
-              <a
-                href={`/facilities/${prev.id}`}
-                className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
-              >
-                ← {prev.university} {prev.name}
-              </a>
-            ) : (
-              <span />
-            )}
-            <a
-              href="/database"
-              className="inline-flex items-center gap-1 text-sm text-neon-cyan underline-offset-2 hover:underline"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              一覧に戻る
-            </a>
-            {next ? (
-              <a
-                href={`/facilities/${next.id}`}
-                className="text-right text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
-              >
-                {next.university} {next.name} →
-              </a>
-            ) : (
-              <span />
+        <div className="portal-width team-body">
+          <div className="team-reading">
+            {facility.tags.length > 0 && <ul className="portal-tags" aria-label="掲載タグ">{facility.tags.map((tag) => (
+              <li key={tag}><a href={`/database?q=${encodeURIComponent(tag)}`}>{tag}</a></li>
+            ))}</ul>}
+            <section aria-labelledby="team-work">
+              <h2 id="team-work">チームの取り組み</h2>
+              <div className="team-description"><FormattedDescription description={facility.description} /></div>
+            </section>
+            {facility.references.length > 0 && (
+              <section className="team-sources" aria-labelledby="team-sources">
+                <h2 id="team-sources">出典</h2>
+                <ul>{facility.references.map((reference) => <li key={reference.url + reference.label}><ExternalLink {...reference} /></li>)}</ul>
+              </section>
             )}
           </div>
+
+          <aside className="team-aside" aria-label="関連情報">
+            {(facility.officialWebsite || career.length > 0) && (
+              <section>
+                <h2>このチームをもっと知る</h2>
+                <ul>
+                  {facility.officialWebsite && <li><ExternalLink label="医局・診療科の公式サイト" url={facility.officialWebsite.url} /></li>}
+                  {career.map((link) => <li key={link.url}><ExternalLink {...link} /></li>)}
+                </ul>
+              </section>
+            )}
+            {related.length > 0 && (
+              <section>
+                <h2>特集で読む</h2>
+                <ul>{related.map((article) => <li key={article.slug}><a href={`/features/${article.slug}`}>{article.title} →</a></li>)}</ul>
+              </section>
+            )}
+          </aside>
         </div>
+
+        {nearby.length > 0 && <section className="portal-width team-related" aria-labelledby="team-more">
+          <h2 id="team-more">{theme ? "同じテーマのチーム" : "ほかの消化器外科チーム"}</h2>
+          <ul>{nearby.map((item) => <li key={item.id}><a className="portal-row" href={facilityHref(item.id, theme)}>{item.university} {item.name} <span aria-hidden="true">↗</span></a></li>)}</ul>
+          <a className="portal-text-link" href={databaseHref(theme)}>消化器外科チームを探す →</a>
+        </section>}
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
