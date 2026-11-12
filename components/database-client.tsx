@@ -278,14 +278,14 @@ export function DatabaseClient({
           <p className="text-sm text-[#e5eef1]">{row.department}</p>
           <p className="mt-2 text-sm leading-[1.75] text-[#b2c3d2]">{project ? stripSummaryPrefix(project.summary) : row.feature}</p>
         </div>
-        <div className="flex flex-wrap items-center gap-x-4 text-xs sm:max-w-[220px] sm:justify-end sm:text-right" style={{ color: accent }}>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs max-sm:justify-between sm:max-w-[220px] sm:justify-end sm:text-right" style={{ color: accent }}>
           <Link href={facilityHref(row.facilityId, project?.theme ?? theme)}
-            className="inline-block py-2 underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:underline focus-visible:after:ring-2 focus-visible:after:ring-inset focus-visible:after:ring-[var(--accent)]"
+            className="inline-block py-2 underline-offset-4 max-sm:inline-flex max-sm:min-h-11 max-sm:items-center after:absolute after:inset-0 after:content-[''] group-hover:underline focus-visible:after:ring-2 focus-visible:after:ring-inset focus-visible:after:ring-[var(--accent)]"
             aria-label={`${row.institution} ${row.department}の詳細を見る`}>
-            チームを見る ↗
+            チームを見る <span aria-hidden="true" className="ml-1 sm:hidden">›</span><span aria-hidden="true" className="hidden sm:inline">↗</span>
           </Link>
           {sourceUrl && (
-            <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="relative z-10 inline-block py-2 underline-offset-4 hover:underline">
+            <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="relative z-10 inline-block py-2 underline-offset-4 hover:underline max-sm:ml-auto max-sm:inline-flex max-sm:min-h-11 max-sm:items-center max-sm:rounded-md max-sm:border max-sm:border-current/40 max-sm:bg-[#102232] max-sm:px-3">
               {sourceLabel}
             </a>
           )}
