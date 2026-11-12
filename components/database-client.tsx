@@ -235,7 +235,7 @@ export function DatabaseClient({
     const query = new URLSearchParams(searchParams.toString())
     if (moreOnly) query.delete("view")
     else query.set("view", "more")
-    router.replace(`/database?${query}`, { scroll: false })
+    router.push(`/database?${query}`, { scroll: false })
   }
 
   // ブラウザの戻る・進むでテーマをURLに合わせる
