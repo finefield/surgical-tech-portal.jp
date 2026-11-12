@@ -127,3 +127,47 @@
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
+
+
+/* A restrained light reflection on the fixed header brand, once per 24 seconds. */
+.logo-shine-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  pointer-events: none;
+}
+
+.logo-shine-sweep {
+  position: absolute;
+  top: -35%;
+  bottom: -35%;
+  left: 0;
+  width: 28%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgb(255 255 255 / 0.04) 26%,
+    rgb(255 255 255 / 0.42) 49%,
+    rgb(180 245 255 / 0.18) 61%,
+    transparent 100%
+  );
+  filter: blur(1px);
+  transform: translateX(-160%) skewX(-18deg);
+  opacity: 0;
+  animation: logo-shine-pass 24s linear 2.5s infinite;
+  will-change: transform;
+}
+
+@keyframes logo-shine-pass {
+  0% { transform: translateX(-160%) skewX(-18deg); opacity: 0; }
+  0.3% { opacity: 0.8; }
+  3.5% { transform: translateX(560%) skewX(-18deg); opacity: 0.8; }
+  4% { transform: translateX(560%) skewX(-18deg); opacity: 0; }
+  100% { transform: translateX(560%) skewX(-18deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-shine-sweep { animation: none; opacity: 0; }
+}
