@@ -222,7 +222,7 @@ html:has(#st-top-gateway dialog[open]){overflow:hidden}
 #st-top-gateway .dialog-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 47%;z-index:-2}
 #st-top-gateway dialog[open] .chapter-intro::after{
  content:"";position:absolute;top:0;bottom:0;left:0;width:1px;pointer-events:none;
- background:var(--chapter-light);box-shadow:0 0 25px 8px var(--chapter-light);
+ opacity:0;background:var(--chapter-light);box-shadow:0 0 25px 8px var(--chapter-light);
  animation:st-top-scan 590ms cubic-bezier(.19,1,.25,1) both;
 }
 #st-top-gateway dialog h3{
