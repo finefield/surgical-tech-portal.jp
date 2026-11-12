@@ -1,15 +1,17 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Search, X } from "lucide-react"
+import styles from "./database-client.module.css"
 import { facilityHref } from "@/lib/portal-themes"
 import { normalizeDirectorySearch, specialties } from "@/lib/directory-search"
 import { prefectureOrder, type Facility } from "@/data/facilities"
 import {
   explorerMappings,
   explorerThemes,
+  explorerTopics,
   isExplorerThemeKey,
   type ExplorerMapping,
   type ExplorerViewKey,
@@ -44,7 +46,6 @@ interface RowVM {
 interface DatabaseClientProps {
   facilities: Facility[]
   areas: string[]
-  totalCount: number
   initialTheme: ExplorerViewKey
   initialArea: string | null
   initialKeyword: string
@@ -54,7 +55,6 @@ interface DatabaseClientProps {
 export function DatabaseClient({
   facilities,
   areas,
-  totalCount,
   initialTheme,
   initialArea,
   initialKeyword,
@@ -108,9 +108,12 @@ export function DatabaseClient({
         sourceLabel: featured ? featured.sourceLabel ?? "公式資料 ↗" : "公式サイト ↗",
       })
       for (const mapping of mappings) {
+        const labels = explorerTopics[mapping.theme]
+          ?.filter(({ teams }) => teams.includes(mapping))
+          .map(({ label }) => label) ?? []
         map.get(mapping.theme)?.push({
           ...common,
-          topics: [mapping.topic],
+          topics: [mapping.topic, ...labels.filter((label) => label !== mapping.topic)],
           inModal: mapping.inModal,
           meta: `${facility.prefecture} ／ ${mapping.topic} ／ ${mapping.stage}`,
           feature: stripSummaryPrefix(mapping.summary),
@@ -128,7 +131,7 @@ export function DatabaseClient({
     return map
   }, [facilities])
 
-  const chapterMode = theme !== "all" || searchParams.get("mode") === "chapters"
+  const chapterMode = theme !== "all"
   const specialty = chapterMode ? undefined : specialties.find(({ key }) => key === searchParams.get("specialty"))
   const activeTheme = explorerThemes.find((item) => item.key === theme) ?? explorerThemes[0]
   const accent = chapterMode ? activeTheme.accent : "#a7ece9"
@@ -137,10 +140,9 @@ export function DatabaseClient({
   const baseRows = useMemo(() => {
     const rows = themeRows ?? []
     if (moreOnly) return rows.filter((row) => !row.inModal)
-    if (chapterMode && theme === "all") return rows.filter((row) => row.topics.length)
     if (specialty) return rows.filter((row) => row.specialties.includes(specialty))
     return rows
-  }, [themeRows, moreOnly, chapterMode, theme, specialty])
+  }, [themeRows, moreOnly, specialty])
   const featuredCount = theme === "all" ? 0 : themeRows?.filter((row) => row.inModal).length ?? 0
   const topicOptions = [...new Set([...baseRows.flatMap((row) => row.topics), ...(topic ? [topic] : [])])]
   const keywordTerms = normalizeDirectorySearch(keyword).trim().split(/\s+/).filter(Boolean)
@@ -202,7 +204,7 @@ export function DatabaseClient({
     if (rail && current) rail.scrollLeft = current.offsetLeft - (rail.clientWidth - current.offsetWidth) / 2
   }, [currentPrefecture, groupedByPrefecture])
 
-  const selectPath = (key: ExplorerViewKey, mode: "specialties" | "chapters", field?: string, nationwide = false) => {
+  const selectPath = (key: ExplorerViewKey, field?: string, nationwide = false) => {
     setTheme(key)
     setTopic("")
     if (nationwide) {
@@ -211,7 +213,6 @@ export function DatabaseClient({
     }
     const query = new URLSearchParams()
     if (key !== "all") query.set("theme", key)
-    else if (mode === "chapters") query.set("mode", "chapters")
     if (field) query.set("specialty", field)
     if (area && !nationwide) query.set("area", area)
     if (prefecture && !nationwide) query.set("prefecture", prefecture)
@@ -242,42 +243,7 @@ export function DatabaseClient({
     return () => window.removeEventListener("popstate", onPopState)
   }, [areas])
 
-  const clearFilters = () => {
-    setTopic("")
-    setPrefecture("")
-    setArea(null)
-    setKeyword("")
-  }
-
-  const chips: { key: string; label: string; clear: () => void }[] = []
-  if (theme !== "all") {
-    chips.push({
-      key: "theme",
-      label: `テーマ：${activeTheme.title}`,
-      clear: () => selectPath("all", "chapters"),
-    })
-  }
-  if (specialty) chips.push({ key: "specialty", label: `診療領域：${specialty.label}`, clear: () => selectPath("all", "specialties") })
-  if (topic) {
-    chips.push({ key: "topic", label: `取り組み：${topic}`, clear: () => setTopic("") })
-  }
-  if (prefecture) {
-    chips.push({
-      key: "prefecture",
-      label: `都道府県：${prefecture}`,
-      clear: () => setPrefecture(""),
-    })
-  }
-  if (area) {
-    chips.push({ key: "area", label: `地域：${area}`, clear: () => setArea(null) })
-  }
-  if (keyword) {
-    chips.push({
-      key: "keyword",
-      label: `キーワード：${keyword}`,
-      clear: () => setKeyword(""),
-    })
-  }
+  const isNarrowed = chapterMode || hasFilters
 
   const selectClass =
     "w-full min-h-[42px] rounded-[3px] border bg-[#102232] px-[11px] py-2 text-sm text-[#f2eee6] max-sm:min-h-[44px]"
@@ -322,8 +288,7 @@ export function DatabaseClient({
         }
       `}</style>
 
-      {/* 見出しバンド */}
-      <section className="relative isolate flex min-h-[clamp(205px,29vw,280px)] flex-col justify-center overflow-hidden px-[6%] py-9 max-sm:min-h-[192px] max-sm:py-6">
+      <section className="relative isolate flex min-h-[clamp(164px,20vw,224px)] flex-col justify-center overflow-hidden px-[6%] py-7">
         {explorerThemes.map((t) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -347,7 +312,7 @@ export function DatabaseClient({
           }}
         />
         <h1
-          className="my-3 text-[clamp(32px,6vw,56px)] leading-[1.3]"
+          className="my-3 text-balance text-[clamp(27px,6vw,56px)] leading-[1.3]"
           style={{ fontFamily: SERIF }}
         >
           消化器外科チームを探す
@@ -355,63 +320,67 @@ export function DatabaseClient({
         <p style={{ color: MUTED }}>学びたい領域や、関わりたい取り組みから。</p>
       </section>
 
-      {/* 章ボタンと絞り込み */}
-      <div className="px-[6%]">
-        <nav aria-label="探し方" className="grid grid-cols-2 border-b" style={{ borderColor: EDGE }}>
-          {(["specialties", "chapters"] as const).map((mode) => {
-            const active = chapterMode === (mode === "chapters")
+      <div id="directory-start" className="scroll-mt-20 px-[6%]">
+        <nav aria-label="全チームと5つの章" className={styles.chapters}>
+          {explorerThemes.map((item) => {
+            const active = theme === item.key
             return (
-              <button key={mode} type="button" aria-pressed={active}
-                onClick={() => { if (!active) selectPath("all", mode) }}
-                className="min-h-[52px] border border-b-2 px-3 text-left text-sm sm:text-base"
-                style={{ borderColor: EDGE, borderBottomColor: active ? accent : EDGE, background: active ? "#13293c" : "#0b1a2a", color: active ? "#f2eee6" : MUTED }}>
-                {mode === "specialties" ? "診療領域から探す" : "5章から探す"}
+              <button
+                key={item.key}
+                type="button"
+                aria-pressed={active}
+                className={styles.chapter}
+                style={{ "--chapter-color": item.accent } as CSSProperties}
+                onClick={() => { if (!active || specialty) selectPath(item.key) }}
+              >
+                <span
+                  aria-hidden="true"
+                  className={styles.chapterArt}
+                  style={{ backgroundImage: `url(${item.image})`, backgroundPosition: item.objectPosition }}
+                />
+                <span className={styles.chapterTitle}>{item.key === "all" ? "全チーム" : item.title}</span>
+                <span className={styles.chapterLabel}>{item.key === "all" ? "全国の消化器外科" : item.filterLabel}</span>
               </button>
             )
           })}
         </nav>
+
         {chapterMode ? (
-          <nav aria-label="章から探す" className="flex flex-wrap gap-1.5 py-4">
-            {explorerThemes.map((item) => (
-              <button key={item.key} type="button" aria-pressed={theme === item.key}
-                onClick={() => { if (theme !== item.key) selectPath(item.key, "chapters") }}
-                className="min-h-[42px] rounded-[3px] border px-[11px] py-2 text-sm max-sm:min-h-[44px]"
-                style={theme === item.key ? { background: accent, color: "#092323", borderColor: accent } : { borderColor: EDGE }}>
-                {item.key === "all" ? "すべての章" : item.title}
+          <div role="group" aria-label="取り組み" className={styles.optionRow}>
+            <span className={styles.filterLabel} aria-hidden="true">取り組み</span>
+            <div className={styles.options}>
+              <button type="button" className={styles.option} aria-pressed={!topic} onClick={() => setTopic("")}>
+                すべての取り組み
               </button>
-            ))}
-          </nav>
+              {topicOptions.map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className={styles.option}
+                  aria-pressed={topic === option}
+                  onClick={() => setTopic(topic === option ? "" : option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
         ) : (
-          <nav aria-label="診療領域" className="flex flex-wrap gap-1.5 py-4">
-            {[{ key: "", label: "すべての領域" }, ...specialties].map(({ key, label }) => (
-              <button key={key} type="button" aria-pressed={(specialty?.key ?? "") === key}
-                onClick={() => { if ((specialty?.key ?? "") !== key) selectPath("all", "specialties", key) }}
-                className="min-h-[42px] rounded-[3px] border px-[11px] py-2 text-sm max-sm:min-h-[44px]"
-                style={(specialty?.key ?? "") === key ? { background: accent, color: "#092323", borderColor: accent } : { borderColor: EDGE }}>
-                {label}
-              </button>
-            ))}
-          </nav>
+          <div role="group" aria-label="診療領域" className={styles.optionRow}>
+            <span className={styles.filterLabel} aria-hidden="true">診療領域</span>
+            <div className={styles.options}>
+              {[{ key: "", label: "すべての領域" }, ...specialties].map(({ key, label }) => (
+                <button key={key} type="button" aria-pressed={(specialty?.key ?? "") === key}
+                  onClick={() => { if ((specialty?.key ?? "") !== key) selectPath("all", key) }}
+                  className={styles.option}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
         )}
 
-        <div className={`grid grid-cols-1 gap-3 border-t py-[17px] ${chapterMode ? "min-[560px]:grid-cols-3" : "grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)]"}`} style={{ borderColor: EDGE }}>
-          {chapterMode && <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
-            取り組み
-            <select
-              aria-label="取り組み"
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              className={selectClass}
-              style={selectStyle}
-            >
-              <option value="">すべての取り組み</option>
-              {topicOptions.map((o) => (
-                <option key={o} value={o}>
-                  {o}
-                </option>
-              ))}
-            </select>
-          </label>}
+        <div className={styles.searchFields}>
           <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
             都道府県
             <select
@@ -456,92 +425,40 @@ export function DatabaseClient({
           </label>
         </div>
 
-        {/* 地域（エリア）絞り込み：従来の一覧から維持 */}
-        <div className="flex flex-wrap items-center gap-2 pb-4" aria-label="地域で絞り込む">
-          <button
-            type="button"
-            onClick={() => setArea(null)}
-            className="rounded-full border px-3 py-1 text-xs"
-            style={
-              area === null
-                ? { background: accent, color: "#092323", borderColor: accent }
-                : { borderColor: EDGE, color: MUTED }
-            }
-          >
-            全エリア
-          </button>
-          {areas.map((a) => (
-            <button
-              key={a}
-              type="button"
-              onClick={() => setArea(a)}
-              className="rounded-full border px-3 py-1 text-xs"
-              style={
-                area === a
-                  ? { background: accent, color: "#092323", borderColor: accent }
-                  : { borderColor: EDGE, color: MUTED }
-              }
-            >
-              {a}
-            </button>
-          ))}
-        </div>
-
-        {chips.length > 0 && (
-          <div className="flex flex-wrap items-center gap-2 pb-4" aria-label="選択中の条件">
-            {chips.map((chip) => (
-              <button
-                key={chip.key}
-                type="button"
-                onClick={chip.clear}
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs"
-                style={{ borderColor: accent, color: accent }}
-                title="この条件を外す"
-              >
-                {chip.label}
-                <X className="h-3 w-3" />
+        <div className={styles.optionRow} role="group" aria-label="エリア">
+          <span className={styles.filterLabel} aria-hidden="true">エリア</span>
+          <div className={styles.options}>
+            <button type="button" aria-pressed={area === null} onClick={() => setArea(null)} className={styles.option}>全エリア</button>
+            {areas.map((item) => (
+              <button key={item} type="button" aria-pressed={area === item} onClick={() => setArea(item)} className={styles.option}>
+                {item}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => {
-                clearFilters()
-                setTheme("all")
-                router.push("/database", { scroll: false })
-              }}
-              className="text-xs underline underline-offset-4"
-              style={{ color: MUTED }}
-            >
-              条件をすべて外す
-            </button>
           </div>
-        )}
+        </div>
       </div>
 
       {/* 結果 */}
       <section className="px-[6%] pb-8" aria-label="検索結果">
-        {featuredCount > 0 && (
-          <div className="flex flex-wrap items-center justify-between gap-2 border-t py-2 text-sm" style={{ borderColor: EDGE }}>
-            <span style={{ color: MUTED }}>{moreOnly ? "TOPの紹介例以外から探す" : "このテーマの全チーム"}</span>
-            <button type="button" onClick={toggleFeatured} className="min-h-[44px] underline underline-offset-4" style={{ color: accent }}>
-              {moreOnly ? `TOPで紹介した${featuredCount}件も含める` : "TOPの紹介例以外を表示"}
-            </button>
+        <div className={styles.resultBar}>
+          <div className={styles.resultContext}>
+            {[chapterMode ? activeTheme.title : "全チーム", topic || specialty?.label || (chapterMode ? activeTheme.filterLabel : ""), prefecture || area]
+              .filter(Boolean)
+              .join(" ／ ")}
+            <span aria-live="polite">
+              {filteredRows.length} 件
+              {hasFilters && `（全${baseRows.length}件中）`}
+            </span>
+            {moreOnly && <span>TOPの紹介例以外</span>}
           </div>
-        )}
-        <div
-          className="flex flex-wrap justify-between gap-1 border-b py-2.5 text-xs"
-          style={{ color: MUTED, borderColor: EDGE }}
-        >
-          <span>
-            {chapterMode
-              ? theme === "all" ? "すべての章" : `${activeTheme.title} ／ ${activeTheme.filterLabel}`
-              : `${specialty?.label ?? "すべての領域"} ／ ${prefecture || area || "全国"}`}
-          </span>
-          <span aria-live="polite">
-            {filteredRows.length} 件
-            {hasFilters && `（全${baseRows.length}件中）`}
-            {!chapterMode && !hasFilters && ` ／ ${totalCount} 件の外科チームを収録`}
-          </span>
+          <div className={styles.resultActions}>
+            {featuredCount > 0 && (
+              <button type="button" onClick={toggleFeatured} className={styles.resultAction}>
+                {moreOnly ? `TOPで紹介した${featuredCount}チームも見る` : "TOPの紹介例以外を表示"}
+              </button>
+            )}
+            {isNarrowed && <a href="/database" className={styles.resultAction}>条件をすべて外す</a>}
+          </div>
         </div>
 
         {/* 都道府県ジャンプ（「すべて」のとき） */}
@@ -562,34 +479,11 @@ export function DatabaseClient({
                 この条件に合う外科チームは見つかりませんでした。条件を外して探せます。
               </p>
               {keywordTerms.length > 0 && (chapterMode || specialty || prefecture || area) && (
-                <button type="button" onClick={() => selectPath("all", "specialties", undefined, true)}
+                <button type="button" onClick={() => selectPath("all", undefined, true)}
                   className="mt-3 min-h-[44px] rounded-[3px] border px-3 py-2 text-sm" style={{ borderColor: accent, color: accent }}>
                   同じキーワードで全国を探す
                 </button>
               )}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {chips.map((chip) => (
-                  <button
-                    key={chip.key}
-                    type="button"
-                    onClick={chip.clear}
-                    className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs"
-                    style={{ borderColor: accent, color: accent }}
-                    title="この条件を外す"
-                  >
-                    {chip.label}
-                    <X className="h-3 w-3" />
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  onClick={clearFilters}
-                  className="rounded-[3px] border bg-[#102232] px-[11px] py-2 text-sm"
-                  style={{ borderColor: EDGE }}
-                >
-                  絞り込みを外す
-                </button>
-              </div>
             </div>
           )}
           {groupedByPrefecture
@@ -609,6 +503,13 @@ export function DatabaseClient({
                 </div>
               ))
             : filteredRows.map(renderRow)}
+        </div>
+        <div className={styles.directoryEnd}>
+          {isNarrowed ? (
+            <a href="/database">ほかの消化器外科チームを探す <span aria-hidden="true">→</span></a>
+          ) : (
+            <a href="#directory-start">条件を選び直す <span aria-hidden="true">↑</span></a>
+          )}
         </div>
       </section>
     </div>

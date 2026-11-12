@@ -137,7 +137,7 @@ export default async function FacilityPage({ params, searchParams }: {
         {nearby.length > 0 && <section className="portal-width team-related" aria-labelledby="team-more">
           <h2 id="team-more">{theme ? "同じテーマのチーム" : "ほかの消化器外科チーム"}</h2>
           <ul>{nearby.map((item) => <li key={item.id}><a className="portal-row" href={facilityHref(item.id, theme)}>{item.university} {item.name} <span aria-hidden="true">↗</span></a></li>)}</ul>
-          <a className="portal-text-link" href={databaseHref(theme)}>消化器外科チームを探す →</a>
+          <a className="portal-text-link" href={databaseHref()}>ほかの消化器外科チームを探す <span aria-hidden="true">→</span></a>
         </section>}
       </main>
       <Footer />

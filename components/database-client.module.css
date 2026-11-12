@@ -1,0 +1,204 @@
+.chapters {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  padding-bottom: 15px;
+}
+
+.chapter {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 3px;
+  min-height: clamp(84px, 8.7vw, 120px);
+  overflow: hidden;
+  padding: 10px clamp(9px, 1.1vw, 16px);
+  border: 1px solid #304457;
+  border-radius: 3px;
+  background: #0a1929;
+  text-align: left;
+  color: #f4efe7;
+}
+
+.chapterArt,
+.chapter::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chapterArt {
+  z-index: -2;
+  background-size: cover;
+  opacity: .72;
+  transition: opacity .22s ease;
+}
+
+.chapter::after {
+  content: "";
+  z-index: -1;
+  background: linear-gradient(0deg, #040c18 2%, #040c18e8 38%, #040c1840 82%);
+}
+
+.chapter:hover,
+.chapter[aria-pressed="true"] {
+  border-color: var(--chapter-color);
+}
+
+.chapter[aria-pressed="true"] {
+  box-shadow: inset 0 -3px var(--chapter-color), 0 0 18px color-mix(in srgb, var(--chapter-color) 20%, transparent);
+}
+
+.chapter[aria-pressed="true"] .chapterArt,
+.chapter:hover .chapterArt {
+  opacity: 1;
+}
+
+.chapterTitle {
+  font: 400 clamp(14px, 1.65vw, 23px)/1.3 "Yu Mincho", "Hiragino Mincho ProN", serif;
+  text-wrap: balance;
+}
+
+.chapterLabel {
+  color: #c9d6e0;
+  font-size: clamp(10px, .95vw, 12px);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.chapter[aria-pressed="true"] .chapterLabel {
+  color: var(--chapter-color);
+}
+
+.optionRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 16px;
+  padding: 9px 0;
+}
+
+.chapters + .optionRow {
+  border-top: 1px solid #304457;
+}
+
+.filterLabel {
+  min-width: 5em;
+  color: #b2c3d2;
+  font-size: 12px;
+}
+
+.options {
+  display: flex;
+  flex: 1 1 260px;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
+.option {
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid #304457;
+  border-radius: 2rem;
+  color: #dce6ed;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.option:hover {
+  border-color: var(--accent);
+}
+
+.option[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #092323;
+}
+
+.searchFields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: 10px 14px;
+  padding-top: 8px;
+}
+
+.resultBar,
+.resultContext,
+.resultActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+}
+
+.resultBar {
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 5px 0;
+  min-height: 52px;
+  border-block: 1px solid #304457;
+  color: #f2eee6;
+  font-size: 14px;
+}
+
+.resultContext span {
+  color: #b2c3d2;
+  font-size: 13px;
+}
+
+.resultAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--accent);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.directoryEnd {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.directoryEnd a {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  border-radius: 3px;
+  background: #102232;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.directoryEnd a:hover {
+  border-color: var(--accent);
+  background: #193447;
+}
+
+@media (max-width: 850px) {
+  .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .chapters { gap: 6px; }
+  .chapter { padding: 8px; }
+  .optionRow { display: grid; gap: 6px; }
+  .option { min-height: 42px; }
+  .resultBar { padding-block: 9px; }
+}
+
+@media (max-width: 350px) {
+  .searchFields { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapterArt { transition: none; }
+}

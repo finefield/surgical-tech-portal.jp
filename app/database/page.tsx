@@ -39,7 +39,6 @@ export default async function DatabasePage({
         <DatabaseClient
           facilities={sortedFacilities}
           areas={areas}
-          totalCount={facilities.length}
           initialTheme={initialTheme}
           initialArea={areas.find((area) => area === sp.area) ?? null}
           initialKeyword={typeof sp.q === "string" ? sp.q : ""}
