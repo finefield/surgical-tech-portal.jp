@@ -293,7 +293,7 @@ export function DatabaseClient({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={t.key}
-            src={t.key === "all" ? "/insight.jpg" : t.image}
+            src={t.image}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-[2] h-full w-full object-cover opacity-0 transition-opacity duration-[240ms] motion-reduce:transition-none"
