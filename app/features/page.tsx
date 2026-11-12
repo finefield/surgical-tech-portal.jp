@@ -25,7 +25,7 @@ function ArticleRow({ article }: { article: Article }) {
 
 export default function FeaturesPage() {
   const lead = articles.find((article) => article.slug === "feature-5")
-  const domestic = articles.filter((article) => article.kind === "国内特集")
+  const domestic = articles.filter((article) => article.kind === "国内特集" && article !== lead)
   const global = articles.filter((article) => article.kind === "海外編")
 
   return (
@@ -37,7 +37,12 @@ export default function FeaturesPage() {
           <div className="portal-width portal-hero-content">
             <h1>特集</h1>
             <p>手術室から、外科の技術が生まれる場所へ。消化器外科の取り組みを、公開資料からひもときます。</p>
-            {lead && <a className="portal-text-link mt-5" href={`/features/${lead.slug}`}>{lead.title} →</a>}
+            {lead && (
+              <a className="portal-text-link mt-5" href={`/features/${lead.slug}`}>
+                <span className="block text-xs text-muted-foreground">{lead.university} {lead.department}</span>
+                <span className="mt-1 block">{lead.title} →</span>
+              </a>
+            )}
           </div>
         </section>
         <div className="portal-width">

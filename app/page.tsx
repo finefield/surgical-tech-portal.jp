@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { TopGateway } from "@/components/top-gateway"
+import { UpdateLog } from "@/components/update-log"
 
 // 共有画像は TOP のみ ogp-logo.png（layout の既定 /ogp.png は他ページで維持）
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function Home() {
       <Header />
       <main className="pt-16">
         <TopGateway />
+        <UpdateLog />
       </main>
       <Footer />
     </div>

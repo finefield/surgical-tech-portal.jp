@@ -379,7 +379,7 @@ export function TopGateway() {
           <ul className="chapter-teams">
             {activeChapter.modalTeams.map((team) => (
               <li key={team.facilityId}>
-                <Link href={`/facilities/${team.facilityId}`}>
+                <Link href={`/facilities/${team.facilityId}?theme=${activeChapter.theme.key}`}>
                   <span className="chapter-region">{team.region}</span>
                   <span className="chapter-team-content">
                     <span className="chapter-team-name">{team.name}</span>

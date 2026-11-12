@@ -24,12 +24,12 @@ const sortedFacilities = [...facilities].sort((a, b) => {
 export default async function DatabasePage({
   searchParams,
 }: {
-  searchParams: Promise<{ theme?: string }>
+  searchParams: Promise<{ theme?: string; area?: string; q?: string }>
 }) {
   const sp = await searchParams
   // テーマ指定がない・未知のキーの場合は「すべて」
   const initialTheme: ExplorerViewKey =
-    sp.theme && isExplorerThemeKey(sp.theme) ? sp.theme : "all"
+    typeof sp.theme === "string" && isExplorerThemeKey(sp.theme) ? sp.theme : "all"
 
   return (
     <div className="min-h-screen bg-[#06111e]">
@@ -41,6 +41,8 @@ export default async function DatabasePage({
           areas={areas}
           totalCount={facilities.length}
           initialTheme={initialTheme}
+          initialArea={areas.find((area) => area === sp.area) ?? null}
+          initialKeyword={typeof sp.q === "string" ? sp.q : ""}
         />
       </main>
 

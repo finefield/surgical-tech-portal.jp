@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { facilities, areas, type Facility } from "@/data/facilities"
-import { databaseHref, facilityTopics, themeKeys, themes } from "@/lib/portal-themes"
+import { explorerMappings, explorerThemes } from "@/data/explorer"
+import { databaseHref } from "@/lib/portal-themes"
 
 export const metadata: Metadata = {
   title: "データで見る 日本の消化器外科DX | Surgical Tech Portal",
@@ -114,13 +115,13 @@ export default function InsightsPage() {
 
           <section className="mb-14" aria-labelledby="theme-coverage">
             <h2 className="portal-section-head" id="theme-coverage">テーマ別の収録状況</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">公開資料で紹介している取り組みと、収録済みの掲載タグをもとに集計。同じチームが複数のテーマに含まれます。</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">各テーマで紹介しているチームを集計しています。同じチームが複数のテーマに含まれます。</p>
             <ul>
-              {themeKeys.map((key) => (
+              {explorerThemes.filter(({ key }) => key !== "all").map(({ key, filterLabel }) => (
                 <li key={key}>
                   <a className="portal-row" href={databaseHref(key)}>
-                    <span>{themes[key].label}</span>
-                    <span>{facilities.filter((facility) => facilityTopics(facility, key).length > 0).length} 件 <span aria-hidden="true">→</span></span>
+                    <span>{filterLabel}</span>
+                    <span>{new Set(explorerMappings.filter((item) => item.theme === key).map(({ facilityId }) => facilityId)).size} 件 <span aria-hidden="true">→</span></span>
                   </a>
                 </li>
               ))}

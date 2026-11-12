@@ -27,6 +27,7 @@ export interface ExplorerMapping {
   topic: string
   stage: string
   headline: string
+  technology?: string
   summary: string
   description: string
   sourceUrl: string
@@ -163,15 +164,15 @@ export const explorerMappings: ExplorerMapping[] = [
     inModal: true,
   },
   {
-    facilityId: 37,
+    facilityId: 35,
     theme: "preserve",
-    name: "近畿大学 上部消化管外科",
+    name: "関西医科大学附属病院 上部消化管外科",
     topic: "胃の機能温存",
     stage: "診療で活用",
-    headline: "幽門や迷走神経を残す胃がん手術",
-    summary: "胃がん手術で、幽門や迷走神経の温存に取り組む。",
-    description: "近畿大学病院の診療案内では、上部消化管領域の特色として、幽門や迷走神経の温存を目指す胃がん手術を紹介しています。",
-    sourceUrl: "https://www.med.kindai.ac.jp/departments_and_centers/internal_medicine/13surgery.html",
+    headline: "胃の機能温存を考慮した手術",
+    summary: "胃がん・食道がんの手術で、機能温存を考慮した治療を紹介。",
+    description: "上部消化管外科は、胃がん・食道がんの診療で、術後の生活を考慮しながら機能温存を目指す取り組みを紹介しています。",
+    sourceUrl: "https://hp.kmu.ac.jp/treatment/departments/upper_gastrointestinal_surgery/",
     inModal: true,
   },
   {
@@ -218,7 +219,7 @@ export const explorerMappings: ExplorerMapping[] = [
     stage: "研究",
     headline: "手術を支援するAIの精度と有用性を調べる",
     summary: "研究｜鏡視下の消化器手術に向け、手術支援AIの精度や有用性を検討。",
-    description: "教室が担う千葉大学病院の食道胃腸外科は、手術支援AIシステムの開発・改良と評価を行う研究を公開しています。",
+    description: "千葉大学病院の食道胃腸外科は、手術支援AIシステムの開発・改良と評価を目的とする研究計画を公開しました。公開資料上の研究期間は2026年3月31日までです。",
     sourceUrl: "https://www.ho.chiba-u.ac.jp/hosp/assets/dl/information/2402_optout_HK202312-10.pdf",
     inModal: true,
   },
@@ -245,6 +246,20 @@ export const explorerMappings: ExplorerMapping[] = [
     description: "病院は、消化器がんの患者さんを対象に、遠隔の医師が手術を支援し、その安全性を評価する取り組みを公表しています。",
     sourceUrl: "https://hosp.hirosaki-u.ac.jp/6335/",
     inModal: false,
+  },
+  {
+    facilityId: 74,
+    theme: "connection",
+    name: "慶應義塾大学病院 上部消化管班",
+    topic: "手術映像・AI教育",
+    stage: "実証試験",
+    headline: "手術映像から、外科医の判断を学ぶ。",
+    technology: "Surgical VLM",
+    summary: "手術映像を言葉にする生成AI「Surgical VLM」を胃がん手術で実証。",
+    description: "慶應義塾大学病院の上部消化管班の外科医とディリーバは、手術映像をもとに術野の構造や操作の背景を説明する生成AIを研究開発しています。2026年2月に同院の胃がん手術で実証試験を行い、まず手術教育への活用を目指しています。",
+    sourceUrl: "https://www.nedo.go.jp/news/press/AA5_101924.html",
+    sourceLabel: "NEDO・ディリーバの実証発表 ↗",
+    inModal: true,
   },
   {
     facilityId: 22,
@@ -282,7 +297,7 @@ export const explorerMappings: ExplorerMapping[] = [
     summary: "遠隔支援｜離れた場所の医師がロボット支援手術を支える臨床研究。",
     description: "病院は、消化器がんの患者さんを対象に、遠隔の医師が手術を支援し、その安全性を評価する取り組みを公表しています。",
     sourceUrl: "https://hosp.hirosaki-u.ac.jp/6335/",
-    inModal: true,
+    inModal: false,
   },
   {
     facilityId: 30,

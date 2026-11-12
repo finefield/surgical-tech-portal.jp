@@ -33,7 +33,6 @@
 .team-hero h1 span { display: block; margin-top: 10px; font: 400 clamp(16px, 2.3vw, 23px)/1.5 system-ui, sans-serif; color: var(--portal-muted); }
 .team-hero .team-headline { color: var(--portal-ink); font: 400 clamp(18px, 2.5vw, 31px)/1.6 var(--portal-serif); }
 .team-hero .portal-hero-content { padding-block: 38px 57px; }
-.team-hero-source { margin-top: 13px; color: var(--portal-accent); font-size: 13px; }
 .team-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(210px, .36fr); gap: clamp(24px, 6vw, 80px); padding-block: 12px 52px; }
 .team-reading h2, .team-related h2, .portal-editorial h2 { font: 400 clamp(22px, 3vw, 32px)/1.5 var(--portal-serif); }
 .team-reading > .portal-tags { margin-bottom: 24px; }
@@ -43,7 +42,7 @@
 .team-aside h2 { font: 400 20px/1.5 var(--portal-serif); margin-bottom: 10px; }
 .team-aside section + section { margin-top: 28px; }
 .team-aside li, .team-sources li { margin: 8px 0; color: var(--portal-accent); font-size: 14px; overflow-wrap: anywhere; }
-.team-aside a:hover, .team-sources a:hover, .team-hero-source a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.team-aside a:hover, .team-sources a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .team-related { padding-block: 18px 60px; border-top: 1px solid var(--portal-line); }
 .team-related .portal-text-link { margin-top: 18px; }
 .portal-editorial .portal-width > section { margin-top: 26px; }
@@ -65,3 +64,24 @@
   .team-hero .portal-hero-content { padding-block: 32px 42px; }
 }
 .team-page, .portal-editorial { padding-top: 64px; }
+
+.team-projects { margin-top: 14px; border-top: 1px solid var(--portal-line); }
+.team-projects li { padding: 16px 0; border-bottom: 1px solid var(--portal-line); }
+.team-projects h3 { margin: 5px 0; font: 400 clamp(18px, 2.5vw, 25px)/1.5 var(--portal-serif); }
+.team-projects p:not(.portal-kicker) { color: var(--portal-muted); line-height: 1.85; }
+.team-projects a { display: inline-block; margin-top: 7px; font-size: 13px; color: var(--portal-accent); text-decoration: underline; text-underline-offset: 4px; }
+
+.portal-prefecture-rail {
+  position: sticky; top: 64px; z-index: 20; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin;
+  padding: 7px 3px; background: #06111e; border-bottom: 1px solid var(--portal-line);
+}
+.portal-prefecture-rail a {
+  display: inline-flex; align-items: center; flex: 0 0 auto; min-height: 36px; padding: 5px 12px;
+  border: 1px solid var(--portal-line); color: var(--portal-muted); font-size: 13px;
+}
+.portal-prefecture-rail a:hover, .portal-prefecture-rail a[aria-current="location"] {
+  border-color: var(--portal-accent); color: var(--portal-accent); background: #15283a;
+}
+.portal-prefecture-group { padding-top: 12px; }
+.portal-prefecture-heading { position: sticky; top: 116px; z-index: 10; scroll-margin-top: 116px; background: #06111e; }
+.portal-prefecture-group:only-child .portal-prefecture-heading { top: 64px; }

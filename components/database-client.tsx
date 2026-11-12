@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, X } from "lucide-react"
+import { facilityHref } from "@/lib/portal-themes"
 import { prefectureOrder, type Facility } from "@/data/facilities"
 import {
   explorerMappings,
@@ -54,6 +55,8 @@ interface DatabaseClientProps {
   areas: string[]
   totalCount: number
   initialTheme: ExplorerViewKey
+  initialArea: string | null
+  initialKeyword: string
 }
 
 export function DatabaseClient({
@@ -61,13 +64,18 @@ export function DatabaseClient({
   areas,
   totalCount,
   initialTheme,
+  initialArea,
+  initialKeyword,
 }: DatabaseClientProps) {
   const router = useRouter()
   const [theme, setTheme] = useState<ExplorerViewKey>(initialTheme)
   const [topic, setTopic] = useState("")
   const [prefecture, setPrefecture] = useState("")
-  const [area, setArea] = useState<string | null>(null)
-  const [keyword, setKeyword] = useState("")
+  const [area, setArea] = useState<string | null>(initialArea)
+  const [keyword, setKeyword] = useState(initialKeyword)
+  const [currentPrefecture, setCurrentPrefecture] = useState("")
+  const railRef = useRef<HTMLElement>(null)
+  const groupsRef = useRef<HTMLDivElement>(null)
 
   const facilityById = useMemo(
     () => new Map(facilities.map((f) => [f.id, f])),
@@ -225,26 +233,62 @@ export function DatabaseClient({
     return groups
   }, [theme, filteredRows])
 
+  useEffect(() => {
+    const rail = railRef.current
+    if (!rail || !groupsRef.current) return
+    const groups = Array.from(groupsRef.current.querySelectorAll<HTMLElement>("[data-prefecture]"))
+    let frame = 0
+    function update() {
+      const bottom = (rail?.getBoundingClientRect().bottom ?? 64) + 12
+      const current = groups.find((group) => group.getBoundingClientRect().bottom > bottom) ?? groups.at(-1)
+      setCurrentPrefecture(current?.dataset.prefecture ?? "")
+    }
+    function onScroll() {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
+  }, [groupedByPrefecture])
+
+  useEffect(() => {
+    const rail = railRef.current
+    const current = rail?.querySelector<HTMLElement>('[aria-current="location"]')
+    if (rail && current) rail.scrollLeft = current.offsetLeft - (rail.clientWidth - current.offsetWidth) / 2
+  }, [currentPrefecture, groupedByPrefecture])
+
   const selectTheme = (key: ExplorerViewKey) => {
     if (key === theme) return
     setTheme(key)
     setTopic("")
-    router.push(key === "all" ? "/database" : `/database?theme=${key}`, {
-      scroll: false,
-    })
+    const query = new URLSearchParams()
+    if (key !== "all") query.set("theme", key)
+    if (area) query.set("area", area)
+    if (keyword) query.set("q", keyword)
+    router.push(query.size ? `/database?${query}` : "/database", { scroll: false })
   }
 
   // ブラウザの戻る・進むでテーマをURLに合わせる
   useEffect(() => {
     const onPopState = () => {
-      const t = new URLSearchParams(window.location.search).get("theme")
+      const query = new URLSearchParams(window.location.search)
+      const t = query.get("theme")
       const next: ExplorerViewKey = t && isExplorerThemeKey(t) ? t : "all"
       setTheme(next)
       setTopic("")
+      setPrefecture("")
+      setArea(areas.find((area) => area === query.get("area")) ?? null)
+      setKeyword(query.get("q") ?? "")
     }
     window.addEventListener("popstate", onPopState)
     return () => window.removeEventListener("popstate", onPopState)
-  }, [])
+  }, [areas])
 
   const clearFilters = () => {
     setTopic("")
@@ -309,7 +353,7 @@ export function DatabaseClient({
       <p className="mt-1.5 text-[13px]">{row.teamName}</p>
       <div className="mt-1.5 flex flex-wrap gap-5 text-xs">
         <Link
-          href={`/facilities/${row.facilityId}`}
+          href={facilityHref(row.facilityId, theme)}
           className="inline-block py-1.5 underline-offset-4"
           style={{ color: accent }}
         >
@@ -403,6 +447,7 @@ export function DatabaseClient({
           <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
             取り組み
             <select
+              aria-label="取り組み"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               className={selectClass}
@@ -419,6 +464,7 @@ export function DatabaseClient({
           <label className="grid gap-[5px] text-xs" style={{ color: MUTED }}>
             都道府県
             <select
+              aria-label="都道府県"
               value={prefecture}
               onChange={(e) => setPrefecture(e.target.value)}
               className={selectClass}
@@ -540,29 +586,16 @@ export function DatabaseClient({
 
         {/* 都道府県ジャンプ（「すべて」のとき） */}
         {groupedByPrefecture && groupedByPrefecture.length > 1 && (
-          <div className="flex flex-wrap items-center gap-1.5 pt-4">
-            <span className="mr-1 text-xs" style={{ color: MUTED }}>
-              都道府県:
-            </span>
+          <nav className="portal-prefecture-rail" ref={railRef} aria-label="都道府県へ移動">
             {groupedByPrefecture.map((g) => (
-              <button
-                key={g.prefecture}
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById(`pref-${g.prefecture}`)
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-                className="rounded-full border px-3 py-1 text-xs"
-                style={{ borderColor: EDGE, color: MUTED }}
-              >
+              <a key={g.prefecture} href={`#pref-${g.prefecture}`} aria-current={g.prefecture === currentPrefecture ? "location" : undefined}>
                 {g.prefecture}
-              </button>
+              </a>
             ))}
-          </div>
+          </nav>
         )}
 
-        <div>
+        <div ref={groupsRef}>
           {filteredRows.length === 0 && (
             <div className="py-[22px]">
               <p style={{ color: MUTED }}>
@@ -595,10 +628,10 @@ export function DatabaseClient({
           )}
           {groupedByPrefecture
             ? groupedByPrefecture.map((g) => (
-                <div key={g.prefecture}>
+                <div key={g.prefecture} data-prefecture={g.prefecture} className="portal-prefecture-group">
                   <h2
                     id={`pref-${g.prefecture}`}
-                    className="mb-1 mt-6 scroll-mt-24 border-b pb-2 text-base"
+                    className="portal-prefecture-heading mb-1 border-b py-2 text-base"
                     style={{ borderColor: EDGE, fontFamily: SERIF }}
                   >
                     {g.prefecture}

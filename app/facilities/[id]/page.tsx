@@ -6,12 +6,13 @@ import { FormattedDescription } from "@/components/formatted-description"
 import { Header } from "@/components/header"
 import { articles } from "@/data/articles"
 import { facilities, getPrefectureIndex } from "@/data/facilities"
-import { databaseHref, facilityHref, facilityTopics, parseTheme, themeExamples, themeKeys, themes } from "@/lib/portal-themes"
+import { explorerMappings } from "@/data/explorer"
+import { databaseHref, facilityHref, parseTheme, themeInfo } from "@/lib/portal-themes"
 
 const sorted = [...facilities].sort((a, b) => getPrefectureIndex(a.prefecture) - getPrefectureIndex(b.prefecture))
 
 function findFacility(id: string) {
-  return facilities.find((facility) => String(facility.id) === id)
+  return facilities.find((facility) => facility.id === Number(id))
 }
 
 export function generateStaticParams() {
@@ -32,8 +33,13 @@ const careerLinks: Record<number, { label: string; url: string }[]> = {
   74: [
     { label: "外科専門研修・募集要項", url: "https://www.keio.ac.jp/ja/med/about/sotsugo/senior-resident-center/" },
     { label: "外科学教室の見学案内", url: "https://keiosurg-shokikenshui.com/recruit/recruit01.html" },
+    { label: "外科学教室の関連病院一覧", url: "https://keiosurg-shokikenshui.com/hospital" },
   ],
   22: [{ label: "消化器外科の臨床実習", url: "https://www.hosp.gifu-u.ac.jp/origin/2geka/clinical_training/" }],
+  27: [{ label: "総合消化器外科・先端ロボット・内視鏡手術学研修プログラム", url: "https://www.fujita-hu.ac.jp/~kenshui/media/2025072-124743-417.pdf" }],
+  33: [{ label: "大阪大学消化器外科の臨床研修", url: "https://www.med.osaka-u.ac.jp/pub/gesurg/clinical.html" }],
+  41: [{ label: "兵庫医科大学の外科専門研修・上部消化管外科", url: "https://www.hyo-med.ac.jp/department/hyo-surg-program/eg.html" }],
+  87: [{ label: "第二外科の外科専門医研修", url: "https://surg2.kyushu-u.ac.jp/resident/program.html" }],
 }
 
 function ExternalLink({ url, label }: { url: string; label: string }) {
@@ -49,34 +55,35 @@ export default async function FacilityPage({ params, searchParams }: {
   if (!facility) notFound()
 
   const requested = typeof inputTheme === "string" ? parseTheme(inputTheme) : undefined
-  const supportedThemes = themeKeys.filter((key) => facilityTopics(facility, key).length)
-  const theme = requested && supportedThemes.includes(requested) ? requested : undefined
-  const visual = theme ?? supportedThemes[0]
-  const example = theme && themeExamples[theme].find((item) => item.id === facility.id)
+  const projects = explorerMappings.filter((item) => item.facilityId === facility.id)
+  const selected = projects.find((item) => item.theme === requested)
+  const theme = selected?.theme
+  const visual = selected ?? projects[0]
+  const chapter = visual ? themeInfo(visual.theme) : undefined
   const related = articles.filter((article) => facility.id === 74
     ? article.slug === "feature-5"
     : article.kind === "国内特集" && article.university === facility.university &&
       (facility.name.includes(article.department) || article.department.includes(facility.name))).slice(0, 2)
   const index = sorted.findIndex((item) => item.id === facility.id)
   const nearby = theme
-    ? sorted.filter((item) => item.id !== facility.id && facilityTopics(item, theme).length).slice(0, 2)
+    ? sorted.filter((item) => item.id !== facility.id && explorerMappings.some((mapping) => mapping.facilityId === item.id && mapping.theme === theme))
+      .sort((a, b) => Number(b.prefecture === facility.prefecture) - Number(a.prefecture === facility.prefecture)).slice(0, 2)
     : [sorted[index - 1], sorted[index + 1]].filter(Boolean)
   const career = careerLinks[facility.id] ?? []
 
   return (
     <>
       <Header />
-      <main className="team-page" style={{ "--portal-accent": visual ? themes[visual].color : "#b9e9ef" } as CSSProperties}>
+      <main className="team-page" style={{ "--portal-accent": chapter?.accent ?? "#b9e9ef" } as CSSProperties}>
         <section className="portal-hero team-hero">
-          {visual && <img className="portal-hero-image" src={`/${visual}.jpg`} alt="" fetchPriority="high" />}
+          {chapter && <img className="portal-hero-image" src={chapter.image} alt="" fetchPriority="high" />}
           <div className="portal-width portal-hero-content">
             <nav className="portal-crumb" aria-label="現在の位置">
-              <a href={databaseHref(theme)}>← {theme ? themes[theme].label : "消化器外科チームを探す"}</a>
+              <a href={databaseHref(theme)}>← {theme ? themeInfo(theme).filterLabel : "消化器外科チームを探す"}</a>
             </nav>
-            <p className="portal-kicker">{facility.prefecture}{theme ? ` ／ ${themes[theme].word}` : ""}</p>
+            <p className="portal-kicker">{facility.prefecture}{theme ? ` ／ ${themeInfo(theme).title}` : ""}</p>
             <h1>{facility.university}<span>{facility.name}</span></h1>
-            <p className="team-headline">{example?.summary ?? facility.headline}</p>
-            {example && <div className="team-hero-source"><ExternalLink label="この取り組みの出典" url={example.source} /></div>}
+            <p className="team-headline">{visual?.headline ?? facility.headline}</p>
           </div>
         </section>
 
@@ -87,6 +94,16 @@ export default async function FacilityPage({ params, searchParams }: {
             ))}</ul>}
             <section aria-labelledby="team-work">
               <h2 id="team-work">チームの取り組み</h2>
+              {projects.length > 0 && <ul className="team-projects">
+                {(selected ? [selected, ...projects.filter((item) => item !== selected)] : projects).map((item) => (
+                  <li key={item.theme}>
+                    <p className="portal-kicker">{item.stage} ／ {item.topic}</p>
+                    <h3>{item.technology ?? (item === visual ? item.topic : item.headline)}</h3>
+                    <p>{item.description}</p>
+                    <ExternalLink label="この取り組みの出典" url={item.sourceUrl} />
+                  </li>
+                ))}
+              </ul>}
               <div className="team-description"><FormattedDescription description={facility.description} /></div>
             </section>
             {facility.references.length > 0 && (
