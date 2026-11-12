@@ -5,19 +5,15 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2">
           {/* Brand */}
           <div className="md:col-span-1">
-            <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-blue opacity-50 blur-sm" />
-                <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-secondary">
-                  <span className="font-mono text-sm font-bold text-primary">ST</span>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold tracking-tight text-foreground">
-                  Japan Surgical Tech
-                </span>
-                <span className="text-xs text-muted-foreground">&amp; DX</span>
-              </div>
+            <a href="/" aria-label="Surgical Tech Portal ホーム" className="flex items-center transition-opacity hover:opacity-80">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/surgical-tech-portal-logo.png"
+                alt=""
+                width={1389}
+                height={414}
+                className="h-auto w-[180px]"
+              />
             </a>
             <p className="mt-4 text-sm text-muted-foreground">
               日本の外科医療テクノロジーの
