@@ -7,6 +7,8 @@ import { facilities } from "@/data/facilities"
 import {
   explorerMappings,
   explorerThemes,
+  explorerTopics,
+  type ExplorerMapping,
   type ExplorerTheme,
   type ExplorerThemeKey,
 } from "@/data/explorer"
@@ -21,21 +23,14 @@ const facilityById = new Map(facilities.map((f) => [f.id, f]))
 
 interface GatewayChapter {
   theme: ExplorerTheme
-  modalTeams: { facilityId: number; region: string; name: string; summary: string }[]
+  modalTeams: ExplorerMapping[]
 }
 
 const CHAPTERS: GatewayChapter[] = explorerThemes
   .filter((t) => t.key !== "all")
   .map((theme) => ({
     theme,
-    modalTeams: explorerMappings
-      .filter((m) => m.theme === theme.key && m.inModal)
-      .map((m) => ({
-        facilityId: m.facilityId,
-        region: shortRegion(facilityById.get(m.facilityId)?.prefecture ?? ""),
-        name: m.name,
-        summary: m.summary,
-      })),
+    modalTeams: explorerMappings.filter((m) => m.theme === theme.key && m.inModal),
   }))
 
 const LIGHTS: { x: string; y: string; halo: string }[] = [
@@ -60,10 +55,14 @@ export function TopGateway() {
   const openingRef = useRef(false)
   const [paused, setPaused] = useState(false)
   const [activeKey, setActiveKey] = useState<ExplorerThemeKey>("insight")
+  const [topicKey, setTopicKey] = useState<string | null>(null)
   const [dialogStyle, setDialogStyle] = useState<React.CSSProperties>({})
 
   const activeChapter =
     CHAPTERS.find((c) => c.theme.key === activeKey) ?? CHAPTERS[0]
+  const chapterTopics = explorerTopics[activeKey]
+  const selectedTopic = chapterTopics?.find(({ key }) => key === topicKey)
+  const visibleTeams = chapterTopics ? selectedTopic?.teams ?? [] : activeChapter.modalTeams
 
   // 冒頭の高さ：ゲートウェイの可視領域を測って --opening-view に入れる（見本 top.js の sizeOpening）
   useEffect(() => {
@@ -160,6 +159,7 @@ export function TopGateway() {
     if (!chapter) return
     openingRef.current = true
     setActiveKey(key)
+    setTopicKey(null)
     setDialogStyle({
       "--chapter-light": chapter.theme.light,
     } as React.CSSProperties)
@@ -334,6 +334,7 @@ export function TopGateway() {
 
       <dialog
         ref={dialogRef}
+        className={chapterTopics ? "chapter-dialog-with-topics" : undefined}
         aria-labelledby="st-top-destination"
         style={dialogStyle}
         onClick={(e) => {
@@ -351,27 +352,57 @@ export function TopGateway() {
               閉じる <span aria-hidden="true">×</span>
             </button>
           </div>
-          <header className="chapter-intro">
+          <header className={chapterTopics ? "chapter-intro chapter-intro-with-topics" : "chapter-intro"}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="dialog-art" src={activeChapter.theme.image} alt="" />
-            <h3 id="st-top-destination">{activeChapter.theme.listDescription}</h3>
+            {chapterTopics && <p className="chapter-topic-context">{activeChapter.theme.filterLabel}</p>}
+            <h3 id="st-top-destination">{chapterTopics ? activeChapter.theme.title : activeChapter.theme.listDescription}</h3>
+            {chapterTopics && (
+              <>
+                <p className="chapter-topic-prompt">気になる取り組みから、外科チームを探す。</p>
+                <div className="chapter-topics" role="group" aria-label="取り組みを選ぶ">
+                  {chapterTopics.map(({ key, label }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className="chapter-topic cursor-interaction"
+                      aria-pressed={key === selectedTopic?.key}
+                      aria-controls="st-chapter-results"
+                      onClick={() => setTopicKey((previous) => previous === key ? null : key)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </header>
-          <ul className="chapter-teams">
-            {activeChapter.modalTeams.map((team) => (
-              <li key={team.facilityId}>
-                <Link href={`/facilities/${team.facilityId}?theme=${activeChapter.theme.key}`}>
-                  <span className="chapter-region">{team.region}</span>
-                  <span className="chapter-team-content">
-                    <span className="chapter-team-name">{team.name}</span>
-                    <span className="chapter-team-summary">{team.summary}</span>
-                  </span>
-                  <span className="chapter-team-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div id="st-chapter-results">
+            {chapterTopics && (
+              <p className="chapter-result-label" role="status">
+                {selectedTopic && <>{selectedTopic.label} <span>{visibleTeams.length}チーム</span></>}
+              </p>
+            )}
+            {visibleTeams.length > 0 && (
+              <ul
+                key={selectedTopic?.key ?? activeKey}
+                className={chapterTopics ? "chapter-teams chapter-filtered-teams" : "chapter-teams"}
+              >
+                {visibleTeams.map((team) => (
+                  <li key={team.facilityId}>
+                    <Link href={`/facilities/${team.facilityId}?theme=${activeChapter.theme.key}`}>
+                      <span className="chapter-region">{shortRegion(facilityById.get(team.facilityId)?.prefecture ?? "")}</span>
+                      <span className="chapter-team-content">
+                        <span className="chapter-team-name">{team.name}</span>
+                        <span className="chapter-team-summary">{team.summary}</span>
+                      </span>
+                      <span className="chapter-team-arrow" aria-hidden="true">↗</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <Link
             className="chapter-explore"
             href={`/database?theme=${activeChapter.theme.key}&view=more`}

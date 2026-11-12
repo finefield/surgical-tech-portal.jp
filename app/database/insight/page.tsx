@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
-import { explorerMappings, explorerThemes } from "@/data/explorer"
+import { explorerMappings, explorerThemes, explorerTopics } from "@/data/explorer"
 import styles from "./insight.module.css"
 
 export const metadata: Metadata = {
@@ -13,12 +13,7 @@ const teams = explorerMappings
   .filter(({ theme }) => theme === "insight")
   .sort((a, b) => Number(a.inModal) - Number(b.inModal))
 
-const topics = [
-  { key: "3d", label: "術前3D解析", teams: teams.filter(({ topic }) => topic === "術前3D解析") },
-  { key: "navigation", label: "術中ナビゲーション", teams: teams.filter(({ topic }) => topic === "術中ナビゲーション") },
-  { key: "icg", label: "ICG", teams: teams.filter(({ headline }) => headline.includes("ICG")) },
-  { key: "printing", label: "3Dプリンター", teams: teams.filter(({ summary }) => summary.includes("3Dプリンター")) },
-]
+const topics = explorerTopics.insight ?? []
 
 const path = "/database/insight"
 

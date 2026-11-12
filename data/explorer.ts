@@ -35,6 +35,12 @@ export interface ExplorerMapping {
   inModal: boolean
 }
 
+export interface ExplorerTopic {
+  key: string
+  label: string
+  teams: ExplorerMapping[]
+}
+
 export const explorerThemes: ExplorerTheme[] = [
   {
     key: "all",
@@ -547,3 +553,17 @@ export const explorerMappings: ExplorerMapping[] = [
     inModal: false,
   },
 ]
+
+const insightTeams = explorerMappings
+  .filter(({ theme }) => theme === "insight")
+  .sort((a, b) => Number(a.inModal) - Number(b.inModal))
+
+export const explorerTopics: Partial<Record<ExplorerThemeKey, ExplorerTopic[]>> = {
+  insight: [
+    { key: "3d", label: "術前3D解析", teams: insightTeams.filter(({ topic }) => topic === "術前3D解析") },
+    { key: "navigation", label: "術中ナビゲーション", teams: insightTeams.filter(({ topic }) => topic === "術中ナビゲーション") },
+    // 個別技術は、出典でその活用を確認した施設だけを表示する。
+    { key: "icg", label: "ICG", teams: insightTeams.filter(({ facilityId }) => facilityId === 910) },
+    { key: "printing", label: "3Dプリンター", teams: insightTeams.filter(({ facilityId }) => facilityId === 25) },
+  ],
+}
