@@ -5,7 +5,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+          <a href="/" className="group relative isolate flex items-center gap-2 transition-opacity hover:opacity-80">
             <div className="relative">
               <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-blue opacity-50 blur-sm" />
               <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-secondary">
@@ -18,6 +18,9 @@ export function Header() {
               </span>
               <span className="text-xs text-muted-foreground">&amp; DX</span>
             </div>
+            <span className="logo-shine-layer" aria-hidden="true">
+              <span className="logo-shine-sweep" />
+            </span>
           </a>
 
           <nav className="flex items-center gap-1 text-sm sm:gap-2">
