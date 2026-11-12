@@ -62,7 +62,7 @@ export function TopGateway() {
     CHAPTERS.find((c) => c.theme.key === activeKey) ?? CHAPTERS[0]
   const chapterTopics = explorerTopics[activeKey]
   const selectedTopic = chapterTopics?.find(({ key }) => key === topicKey)
-  const visibleTeams = chapterTopics ? selectedTopic?.teams ?? [] : activeChapter.modalTeams
+  const visibleTeams = selectedTopic?.teams ?? activeChapter.modalTeams
 
   // 冒頭の高さ：ゲートウェイの可視領域を測って --opening-view に入れる（見本 top.js の sizeOpening）
   useEffect(() => {
@@ -380,7 +380,7 @@ export function TopGateway() {
           <div id="st-chapter-results">
             {chapterTopics && (
               <p className="chapter-result-label" role="status">
-                {selectedTopic && <>{selectedTopic.label} <span>{visibleTeams.length}チーム</span></>}
+                {selectedTopic?.label ?? "このテーマで紹介するチーム"} <span>{visibleTeams.length}チーム</span>
               </p>
             )}
             {visibleTeams.length > 0 && (
