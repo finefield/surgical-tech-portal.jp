@@ -16,17 +16,17 @@ export function Header() {
             />
           </a>
 
-          <nav className="flex items-center gap-1 text-sm sm:gap-2">
-            <a href="/database" className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+          <nav className="flex items-center gap-0.5 whitespace-nowrap text-xs sm:gap-2 sm:text-sm">
+            <a href="/database" className="rounded-full px-2 py-1.5 sm:px-3 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
               データベース
             </a>
-            <a href="/features" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
+            <a href="/features" className="hidden rounded-full px-2 py-1.5 sm:px-3 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
               特集
             </a>
-            <a href="/insights" className="hidden rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
+            <a href="/insights" className="hidden rounded-full px-2 py-1.5 sm:px-3 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:block">
               データで見る
             </a>
-            <a href="/contact" className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+            <a href="/contact" className="rounded-full px-2 py-1.5 sm:px-3 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
               お問い合わせ
             </a>
           </nav>

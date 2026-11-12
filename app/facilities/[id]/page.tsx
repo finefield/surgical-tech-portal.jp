@@ -84,6 +84,7 @@ export default async function FacilityPage({ params, searchParams }: {
             <p className="portal-kicker">{facility.prefecture}{theme ? ` ／ ${themeInfo(theme).title}` : ""}</p>
             <h1>{facility.university}<span>{facility.name}</span></h1>
             <p className="team-headline">{visual?.headline ?? facility.headline}</p>
+            {career.length > 0 && <a className="team-career-jump portal-text-link" href="#team-career">研修・見学の案内 ↓</a>}
           </div>
         </section>
 
@@ -116,7 +117,7 @@ export default async function FacilityPage({ params, searchParams }: {
 
           <aside className="team-aside" aria-label="関連情報">
             {(facility.officialWebsite || career.length > 0) && (
-              <section>
+              <section id="team-career">
                 <h2>このチームをもっと知る</h2>
                 <ul>
                   {facility.officialWebsite && <li><ExternalLink label="医局・診療科の公式サイト" url={facility.officialWebsite.url} /></li>}

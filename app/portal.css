@@ -85,3 +85,6 @@
 .portal-prefecture-group { padding-top: 12px; }
 .portal-prefecture-heading { position: sticky; top: 116px; z-index: 10; scroll-margin-top: 116px; background: #06111e; }
 .portal-prefecture-group:only-child .portal-prefecture-heading { top: 64px; }
+
+.team-career-jump { margin-top: 12px; font-size: 13px; }
+#team-career { scroll-margin-top: 82px; }
