@@ -53,7 +53,6 @@ export function TopGateway() {
   const closeRef = useRef<HTMLButtonElement>(null)
   const journeyRef = useRef<HTMLDivElement>(null)
   const openingRef = useRef(false)
-  const [paused, setPaused] = useState(false)
   const [activeKey, setActiveKey] = useState<ExplorerThemeKey>("insight")
   const [topicKey, setTopicKey] = useState<string | null>(null)
   const [dialogStyle, setDialogStyle] = useState<React.CSSProperties>({})
@@ -203,10 +202,7 @@ export function TopGateway() {
 
   return (
     <div id="st-top-gateway" lang="ja" ref={rootRef}>
-      <section
-        className={`opening${paused ? " is-paused" : ""}`}
-        aria-labelledby="st-top-hero"
-      >
+      <section className="opening" aria-labelledby="st-top-hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/hero.jpg" alt="" />
         <span className="opening-glow" aria-hidden="true" />
@@ -224,14 +220,6 @@ export function TopGateway() {
         <a className="opening-next" href="#st-top-insight" onClick={onOpeningNext}>
           光の先へ <span aria-hidden="true">↓</span>
         </a>
-        <button
-          className="opening-motion cursor-interaction"
-          type="button"
-          aria-label={paused ? "冒頭の動きを再開" : "冒頭の動きを一時停止"}
-          onClick={() => setPaused((v) => !v)}
-        >
-          <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>
-        </button>
       </section>
 
       <div className="journey" ref={journeyRef}>
