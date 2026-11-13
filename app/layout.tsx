@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import './portal.css'
 
 const geist = Geist({ 
   subsets: ["latin"],
@@ -22,16 +23,11 @@ export const metadata: Metadata = {
     icon: [
       {
         url: '/favicon.ico',
-        sizes: '32x32',
       },
       {
-        url: '/icon-dark-32x32.png',
-        sizes: '32x32',
+        url: '/favicon.png',
+        sizes: '64x64',
         type: 'image/png',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
       },
     ],
     apple: [

@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { facilities, areas, type Facility } from "@/data/facilities"
+import { explorerMappings, explorerThemes } from "@/data/explorer"
+import { databaseHref } from "@/lib/portal-themes"
 
 export const metadata: Metadata = {
   title: "データで見る 日本の消化器外科DX | Surgical Tech Portal",
@@ -69,25 +71,17 @@ export default function InsightsPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <Header />
-      <main className="pt-24 pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Insights
-            </p>
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              データで見る 日本の消化器外科DX
-            </h1>
-            <p className="max-w-3xl leading-relaxed text-muted-foreground">
-              本ページの数値は、Surgical Tech Portal
-              に収録している外科チームのデータ（全{total}
-              件）から自動集計したものです。各外科チームの掲載情報は、大学・病院等の公式情報を出典としており、{VERIFIED_DATE}
-              に全件の照合を行いました。集計方法の注意点はページ末尾に記載しています。
-            </p>
+      <main className="portal-editorial pb-20">
+        <section className="portal-hero">
+          <img className="portal-hero-image" src="/insight.jpg" alt="" fetchPriority="high" />
+          <div className="portal-width portal-hero-content">
+            <h1>データで見る</h1>
+            <p>ポータルに収録した外科チームの取り組みを、テーマ・地域・技術から見渡す。</p>
           </div>
-
+        </section>
+        <div className="portal-width">
           {/* 主要指標 */}
           <div className="mb-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
@@ -118,6 +112,21 @@ export default function InsightsPage() {
               </div>
             ))}
           </div>
+
+          <section className="mb-14" aria-labelledby="theme-coverage">
+            <h2 className="portal-section-head" id="theme-coverage">テーマ別の収録状況</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">各テーマで紹介しているチームを集計しています。同じチームが複数のテーマに含まれます。</p>
+            <ul>
+              {explorerThemes.filter(({ key }) => key !== "all").map(({ key, filterLabel }) => (
+                <li key={key}>
+                  <a className="portal-row" href={databaseHref(key)}>
+                    <span>{filterLabel}</span>
+                    <span>{new Set(explorerMappings.filter((item) => item.theme === key).map(({ facilityId }) => facilityId)).size} 件 <span aria-hidden="true">→</span></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* 機種別 */}
           <section className="mb-14">
@@ -191,9 +200,10 @@ export default function InsightsPage() {
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               {areaCounts.map((a) => (
-                <div
+                <a
                   key={a.area}
-                  className="rounded-xl border border-border/50 bg-secondary/30 px-5 py-4"
+                  href={`/database?area=${encodeURIComponent(a.area)}`}
+                  className="rounded-xl border border-border/50 bg-secondary/30 px-5 py-4 hover:border-neon-cyan/40"
                 >
                   <p className="mb-1 text-xs text-muted-foreground">{a.area}</p>
                   <p className="text-2xl font-bold text-foreground">
@@ -202,7 +212,7 @@ export default function InsightsPage() {
                       件
                     </span>
                   </p>
-                </div>
+                </a>
               ))}
             </div>
           </section>
@@ -218,8 +228,7 @@ export default function InsightsPage() {
                 件）から表示のたびに自動集計しています。手作業で固定した数値は使っていません。
               </li>
               <li>
-                各外科チームの掲載情報の出典は、大学・病院等の公式ページ等です。{VERIFIED_DATE}
-                に全件を公式情報と照合し、裏付けの取れない記載は削除・訂正しました。
+                各外科チームの出典は個別ページに掲載しています。{VERIFIED_DATE}の掲載情報の見直しでは、確認結果に基づいて記述やリンクを更新しました。
               </li>
               <li>
                 「言及がある外科チーム」は、カード本文・見出し・タグに該当語が含まれる外科チームの数です。実施規模や件数の大小を示すものではありません。
@@ -240,6 +249,6 @@ export default function InsightsPage() {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
