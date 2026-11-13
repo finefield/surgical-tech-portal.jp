@@ -300,3 +300,55 @@ html:has(#st-top-gateway dialog[open]){overflow:hidden}
  #st-top-gateway *,#st-top-gateway *::before,#st-top-gateway *::after{transition:none!important;animation:none!important}
  #st-top-gateway .light-field{display:none}
 }
+
+/* One uninterrupted artwork behind the opening and all five chapters. */
+#st-top-gateway .continuous-tunnel {
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ --opening-overlap:0px;
+}
+#st-top-gateway .continuous-tunnel-art {
+ position:absolute;
+ inset:0;
+ z-index:-2;
+ width:100%;
+ height:100%;
+ object-fit:fill;
+ mask-image:linear-gradient(#000 96%,transparent);
+}
+#st-top-gateway .continuous-tunnel::before {
+ content:"";
+ position:absolute;
+ inset:0 0 auto;
+ height:clamp(560px,105svh,1120px);
+ z-index:-1;
+ pointer-events:none;
+ background:linear-gradient(90deg,#030e1b70,transparent 75%);
+ mask-image:linear-gradient(#000 48%,transparent 100%);
+}
+#st-top-gateway .continuous-tunnel .opening {background:transparent}
+#st-top-gateway .continuous-tunnel .opening:after {background:none}
+#st-top-gateway .continuous-tunnel .opening-next {
+ bottom:clamp(24px,5vh,55px);
+}
+#st-top-gateway .continuous-tunnel .journey {
+ height:clamp(1550px,230vw,2800px);
+}
+#st-top-gateway .continuous-tunnel .insight {top:2%}
+#st-top-gateway .continuous-tunnel .preserve {top:22%}
+#st-top-gateway .continuous-tunnel .precision {top:40%}
+#st-top-gateway .continuous-tunnel .connection {top:58%}
+@media(max-width:650px){
+ #st-top-gateway .continuous-tunnel .opening {
+  min-height:clamp(510px,79svh,670px);
+  align-content:end;
+  padding-block:110px 145px;
+ }
+ #st-top-gateway .continuous-tunnel::before {
+  background:linear-gradient(90deg,#030e1b90,transparent 90%);
+ }
+ #st-top-gateway .continuous-tunnel .insight {top:0}
+ #st-top-gateway .continuous-tunnel .preserve {top:22%}
+ #st-top-gateway .continuous-tunnel .life {top:75%}
+}

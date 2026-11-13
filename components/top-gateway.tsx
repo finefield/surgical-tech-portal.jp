@@ -202,78 +202,78 @@ export function TopGateway() {
 
   return (
     <div id="st-top-gateway" lang="ja" ref={rootRef}>
-      <section className="opening" aria-labelledby="st-top-hero">
+      <div className="continuous-tunnel">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/hero.jpg" alt="" />
-        <span className="opening-glow" aria-hidden="true" />
-        <span className="ey">INTO THE UNSEEN</span>
-        <h1 id="st-top-hero">
-          外科は、どこまで
-          <br />
-          未来をひらけるか。
-        </h1>
-        <p className="max-[650px]:font-[family-name:var(--mincho)] max-[650px]:font-normal">
-          その一手の先に、まだ見ぬ可能性がある。
-          <br />
-          外科の新しい景色を、見にいこう。
-        </p>
-        <a className="opening-next" href="#st-top-insight" onClick={onOpeningNext}>
-          光の先へ <span aria-hidden="true">↓</span>
-        </a>
-      </section>
+        <img className="continuous-tunnel-art" src="/journey.jpg" alt="" fetchPriority="high" />
+        <section className="opening" aria-labelledby="st-top-hero">
+          <span className="opening-glow" aria-hidden="true" />
+          <span className="ey">INTO THE UNSEEN</span>
+          <h1 id="st-top-hero">
+            外科は、どこまで
+            <br />
+            未来をひらけるか。
+          </h1>
+          <p className="max-[650px]:font-[family-name:var(--mincho)] max-[650px]:font-normal">
+            その一手の先に、まだ見ぬ可能性がある。
+            <br />
+            外科の新しい景色を、見にいこう。
+          </p>
+          <a className="opening-next" href="#st-top-insight" onClick={onOpeningNext}>
+            光の先へ <span aria-hidden="true">↓</span>
+          </a>
+        </section>
 
-      <div className="journey" ref={journeyRef}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/journey.jpg" alt="" />
-        <div className="light-field" aria-hidden="true">
-          {LIGHTS.map((light, i) => (
-            <span
-              key={i}
-              className="light"
-              style={
-                {
-                  "--x": light.x,
-                  "--y": light.y,
-                  "--halo": light.halo,
-                } as React.CSSProperties
-              }
-            />
-          ))}
+        <div className="journey" ref={journeyRef}>
+          <div className="light-field" aria-hidden="true">
+            {LIGHTS.map((light, i) => (
+              <span
+                key={i}
+                className="light"
+                style={
+                  {
+                    "--x": light.x,
+                    "--y": light.y,
+                    "--halo": light.halo,
+                  } as React.CSSProperties
+                }
+              />
+            ))}
+          </div>
+          {CHAPTERS.map((chapter) => {
+            const key = chapter.theme.key as ExplorerThemeKey
+            return (
+              <section
+                key={key}
+                className={`beat ${key}`}
+                {...(key === "insight" ? { id: "st-top-insight" } : {})}
+              >
+                <span className="ey">{chapter.theme.eyebrow}</span>
+                <h2>
+                  <button
+                    className="cursor-interaction"
+                    type="button"
+                    data-chapter={key}
+                    aria-haspopup="dialog"
+                    onClick={(e) => openChapter(key, e.currentTarget)}
+                  >
+                    {chapter.theme.title}{" "}
+                    <span className="arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </button>
+                </h2>
+                <p>
+                  {chapter.theme.beatCopy.split("\n").map((line, i, arr) => (
+                    <span key={i}>
+                      {line}
+                      {i < arr.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </section>
+            )
+          })}
         </div>
-        {CHAPTERS.map((chapter) => {
-          const key = chapter.theme.key as ExplorerThemeKey
-          return (
-            <section
-              key={key}
-              className={`beat ${key}`}
-              {...(key === "insight" ? { id: "st-top-insight" } : {})}
-            >
-              <span className="ey">{chapter.theme.eyebrow}</span>
-              <h2>
-                <button
-                  className="cursor-interaction"
-                  type="button"
-                  data-chapter={key}
-                  aria-haspopup="dialog"
-                  onClick={(e) => openChapter(key, e.currentTarget)}
-                >
-                  {chapter.theme.title}{" "}
-                  <span className="arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </button>
-              </h2>
-              <p>
-                {chapter.theme.beatCopy.split("\n").map((line, i, arr) => (
-                  <span key={i}>
-                    {line}
-                    {i < arr.length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
-            </section>
-          )
-        })}
       </div>
 
       <section
