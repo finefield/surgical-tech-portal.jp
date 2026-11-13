@@ -189,10 +189,10 @@
 
 @media (max-width: 560px) {
   .chapters { gap: 6px; }
-  .chapter {
-    justify-content: center;
-    padding: 8px;
-  }
+  .chapter { padding: 8px; }
+  /* The final card has a two-line title and keeps its own alignment. */
+  .chapter:last-child { justify-content: center; }
+  .chapter:not(:last-child) .chapterLabel { min-height: 2.7em; }
   .optionRow { display: grid; gap: 6px; }
   .option { min-height: 42px; }
   .resultBar { padding-block: 9px; }
