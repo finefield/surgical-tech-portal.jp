@@ -4,32 +4,30 @@
   isolation: isolate;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .logo::before,
-  .logo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
-    animation-duration: 24s;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-  }
+.logo::before,
+.logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation-duration: 24s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
 
-  .logo::before {
-    z-index: -1;
-    background: var(--logo-image) center / contain no-repeat;
-    filter: brightness(0) invert(1) drop-shadow(0 0 2px #a5e5ff) drop-shadow(0 0 4px #5eaaff);
-    animation-name: logo-edge;
-  }
+.logo::before {
+  z-index: -1;
+  background: var(--logo-image) center / contain no-repeat;
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px #a5e5ff) drop-shadow(0 0 4px #5eaaff);
+  animation-name: logo-edge;
+}
 
-  .logo::after {
-    mask: var(--logo-image) center / contain no-repeat;
-    background: linear-gradient(110deg, transparent 42%, #b3d9ff44 47%, #fff 50%, #8dccff66 53%, transparent 58%) 120% 0 / 260% 100% no-repeat;
-    mix-blend-mode: screen;
-    animation-name: logo-sweep;
-  }
+.logo::after {
+  mask: var(--logo-image) center / contain no-repeat;
+  background: linear-gradient(110deg, transparent 42%, #b3d9ff44 47%, #fff 50%, #8dccff66 53%, transparent 58%) 120% 0 / 260% 100% no-repeat;
+  mix-blend-mode: screen;
+  animation-name: logo-sweep;
 }
 
 @keyframes logo-edge {
