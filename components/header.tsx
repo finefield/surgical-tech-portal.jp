@@ -1,11 +1,12 @@
-export function Header() {
+import styles from "./header.module.css"
 
+export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="/" aria-label="Surgical Tech Portal ホーム" className="flex items-center transition-opacity hover:opacity-80">
+          <a href="/" aria-label="Surgical Tech Portal ホーム" className={`${styles.logo} flex items-center transition-opacity hover:opacity-80`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/surgical-tech-portal-logo.png"
