@@ -203,8 +203,11 @@ export function TopGateway() {
   return (
     <div id="st-top-gateway" lang="ja" ref={rootRef}>
       <div className="continuous-tunnel">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="continuous-tunnel-art" src="/journey.jpg" alt="" fetchPriority="high" />
+        <picture className="continuous-tunnel-art">
+          <source media="(max-width: 650px)" srcSet="/tunnel-continuation-mobile.webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/tunnel-continuation-wide.webp" alt="" fetchPriority="high" />
+        </picture>
         <section className="opening" aria-labelledby="st-top-hero">
           <span className="opening-glow" aria-hidden="true" />
           <span className="ey">INTO THE UNSEEN</span>
@@ -224,6 +227,8 @@ export function TopGateway() {
         </section>
 
         <div className="journey" ref={journeyRef}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/journey.jpg" alt="" />
           <div className="light-field" aria-hidden="true">
             {LIGHTS.map((light, i) => (
               <span

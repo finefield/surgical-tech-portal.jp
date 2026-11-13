@@ -301,54 +301,57 @@ html:has(#st-top-gateway dialog[open]){overflow:hidden}
  #st-top-gateway .light-field{display:none}
 }
 
-/* One uninterrupted artwork behind the opening and all five chapters. */
+/* The same image spans the hero and the entry into Insight. */
 #st-top-gateway .continuous-tunnel {
+ --intro-art-height:clamp(680px,77.35vw,1650px);
+ --opening-overlap:0px;
  position:relative;
  isolation:isolate;
- overflow:hidden;
- --opening-overlap:0px;
 }
 #st-top-gateway .continuous-tunnel-art {
  position:absolute;
- inset:0;
+ inset:0 0 auto;
+ height:var(--intro-art-height);
  z-index:-2;
+ pointer-events:none;
+ mask-image:linear-gradient(#000 91%,transparent);
+}
+#st-top-gateway .continuous-tunnel-art img {
+ display:block;
  width:100%;
  height:100%;
- object-fit:fill;
- mask-image:linear-gradient(#000 96%,transparent);
+ object-fit:cover;
+ object-position:72% top;
 }
-#st-top-gateway .continuous-tunnel::before {
- content:"";
- position:absolute;
- inset:0 0 auto;
- height:clamp(560px,105svh,1120px);
- z-index:-1;
- pointer-events:none;
- background:linear-gradient(90deg,#030e1b70,transparent 75%);
- mask-image:linear-gradient(#000 48%,transparent 100%);
+#st-top-gateway .continuous-tunnel .opening {
+ min-height:calc(var(--intro-art-height) * .83);
+ align-content:start;
+ padding-top:calc(var(--intro-art-height) * .2);
+ background:transparent;
 }
-#st-top-gateway .continuous-tunnel .opening {background:transparent}
-#st-top-gateway .continuous-tunnel .opening:after {background:none}
+#st-top-gateway .continuous-tunnel .opening:after {
+ background:linear-gradient(90deg,#030e1b48,transparent 65%);
+ mask-image:linear-gradient(#000 55%,transparent);
+}
 #st-top-gateway .continuous-tunnel .opening-next {
- bottom:clamp(24px,5vh,55px);
+ top:calc(var(--intro-art-height) * .565);
+ bottom:auto;
 }
-#st-top-gateway .continuous-tunnel .journey {
- height:clamp(1550px,230vw,2800px);
+#st-top-gateway .continuous-tunnel .journey > img {
+ mask-image:linear-gradient(transparent 17%,#000 27%,#000 94%,transparent);
 }
-#st-top-gateway .continuous-tunnel .insight {top:2%}
-#st-top-gateway .continuous-tunnel .preserve {top:22%}
-#st-top-gateway .continuous-tunnel .precision {top:40%}
-#st-top-gateway .continuous-tunnel .connection {top:58%}
+#st-top-gateway .continuous-tunnel .insight {top:1%;left:12%}
 @media(max-width:650px){
+ #st-top-gateway .continuous-tunnel {
+  --intro-art-height:clamp(850px,270vw,1755px);
+ }
+ #st-top-gateway .continuous-tunnel-art img {object-position:70% top}
  #st-top-gateway .continuous-tunnel .opening {
-  min-height:clamp(510px,79svh,670px);
-  align-content:end;
-  padding-block:110px 145px;
+  padding-top:calc(var(--intro-art-height) * .302);
+  padding-bottom:80px;
  }
- #st-top-gateway .continuous-tunnel::before {
-  background:linear-gradient(90deg,#030e1b90,transparent 90%);
+ #st-top-gateway .continuous-tunnel .opening-next {
+  top:calc(var(--intro-art-height) * .517);
  }
- #st-top-gateway .continuous-tunnel .insight {top:0}
- #st-top-gateway .continuous-tunnel .preserve {top:22%}
- #st-top-gateway .continuous-tunnel .life {top:75%}
+ #st-top-gateway .continuous-tunnel .insight {left:7%}
 }
