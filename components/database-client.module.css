@@ -189,7 +189,10 @@
 
 @media (max-width: 560px) {
   .chapters { gap: 6px; }
-  .chapter { padding: 8px; }
+  .chapter {
+    justify-content: center;
+    padding: 8px;
+  }
   .optionRow { display: grid; gap: 6px; }
   .option { min-height: 42px; }
   .resultBar { padding-block: 9px; }
