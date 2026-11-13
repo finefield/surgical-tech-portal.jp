@@ -487,9 +487,9 @@ export const explorerMappings: ExplorerMapping[] = [
     topic: "外科専門研修",
     stage: "研修案内",
     headline: "大学病院と連携施設で外科を学ぶ",
-    summary: "外科専門研修の施設、研修の進め方、消化器・一般外科のキャリアの例を公開。",
-    description: "教室の外科専門研修プログラムは、大学病院と連携施設での研修や、消化器・一般外科のキャリアの例を案内しています。",
-    sourceUrl: "https://www.kyorinsurgery.com/program",
+    summary: "外科専門研修の施設、研修の進め方、消化器・一般外科のキャリアの道筋を公開。",
+    description: "教室の外科専門研修プログラムは、大学病院と連携施設での研修や、消化器・一般外科のキャリアの道筋を案内しています。",
+    sourceUrl: "https://www.kyorinsurgery.com/career",
     inModal: false,
   },
   {
