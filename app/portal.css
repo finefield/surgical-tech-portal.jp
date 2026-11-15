@@ -38,6 +38,10 @@
 .team-reading > .portal-tags { margin-bottom: 24px; }
 .team-description { margin-top: 17px; }
 .team-sources { margin-top: 33px; }
+.team-share { margin-top: 33px; }
+.team-share ul { border-top: 1px solid var(--portal-line); padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding-left: 0; margin: 0; }
+.team-share li { color: var(--portal-accent); font-size: 14px; }
+.team-share a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .team-aside section, .team-sources ul { border-top: 1px solid var(--portal-line); padding-top: 12px; }
 .team-aside h2 { font: 400 20px/1.5 var(--portal-serif); margin-bottom: 10px; }
 .team-aside section + section { margin-top: 28px; }
