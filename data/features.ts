@@ -128,7 +128,7 @@ export const features: Feature[] = [
       { label: "九州大学病院 先端医工学診療部（外来担当医）", url: "https://www.hosp.kyushu-u.ac.jp/doctors/center/18/" },
       { label: "NTTドコモビジネス プレスリリース（2026年9月16日）", url: "https://www.ntt.com/about-us/press-releases/news/article/2026/0916.html" },
       { label: "NTTイノベーティブデバイス プレスリリース（2026年9月16日）", url: "http://www.ntt-innovative-devices.com/new/information/2026/9/kyushu_university_hospital_remote_surgery.html" },
-      { label: "福岡県発表（2025年3月24日）", url: "https://www.pref.fukuoka.lg.jp/uploaded/attachment/251187.pdf" },
+      { label: "福岡県「外科医確保のための遠隔手術指導支援事業費補助金」", url: "http://www.pref.fukuoka.lg.jp/contents/gekai-enkaku-shujutsu.html" },
     ],
     theme: "connectivity",
   },
