@@ -4,7 +4,8 @@ import { Footer } from "@/components/footer"
 import { TopGateway } from "@/components/top-gateway"
 import { UpdateLog } from "@/components/update-log"
 
-// 共有画像は TOP のみ ogp-logo.png（layout の既定 /ogp.png は他ページで維持）
+const homeSocialImage = "https://www.surgical-tech-portal.jp/surgical-tech-social.jpg"
+
 export const metadata: Metadata = {
   openGraph: {
     title: "外科DX・最新テクノロジー導入医局データベース",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Surgical Tech Portal",
     images: [
       {
-        url: "https://www.surgical-tech-portal.jp/ogp-logo.png",
+        url: homeSocialImage,
         width: 1200,
         height: 630,
         alt: "Surgical Tech Portal の共有画像：外科は、どこまで未来をひらけるか。",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     title: "外科DX・最新テクノロジー導入医局データベース",
     description:
       "日本全国の外科系医局におけるロボット手術、AI、VR、内視鏡、遠隔医療などの最新テクノロジー導入状況を可視化するデータベースです。",
-    images: ["https://www.surgical-tech-portal.jp/ogp-logo.png"],
+    images: [homeSocialImage],
   },
 }
 
