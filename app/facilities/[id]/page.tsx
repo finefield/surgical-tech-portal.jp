@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import type { CSSProperties } from "react"
 import { Footer } from "@/components/footer"
 import { FormattedDescription } from "@/components/formatted-description"
+import { ShareLinks } from "@/components/share-links"
 import { Header } from "@/components/header"
 import { articles } from "@/data/articles"
 import { facilities, getPrefectureIndex } from "@/data/facilities"
@@ -10,6 +11,10 @@ import { explorerMappings } from "@/data/explorer"
 import { databaseHref, facilityHref, parseTheme, themeInfo } from "@/lib/portal-themes"
 
 const sorted = [...facilities].sort((a, b) => getPrefectureIndex(a.prefecture) - getPrefectureIndex(b.prefecture))
+
+function pageTitleOf(facility: (typeof facilities)[number]) {
+  return `${facility.university} ${facility.name}`
+}
 
 function findFacility(id: string) {
   return facilities.find((facility) => facility.id === Number(id))
@@ -22,10 +27,28 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const facility = findFacility((await params).id)
   if (!facility) return { title: "医局が見つかりません | Surgical Tech Portal" }
+  const pageTitle = `${facility.university} ${facility.name}`
+  const url = facilityHref(facility.id)
+  const image = `${url}/opengraph-image`
   return {
-    title: `${facility.university} ${facility.name} | Surgical Tech Portal`,
+    title: `${pageTitle} | Surgical Tech Portal`,
     description: facility.headline,
-    alternates: { canonical: facilityHref(facility.id) },
+    alternates: { canonical: url },
+    openGraph: {
+      title: pageTitle,
+      description: facility.headline,
+      url,
+      siteName: "Surgical Tech Portal",
+      locale: "ja_JP",
+      type: "website",
+      images: [{ url: image, width: 1200, height: 630, alt: pageTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: facility.headline,
+      images: [image],
+    },
   }
 }
 
@@ -113,6 +136,7 @@ export default async function FacilityPage({ params, searchParams }: {
                 <ul>{facility.references.map((reference) => <li key={reference.url + reference.label}><ExternalLink {...reference} /></li>)}</ul>
               </section>
             )}
+            <ShareLinks id="team-share" title={pageTitleOf(facility)} path={facilityHref(facility.id)} />
           </div>
 
           <aside className="team-aside" aria-label="関連情報">

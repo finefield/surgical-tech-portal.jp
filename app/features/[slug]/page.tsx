@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Footer } from "@/components/footer"
 import { FormattedDescription } from "@/components/formatted-description"
+import { ShareLinks } from "@/components/share-links"
 import { Header } from "@/components/header"
 import { articles, findArticle } from "@/data/articles"
 import { facilities } from "@/data/facilities"
@@ -12,9 +13,32 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const article = findArticle((await params).slug)
+  const slug = (await params).slug
+  const article = findArticle(slug)
   if (!article) return { title: "記事が見つかりません | Surgical Tech Portal" }
-  return { title: `${article.title} | Surgical Tech Portal`, description: article.subtitle || article.title }
+  const description = article.subtitle || article.title
+  const url = `/features/${slug}`
+  const image = `${url}/opengraph-image`
+  return {
+    title: `${article.title} | Surgical Tech Portal`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: article.title,
+      description,
+      url,
+      siteName: "Surgical Tech Portal",
+      locale: "ja_JP",
+      type: "article",
+      images: [{ url: image, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      images: [image],
+    },
+  }
 }
 
 export default async function FeatureArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -53,6 +77,7 @@ export default async function FeatureArticlePage({ params }: { params: Promise<{
                 ))}</ul>
               </section>
             )}
+            <ShareLinks id="feature-share" title={article.title} path={`/features/${article.slug}`} />
             {related && (
               <section className="mt-8" aria-labelledby="feature-team">
                 <h2 id="feature-team">関連する外科チーム</h2>
