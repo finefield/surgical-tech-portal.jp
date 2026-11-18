@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { TopGateway } from "@/components/top-gateway"
 import { UpdateLog } from "@/components/update-log"
+import { ShareLinks } from "@/components/share-links"
 
 const homeSocialImage = "https://www.surgical-tech-portal.jp/surgical-tech-social.jpg"
 
@@ -41,6 +42,9 @@ export default function Home() {
         <TopGateway />
         <UpdateLog />
       </main>
+      <div className="home-share">
+        <ShareLinks id="home-share" title="外科DX・最新テクノロジー導入医局データベース" path="/" />
+      </div>
       <Footer />
     </div>
   )
