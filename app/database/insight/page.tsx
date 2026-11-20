@@ -6,6 +6,12 @@ import styles from "./insight.module.css"
 
 export const metadata: Metadata = {
   title: "見極める。｜画像・ナビゲーションから探す",
+  alternates: { canonical: "/database/insight" },
+  openGraph: {
+    title: "見極める。｜画像・ナビゲーションから探す",
+    url: "/database/insight",
+    images: [{ url: "/ogp.png", width: 1200, height: 630, alt: "外科DX・最新テクノロジー導入医局データベース" }],
+  },
 }
 
 const theme = explorerThemes.find(({ key }) => key === "insight")!

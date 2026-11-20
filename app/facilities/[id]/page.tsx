@@ -4,6 +4,7 @@ import type { CSSProperties } from "react"
 import { Footer } from "@/components/footer"
 import { FormattedDescription } from "@/components/formatted-description"
 import { ShareLinks } from "@/components/share-links"
+import { breadcrumbJsonLd } from "@/lib/seo"
 import { Header } from "@/components/header"
 import { articles } from "@/data/articles"
 import { facilities, getPrefectureIndex } from "@/data/facilities"
@@ -96,6 +97,18 @@ export default async function FacilityPage({ params, searchParams }: {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "トップ", path: "/" },
+              { name: "医局データベース", path: "/database" },
+              { name: `${facility.university} ${facility.name}`, path: `/facilities/${facility.id}` },
+            ]),
+          ),
+        }}
+      />
       <Header />
       <main className="team-page" style={{ "--portal-accent": chapter?.accent ?? "#b9e9ef" } as CSSProperties}>
         <section className="portal-hero team-hero">

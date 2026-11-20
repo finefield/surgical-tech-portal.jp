@@ -1,5 +1,14 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    url: "/contact",
+    images: [{ url: "/ogp.png", width: 1200, height: 630, alt: "外科DX・最新テクノロジー導入医局データベース" }],
+  },
+}
 
 export default function ContactPage() {
   return (

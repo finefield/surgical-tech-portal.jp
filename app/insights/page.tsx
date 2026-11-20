@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   title: "データで見る 日本の消化器外科DX | Surgical Tech Portal",
   description:
     "収録している全国の消化器外科系医局のデータをもとに、ロボット支援手術の広がりや手術支援ロボットの機種別記載状況、技術タグ・地域別の収録状況を集計したページです。",
+  alternates: { canonical: "/insights" },
+  openGraph: {
+    title: "データで見る 日本の消化器外科DX | Surgical Tech Portal",
+    description:
+      "収録している全国の消化器外科系医局のデータをもとに、ロボット支援手術の広がりや手術支援ロボットの機種別記載状況、技術タグ・地域別の収録状況を集計したページです。",
+    url: "/insights",
+    images: [{ url: "/ogp.png", width: 1200, height: 630, alt: "外科DX・最新テクノロジー導入医局データベース" }],
+  },
 }
 
 // 集計の基準日（掲載情報の全件照合を行った日）

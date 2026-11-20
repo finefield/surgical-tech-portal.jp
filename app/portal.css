@@ -54,6 +54,12 @@
 .home-share .team-share { width: min(1280px, calc(100% - 32px)); margin: 0 auto; padding: 30px 0 38px; }
 .home-share .team-share h2 { font: 400 20px/1.5 var(--portal-serif); color: var(--portal-ink); margin-bottom: 12px; }
 .home-share .team-share ul { border-top: none; padding-top: 0; }
+.home-about { border-top: 1px solid var(--portal-line); }
+.home-about-inner { width: min(1280px, calc(100% - 32px)); margin: 0 auto; padding: 30px 0 6px; }
+.home-about h2 { font: 400 20px/1.5 var(--portal-serif); color: var(--portal-ink); margin-bottom: 10px; }
+.home-about p { color: var(--portal-muted); font-size: 14px; line-height: 1.9; max-width: 54em; }
+.home-about ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin-top: 14px; }
+.home-about a { color: var(--portal-ink); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
 .team-aside section, .team-sources ul { border-top: 1px solid var(--portal-line); padding-top: 12px; }
 .team-aside h2 { font: 400 20px/1.5 var(--portal-serif); margin-bottom: 10px; }
 .team-aside section + section { margin-top: 28px; }

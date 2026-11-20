@@ -5,10 +5,29 @@ import { facilities, areas, prefectureOrder } from "@/data/facilities"
 import { DatabaseClient } from "@/components/database-client"
 import { isExplorerThemeKey, type ExplorerViewKey } from "@/data/explorer"
 
+const DB_TITLE = "消化器外科チームを探す | Surgical Tech Portal"
+const DB_DESCRIPTION =
+  "Surgical Tech Portal（サージカルテック）の医局データベース。関わりたい技術や学びたいことから、全国の消化器外科系外科チームを探せる一覧です。"
+
 export const metadata: Metadata = {
-  title: "消化器外科チームを探す",
-  description:
-    "関わりたい技術や学びたいことから、全国の消化器外科系外科チームを探せる一覧です。",
+  title: DB_TITLE,
+  description: DB_DESCRIPTION,
+  alternates: { canonical: "/database" },
+  openGraph: {
+    title: DB_TITLE,
+    description: DB_DESCRIPTION,
+    url: "/database",
+    siteName: "Surgical Tech Portal",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "/ogp.png", width: 1200, height: 630, alt: "Surgical Tech Portal（サージカルテック）" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DB_TITLE,
+    description: DB_DESCRIPTION,
+    images: ["/ogp.png"],
+  },
 }
 
 // サーバーサイドで都道府県順にソート
