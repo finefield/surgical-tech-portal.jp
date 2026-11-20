@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { Footer } from "@/components/footer"
 import { FormattedDescription } from "@/components/formatted-description"
 import { ShareLinks } from "@/components/share-links"
+import { breadcrumbJsonLd } from "@/lib/seo"
 import { Header } from "@/components/header"
 import { articles, findArticle } from "@/data/articles"
 import { facilities } from "@/data/facilities"
@@ -54,6 +55,18 @@ export default async function FeatureArticlePage({ params }: { params: Promise<{
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "トップ", path: "/" },
+              { name: "特集", path: "/features" },
+              { name: article.title, path: `/features/${article.slug}` },
+            ]),
+          ),
+        }}
+      />
       <Header />
       <main className="portal-editorial pb-20">
         <section className="portal-hero">

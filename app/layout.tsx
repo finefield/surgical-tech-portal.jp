@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import './portal.css'
+import { SITE_DESCRIPTION, SITE_TITLE, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 const geist = Geist({ 
   subsets: ["latin"],
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.surgical-tech-portal.jp'),
-  title: '外科DX・最新テクノロジー導入医局データベース',
-  description: '日本全国の外科系医局におけるロボット手術、AI、VR、内視鏡、遠隔医療などの最新テクノロジー導入状況を可視化するデータベースです。',
+  title: 'Surgical Tech Portal（サージカルテック）',
+  description: SITE_DESCRIPTION,
   generator: 'v0.app',
   keywords: ['外科手術', 'ロボット手術', 'ダヴィンチ', 'hinotori', '医療DX', '内視鏡', '腹腔鏡', 'AI医療', '遠隔医療'],
   icons: {
@@ -40,8 +41,8 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   openGraph: {
-    title: '外科DX・最新テクノロジー導入医局データベース',
-    description: '日本全国の外科系医局におけるロボット手術、AI、VR、内視鏡、遠隔医療などの最新テクノロジー導入状況を可視化するデータベースです。',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     url: 'https://www.surgical-tech-portal.jp/',
     siteName: 'Surgical Tech Portal',
     images: [
@@ -57,8 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '外科DX・最新テクノロジー導入医局データベース',
-    description: '日本全国の外科系医局におけるロボット手術、AI、VR、内視鏡、遠隔医療などの最新テクノロジー導入状況を可視化するデータベースです。',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ['/ogp.png'],
   },
 }
@@ -77,6 +78,8 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${geist.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased min-h-screen">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

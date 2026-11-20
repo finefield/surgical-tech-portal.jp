@@ -6,6 +6,22 @@ import { articles, type Article } from "@/data/articles"
 export const metadata: Metadata = {
   title: "特集記事 | Surgical Tech Portal",
   description: "消化器外科の医局や手術支援技術の取り組みを、公開資料をもとに紹介します。",
+  alternates: { canonical: "/features" },
+  openGraph: {
+    title: "特集記事 | Surgical Tech Portal",
+    description: "消化器外科の医局や手術支援技術の取り組みを、公開資料をもとに紹介します。",
+    url: "/features",
+    siteName: "Surgical Tech Portal",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "/ogp.png", width: 1200, height: 630, alt: "Surgical Tech Portal（サージカルテック）" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "特集記事 | Surgical Tech Portal",
+    description: "消化器外科の医局や手術支援技術の取り組みを、公開資料をもとに紹介します。",
+    images: ["/ogp.png"],
+  },
 }
 
 function ArticleRow({ article }: { article: Article }) {
