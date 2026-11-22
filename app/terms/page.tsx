@@ -42,12 +42,15 @@ export default function TermsPage() {
                 </ul>
               </Section>
 
-              <Section title="掲載情報について">
+              <Section title="掲載情報について" id="listing-information">
                 <p className="mb-4">
                   本サイトに掲載されている各大学・医局等の情報は、公開情報および独自調査に基づき作成されたものであり、特定の医療機関を公式に代表するものではありません。
                 </p>
                 <p>
                   また、情報の正確性・完全性・最新性について保証するものではありません。
+                </p>
+                <p className="mt-4">
+                  本サイトは、各施設の公式サイト等の公開情報をもとに、掲載内容を確認・更新しています。情報の更新に伴い、掲載内容を予告なく変更する場合があります。各施設の最新の診療体制・導入機器・実績等については、リンク先の公式情報をご確認ください。公開情報の変更が、本サイトに反映されるまで時間を要する場合があります。
                 </p>
               </Section>
 
@@ -82,10 +85,10 @@ export default function TermsPage() {
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, id, children }: { title: string; id?: string; children: React.ReactNode }) {
   return (
     <div className="mb-8 last:mb-0">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">{title}</h2>
+      <h2 id={id} className="mb-4 scroll-mt-28 text-lg font-semibold text-foreground">{title}</h2>
       <div className="text-muted-foreground">{children}</div>
     </div>
   )

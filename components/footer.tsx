@@ -36,8 +36,21 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Listing information note */}
+        <div className="mt-10">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            掲載情報は公開情報に基づき、予告なく更新する場合があります。最新情報は各施設の公式サイトをご確認ください。
+            <a
+              href="/terms#listing-information"
+              className="ml-2 underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:text-foreground"
+            >
+              掲載情報について
+            </a>
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
             © 2026 Finefield.inc.
           </p>
